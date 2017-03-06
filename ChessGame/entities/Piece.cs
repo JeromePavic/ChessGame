@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ChessGame.entities
 {
-    public class Piece : Element
+    public abstract class Piece : Element
     {
         private Int32 xPositionNext;
         public Int32 XPositionNext
@@ -23,24 +23,29 @@ namespace ChessGame.entities
             set { yPositionNext = value; }
         }
 
-        private State status;
-        public State Status
+        private State state;
+        public State State
         {
-            get { return alive; }
-            set { alive = value; }
+            get { return state; }
+            set { state = value; }
         }
 
-        private int myVar;
-
-        public int MyProperty
+        private Color color;
+        public Color Color
         {
-            get { return myVar; }
-            set { myVar = value; }
+            get { return color; }
+            set { color = value; }
+        }
+
+        private Boolean moved;
+
+        public Boolean Moved
+        {
+            get { return moved; }
+            set { moved = value; }
         }
 
 
-
-
-
+        public abstract Boolean Move(Case pCase);
     }
 }

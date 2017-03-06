@@ -24,8 +24,7 @@ namespace ChessGame.entities
         }
 
         private Style style;
-
-        public Style MyProperty
+        public Style Style
         {
             get { return style; }
             set { style = value; }

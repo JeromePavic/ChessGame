@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChessGame.entities
 {
-    class Bishop
+    public class Bishop : Piece
     {
     }
 }

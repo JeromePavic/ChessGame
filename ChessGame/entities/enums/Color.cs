@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace ChessGame.entities.enums
 {
-    class Class1
+    public enum Color
     {
+        WHITE,
+        BLACK,
+        RED,
+        BLUE,
+        GREEN,
+        YELLOW
     }
 }

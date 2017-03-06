@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChessGame.entities.enums
 {
-    public enum Available
+    public enum Availability
     {
         NO,
         YES

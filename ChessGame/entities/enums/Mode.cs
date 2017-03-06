@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ChessGame.entities.enums
 {
-    class Mode
+    public enum Mode
     {
+        CLASSICAL,
+        WAR,
+        EXTREME,
     }
 }

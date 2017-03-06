@@ -105,6 +105,24 @@
     <Compile Include="database\MySQLManager.cs" />
     <Compile Include="entities\base\BaseDBEntity.cs" />
     <Compile Include="entities\base\BaseEntity.cs" />
+    <Compile Include="entities\Bishop.cs" />
+    <Compile Include="entities\Case.cs" />
+    <Compile Include="entities\ConnectionString.cs" />
+    <Compile Include="entities\enums\Style.cs" />
+    <Compile Include="entities\enums\Mode.cs" />
+    <Compile Include="entities\Game.cs" />
+    <Compile Include="entities\json\JsonManager.cs" />
+    <Compile Include="entities\King.cs" />
+    <Compile Include="entities\Knight.cs" />
+    <Compile Include="entities\Pawn.cs" />
+    <Compile Include="entities\Player.cs" />
+    <Compile Include="entities\Element.cs" />
+    <Compile Include="entities\enums\Availability.cs" />
+    <Compile Include="entities\enums\Color.cs" />
+    <Compile Include="entities\enums\State.cs" />
+    <Compile Include="entities\Piece.cs" />
+    <Compile Include="entities\Queen.cs" />
+    <Compile Include="entities\Rook.cs" />
     <Compile Include="logger\AlertMode.cs" />
     <Compile Include="logger\Logger.cs" />
     <Compile Include="logger\LogMode.cs" />
@@ -142,9 +160,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="entities\enums\" />
     <Folder Include="entities\generator\" />
-    <Folder Include="entities\json\" />
     <Folder Include="entities\reflection\" />
     <Folder Include="entities\validator\" />
     <Folder Include="viewmodels\" />

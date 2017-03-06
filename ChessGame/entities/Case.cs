@@ -16,5 +16,14 @@ namespace ChessGame.entities
             set { available = value; }
         }
 
+        private Piece piece;
+
+        public Piece Piece
+        {
+            get { return piece; }
+            set { piece = value; }
+        }
+
+
     }
 }
