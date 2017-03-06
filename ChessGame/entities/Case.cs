@@ -17,13 +17,18 @@ namespace ChessGame.entities
         }
 
         private Piece piece;
-
         public Piece Piece
         {
             get { return piece; }
             set { piece = value; }
         }
 
+        public Case At(Int32 x, Int32 y)
+        {
+            if (x == XPosition && y == YPosition)
+                return true;
+
+        }
 
     }
 }

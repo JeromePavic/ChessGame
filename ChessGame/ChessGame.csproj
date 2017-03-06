@@ -101,12 +101,17 @@
     </Compile>
     <Compile Include="commandworker\CommandWorker.cs" />
     <Compile Include="commandworker\ManualResetAction.cs" />
+    <Compile Include="database\entitiesLinks\MySQLCaseManager.cs" />
+    <Compile Include="database\entitiesLinks\MySQLGameManager.cs" />
+    <Compile Include="database\entitiesLinks\MySQLPieceManager.cs" />
+    <Compile Include="database\entitiesLinks\MySQLPlayerManager.cs" />
     <Compile Include="database\MySQLFullDB.cs" />
     <Compile Include="database\MySQLManager.cs" />
     <Compile Include="entities\base\BaseDBEntity.cs" />
     <Compile Include="entities\base\BaseEntity.cs" />
     <Compile Include="entities\Bishop.cs" />
     <Compile Include="entities\Case.cs" />
+    <Compile Include="entities\ChessBoard.cs" />
     <Compile Include="entities\ConnectionString.cs" />
     <Compile Include="entities\enums\Style.cs" />
     <Compile Include="entities\enums\Mode.cs" />

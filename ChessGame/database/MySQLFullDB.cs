@@ -14,6 +14,16 @@ namespace ChessGame.database
     [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class MySQLFullDB : DbContext
     {
+        public DbSet<Bishop> BishopTable { get; set; }
+        public DbSet<Case> CaseTable { get; set; }
+        public DbSet<King> KingTable { get; set; }
+        public DbSet<Knight> KnightTable { get; set; }
+        public DbSet<Pawn> PawnTable { get; set; }
+        public DbSet<Queen> QueenTable { get; set; }
+        public DbSet<Rook> RookTable { get; set; }
+        public DbSet<Player> PlayerTable { get; set; }
+        public DbSet<Game> GameTable { get; set; }
+
 
 
         public MySQLFullDB()
@@ -24,9 +34,7 @@ namespace ChessGame.database
 
         public void InitLocalMySQL()
         {
-            if (this.Database.CreateIfNotExists())
-            {
-            }
+            this.Database.CreateIfNotExists();
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

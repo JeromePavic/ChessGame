@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ChessGame.entities
 {
-    public class Player
+    public class Player : BaseDBEntity
     {
         private String name;
         public String Name

@@ -32,7 +32,7 @@ namespace ChessGame.database
                 this.DbSetT.Attach(item);
             this.DbSetT.Add(item);
             await this.SaveChangesAsync();
-            logger.Log(item);
+            logger.Log(item.ToString());
             return item;
         }
 
@@ -59,7 +59,7 @@ namespace ChessGame.database
                 this.Entry<TEntity>(item).State = EntityState.Modified;
             });
             await this.SaveChangesAsync();
-            logger.Log(item);
+            logger.Log(item.ToString());
             return item;
         }
 
@@ -85,7 +85,7 @@ namespace ChessGame.database
             bool isDetached = this.Entry(item).State == EntityState.Detached;
             if (isDetached)
                 this.DbSetT.Attach(item);
-            logger.Log(item);
+            logger.Log(item.ToString());
             return item;
         }
 
@@ -110,7 +110,7 @@ namespace ChessGame.database
                     this.DbSetT.Attach(item);
                 this.DbSetT.Remove(item);
             });
-            logger.Log(item);
+            logger.Log(item.ToString());
             return await this.SaveChangesAsync();
         }
 
