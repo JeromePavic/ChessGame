@@ -8,30 +8,18 @@ namespace ChessGame.entities
 {
     public class Bishop : Piece
     {
-        public override bool Move(Case pCase)
+
+        public override bool MoveOK(Case pCase)
         {
-            int xOrigin = 0;
-            int yOrigin = 0;
+            int xCurrent = 0;
+            int yCurrent = 0;
 
-            if ((((pCase.XPosition - xOrigin) == (pCase.YPosition - yOrigin) || (pCase.XPosition - xOrigin) == -(pCase.YPosition - yOrigin)) 
-                &&
-                (for (int i = 0, j = 0; i+xOrigin <= pCase.XPosition && j + yOrigin <= pCase.YPosition; i++, j++)
-                {
-
-                })
-            pCase.Piece == null)
-                ||
-                (pCase.XPosition == xOrigin && pCase.YPosition == yOrigin + 2 && pCase.Piece == null && !Moved)
-                ||
-                (pCase.XPosition == xOrigin + 1 && pCase.YPosition == yOrigin + 1 && pCase.Piece != null && pCase.Piece.Color != Color)
-                )
+            if ((pCase.XPosition - xCurrent) == (pCase.YPosition - yCurrent) ||
+                (pCase.XPosition - xCurrent) == -(pCase.YPosition - yCurrent)) 
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
 
         }
     }

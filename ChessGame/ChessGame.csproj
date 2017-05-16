@@ -130,6 +130,7 @@
     <Compile Include="entities\Rook.cs" />
     <Compile Include="logger\AlertMode.cs" />
     <Compile Include="logger\Logger.cs" />
+    <Compile Include="logger\Logger2.cs" />
     <Compile Include="logger\LogMode.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

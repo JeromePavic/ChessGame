@@ -9,6 +9,7 @@ namespace ChessGame.entities
 {
     public class Case : Element
     {
+
         private Availability available;
         public Availability Available
         {
@@ -27,7 +28,6 @@ namespace ChessGame.entities
         {
             if (x == XPosition && y == YPosition)
                 return true;
-
         }
 
     }

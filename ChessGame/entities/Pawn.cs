@@ -8,17 +8,16 @@ namespace ChessGame.entities
 {
     public class Pawn : Piece
     {
-        public override bool Move(Case pCase)
+        //Conditions to allow move to the case pCase
+        public override bool MoveOK(Case pCase)
         {
-            int xOrigin = 0;
-            int yOrigin = 0;
+            int xCurrent = this.XPosition;
+            int yCurrent = this.YPosition;
 
-            if ((pCase.XPosition == xOrigin && pCase.YPosition == yOrigin+1 && pCase.Piece == null)
-                ||
-                (pCase.XPosition == xOrigin && pCase.YPosition == yOrigin+2 && pCase.Piece == null && !Moved)
-                ||
-                (pCase.XPosition == xOrigin+1 && pCase.YPosition == yOrigin+1 && pCase.Piece != null && pCase.Piece.Color != Color)
-                )
+            if ((pCase.XPosition == xCurrent && pCase.YPosition == yCurrent + 1 && pCase.Piece == null) ||
+                (pCase.XPosition == xCurrent && pCase.YPosition == yCurrent + 2 && pCase.Piece == null && MvCount==0) ||
+                (pCase.XPosition == xCurrent + 1 && pCase.YPosition == yCurrent + 1 && pCase.Piece != null && pCase.Piece.Color != Color) ||
+                (pCase.XPosition == xCurrent - 1 && pCase.YPosition == yCurrent + 1 && pCase.Piece != null && pCase.Piece.Color != Color))
             {
                 return true;
             }
@@ -28,5 +27,7 @@ namespace ChessGame.entities
             }
 
         }
+
+
     }
 }

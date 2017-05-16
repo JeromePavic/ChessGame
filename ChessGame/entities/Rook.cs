@@ -8,5 +8,19 @@ namespace ChessGame.entities
 {
     public class Rook : Piece
     {
+
+        public override bool MoveOK(Case pCase)
+        {
+            Int32 xCurrent = this.XPosition;
+            Int32 yCurrent = this.YPosition;
+
+            if (pCase.XPosition == xCurrent || pCase.YPosition == yCurrent)
+            {
+                return true;
+            }
+            return false;
+        }
+
+
     }
 }

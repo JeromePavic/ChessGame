@@ -37,15 +37,14 @@ namespace ChessGame.entities
             set { color = value; }
         }
 
-        private Boolean moved;
-
-        public Boolean Moved
+        private Int32 mvCount;
+        public Int32 MvCount
         {
-            get { return moved; }
-            set { moved = value; }
+            get { return mvCount; }
+            set { mvCount = value; }
         }
 
 
-        public abstract Boolean Move(Case pCase);
+        public abstract Boolean MoveOK(Case pCase);
     }
 }
