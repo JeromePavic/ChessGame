@@ -14,8 +14,9 @@ namespace ChessGame.entities
             int xCurrent = 0;
             int yCurrent = 0;
 
-            if ((pCase.XPosition - xCurrent) == (pCase.YPosition - yCurrent) ||
-                (pCase.XPosition - xCurrent) == -(pCase.YPosition - yCurrent)) 
+            if (((pCase.XPosition - xCurrent) == (pCase.YPosition - yCurrent) ||
+                (pCase.XPosition - xCurrent) == -(pCase.YPosition - yCurrent))
+                && CaseAllowed(pCase))
             {
                 return true;
             }

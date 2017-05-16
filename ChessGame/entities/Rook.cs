@@ -14,7 +14,7 @@ namespace ChessGame.entities
             Int32 xCurrent = this.XPosition;
             Int32 yCurrent = this.YPosition;
 
-            if (pCase.XPosition == xCurrent || pCase.YPosition == yCurrent)
+            if ((pCase.XPosition == xCurrent || pCase.YPosition == yCurrent) && CaseAllowed(pCase))
             {
                 return true;
             }

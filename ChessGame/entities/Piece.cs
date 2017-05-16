@@ -44,6 +44,21 @@ namespace ChessGame.entities
             set { mvCount = value; }
         }
 
+        private Case currentCase;
+        public Case CurrentCase
+        {
+            get { return currentCase; }
+            set { currentCase = value; }
+        }
+
+        public bool CaseAllowed(Case pCase)
+        {
+            if (pCase.Piece == null || pCase.Piece.Color != Color)
+            {
+                return true;
+            }
+            return false;
+        }
 
         public abstract Boolean MoveOK(Case pCase);
     }

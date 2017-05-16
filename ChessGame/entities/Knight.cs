@@ -14,7 +14,7 @@ namespace ChessGame.entities
             int xOrigin = 0;
             int yOrigin = 0;
 
-            if ((pCase.YPosition == yOrigin + 2 && pCase.XPosition == xOrigin - 1) ||
+            if (((pCase.YPosition == yOrigin + 2 && pCase.XPosition == xOrigin - 1) ||
                 (pCase.YPosition == yOrigin + 2 && pCase.XPosition == xOrigin + 1) ||
                 (pCase.YPosition == yOrigin + 1 && pCase.XPosition == xOrigin + 2) ||
                 (pCase.YPosition == yOrigin - 1 && pCase.XPosition == xOrigin + 2) ||
@@ -22,6 +22,7 @@ namespace ChessGame.entities
                 (pCase.YPosition == yOrigin - 2 && pCase.XPosition == xOrigin - 1) ||
                 (pCase.YPosition == yOrigin - 1 && pCase.XPosition == xOrigin - 2) ||
                 (pCase.YPosition == yOrigin + 1 && pCase.XPosition == xOrigin - 2) )
+                && CaseAllowed(pCase))
             {
                 return true;
             }

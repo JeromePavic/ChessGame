@@ -129,6 +129,46 @@ namespace ChessGame.entities
             return null;
         }
 
+
+        public bool MovePossible(Piece pPiece, Case pCase)
+        {
+            if (pPiece.MoveOK(pCase) && FreePath(pCase, pPiece.CurrentCase) && OnBoard(pCase))
+            {
+                return true;
+            }
+            return false;
+        }
+
+
+        public bool OnBoard(Case pCase)
+        {
+            if (pCase.XPosition >= 0 && pCase.XPosition <= 7 && pCase.YPosition >= 0 && pCase.YPosition <= 7)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        //effective movement
+        public void MoveTo(Piece pPiece, Case pCase)
+        {
+            pCase.Piece = pPiece;
+            pPiece.CurrentCase = pCase;
+            pPiece.XPosition = pCase.XPosition;
+            pPiece.YPosition = pCase.YPosition;
+        }
+
+        //handle move of a piece to a new case
+        public bool Move(Piece pPiece, Case pCase)
+        {
+            if (MovePossible(pPiece, pCase))
+            {
+                MoveTo(pPiece, pCase);
+                return true;
+            }
+            return false;
+        }
+
     }
 
     
