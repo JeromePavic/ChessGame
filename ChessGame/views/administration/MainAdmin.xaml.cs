@@ -1,6 +1,4 @@
-﻿using ChessGame.views.administration;
-using ChessGame.views.game;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,30 +13,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ChessGame
+namespace ChessGame.views.administration
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour MainAdmin.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainAdmin : Page
     {
-        public MainWindow()
+        public MainAdmin()
         {
             InitializeComponent();
         }
 
         private void btnAdmin_Click(object sender, RoutedEventArgs e)
         {
-            Window window = new Window();
-            window.Content = new MainAdmin();
-            window.Show();
+           
         }
 
         private void btnGame_Click(object sender, RoutedEventArgs e)
         {
-            Window window = new Window();
-            window.Content = new MainGame();
-            window.Show();
+          
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Windows;
 using ChessGame.commandworker;
 using ChessGame.logger;
 
-namespace wpfzoo.logger
+namespace ChessGame.logger
 {
     public class Logger2
     {

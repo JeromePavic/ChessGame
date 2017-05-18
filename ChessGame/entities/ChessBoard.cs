@@ -21,6 +21,7 @@ namespace ChessGame.entities
         //tells if pieces are on the cases between case of origin and case to reach.
         public bool FreePath(Case pCaseNew, Case pCase)
         {
+
             if (pCaseNew.XPosition == pCase.XPosition && pCaseNew.YPosition > pCase.YPosition)
             {
                 for (int i = pCase.YPosition; i < pCaseNew.YPosition; i++)

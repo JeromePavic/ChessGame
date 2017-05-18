@@ -1,4 +1,5 @@
-﻿using ChessGame.entities.enums;
+﻿using ChessGame.entities.bases;
+using ChessGame.entities.enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ChessGame.entities
 {
-    public class Player : BaseDBEntity
+    public class Player : BaseEntity
     {
         private String name;
         public String Name

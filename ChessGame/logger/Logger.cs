@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using ChessGame.commandworker;
 using ChessGame.logger;
 
-namespace wpfzoo.logger
+namespace ChessGame.logger
 {
     public class Logger
     {

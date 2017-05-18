@@ -91,6 +91,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="views\administration\MainAdmin.xaml.cs">
+      <DependentUpon>MainAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\game\MainGame.xaml.cs">
+      <DependentUpon>MainGame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\usercontrols\BishopUserControl.xaml.cs">
+      <DependentUpon>BishopUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\usercontrols\CaseBlackUserControl.xaml.cs">
+      <DependentUpon>CaseBlackUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\usercontrols\CaseOutUserControl.xaml.cs">
+      <DependentUpon>CaseOutUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\usercontrols\CaseWhiteUserControl.xaml.cs">
+      <DependentUpon>CaseWhiteUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\usercontrols\ChessBoardUserControl.xaml.cs">
+      <DependentUpon>ChessBoardUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\usercontrols\KingUserControl.xaml.cs">
+      <DependentUpon>KingUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\usercontrols\KnightUserControl.xaml.cs">
+      <DependentUpon>KnightUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\usercontrols\PawnUserControl.xaml.cs">
+      <DependentUpon>PawnUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\usercontrols\QueenUserControl.xaml.cs">
+      <DependentUpon>QueenUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\usercontrols\RookUserControl.xaml.cs">
+      <DependentUpon>RookUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -136,6 +172,54 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="views\administration\MainAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\game\MainGame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\usercontrols\BishopUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\usercontrols\CaseBlackUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\usercontrols\CaseOutUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\usercontrols\CaseWhiteUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\usercontrols\ChessBoardUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\usercontrols\KingUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\usercontrols\KnightUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\usercontrols\PawnUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\usercontrols\QueenUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\usercontrols\RookUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -170,7 +254,6 @@
     <Folder Include="entities\reflection\" />
     <Folder Include="entities\validator\" />
     <Folder Include="viewmodels\" />
-    <Folder Include="views\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

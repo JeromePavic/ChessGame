@@ -27,7 +27,8 @@ namespace ChessGame.entities
         public Case At(Int32 x, Int32 y)
         {
             if (x == XPosition && y == YPosition)
-                return true;
+                return this;
+            return null;
         }
 
     }
