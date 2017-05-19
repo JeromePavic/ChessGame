@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="ChessGame.views.usercontrols.PlayerUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ChessGame.views.usercontrols"
+             xmlns:UC="clr-namespace:ChessGame.views.usercontrols"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Label x:Name="lblPlayerName" Content="{Binding Player.Name, Mode=OneWay}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
+        
+        <Label x:Name="lblPlayerPiecesOn" Content="Pieces ON" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" />
+        <UC:ListPieceUserControl x:Name="ucPlayerPiecesOnList" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2"/>
+
+        <Label x:Name="lblPlayerPiecesOff" Content="Pieces OFF" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" />
+        <UC:ListPieceUserControl x:Name="ucPlayerPiecesOffList" Grid.Column="1" Grid.Row="5" Grid.RowSpan="2"/>
+
+        <Label x:Name="lblTotalTime" Content="Total Time" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" />
+        <TextBox x:Name="txtBTotalTime" Text="{Binding Player.TotalTime, Mode=OneWay}" IsReadOnly="true" TextWrapping="Wrap" Grid.Column="1" Grid.Row="8"/>
+
+        <Label x:Name="lblTimeLeft" Content="Time Left" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Center" />
+        <TextBox x:Name="txtBTimeLeft" Text="{Binding Player.TotalTime, Mode=OneWay}" IsReadOnly="true" TextWrapping="Wrap" Grid.Column="1" Grid.Row="10"/>
+
+        <Button x:Name="btnValidMove" Content="Move!" HorizontalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="11" Grid.RowSpan="1" VerticalAlignment="Center" Width="75" Height="21"/>
+
+    </Grid>
+
+</UserControl>

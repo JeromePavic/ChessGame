@@ -9,6 +9,14 @@ namespace ChessGame.entities
 {
     public abstract class Piece : Element
     {
+
+        private String name;
+        public String Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
         private Int32 xPositionNext;
         public Int32 XPositionNext
         {

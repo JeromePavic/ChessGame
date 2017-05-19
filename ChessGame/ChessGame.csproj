@@ -118,8 +118,14 @@
     <Compile Include="views\usercontrols\KnightUserControl.xaml.cs">
       <DependentUpon>KnightUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="views\usercontrols\ListPieceUserControl.xaml.cs">
+      <DependentUpon>ListPieceUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\usercontrols\PawnUserControl.xaml.cs">
       <DependentUpon>PawnUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\usercontrols\PlayerUserControl.xaml.cs">
+      <DependentUpon>PlayerUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\usercontrols\QueenUserControl.xaml.cs">
       <DependentUpon>QueenUserControl.xaml</DependentUpon>
@@ -208,7 +214,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="views\usercontrols\ListPieceUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="views\usercontrols\PawnUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\usercontrols\PlayerUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
