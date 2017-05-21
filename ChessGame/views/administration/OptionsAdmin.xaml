@@ -1,0 +1,86 @@
+﻿<Page x:Class="ChessGame.views.administration.OptionsAdmin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChessGame.views.administration"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="OptionsAdmin">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label x:Name="lblPlayer1" Content="{Binding Player.Name, Mode=TwoWay}" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label x:Name="lblPlayer2" Content="{Binding Player.Name, Mode=TwoWay}" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <Label x:Name="lblColor" Content="Color" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <ComboBox x:Name="cbColorP1" ItemsSource="{Binding ColorsList}" SelectedItem="{Binding SelectedColor}" Grid.Column="0" Grid.Row="1">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="{Binding}">
+                        <TextBlock Text="{Binding}" Visibility="Hidden"/>
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox x:Name="cbColorP2" ItemsSource="{Binding ColorsList}" SelectedItem="{Binding SelectedColor}" Grid.Column="2" Grid.Row="1">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="{Binding}">
+                        <TextBlock Text="{Binding}" Visibility="Hidden"/>
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label x:Name="lblStyle" Content="Style" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" />
+        <ComboBox  x:Name="cbStyleP1" Text="{Binding Player.Style, Mode=TwoWay}" Grid.Column="0" Grid.Row="2" />
+        <ComboBox  x:Name="cbStyleP2" Text="{Binding Player.Style, Mode=TwoWay}" Grid.Column="3" Grid.Row="2" />
+
+        <Label x:Name="lblTimer" Content="Timer" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" />
+
+        <Label x:Name="lblBoard" Content="Board" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" />
+
+        <Grid Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label x:Name="lblChess" Content="Chess" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
+            <RadioButton  IsChecked="True" GroupName="board" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" />
+            
+            <Label x:Name="lblFlying" Content="FlyingChess" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
+            <RadioButton GroupName="board" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" />
+            
+            <Label x:Name="lblWar" Content="War" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
+            <RadioButton GroupName="board" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" />
+            
+            <Label x:Name="lblMad" Content="Mad" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
+            <RadioButton GroupName="board" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" />
+        </Grid>
+
+        <Button x:Name="btnOk" Content="OK" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" Width="75" Height="21"/>
+    </Grid>
+</Page>

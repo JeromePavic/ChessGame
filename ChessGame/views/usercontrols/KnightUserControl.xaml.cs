@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessGame.entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,22 @@ namespace ChessGame.views.usercontrols
     /// <summary>
     /// Logique d'interaction pour KnightUserControl.xaml
     /// </summary>
-    public partial class KnightUserControl : UserControl
+    public partial class KnightUserControl : UserControlBase
     {
+        private Knight knight;
+        public Knight Knight
+        {
+            get { return knight; }
+            set
+            {
+                knight = value;
+                base.OnPropertyChanged("Knight");
+            }
+        }
         public KnightUserControl()
         {
             InitializeComponent();
+            base.DataContext = this;
         }
     }
 }

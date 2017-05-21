@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessGame.entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,24 +19,23 @@ namespace ChessGame.views.usercontrols
     /// <summary>
     /// Logique d'interaction pour ChessBoardUserControl.xaml
     /// </summary>
-    public partial class ChessBoardUserControl : UserControl
+    public partial class ChessBoardUserControl : UserControlBase
     {
+        private ChessBoard chessBoard;
+        public ChessBoard ChessBoard
+        {
+            get { return chessBoard; }
+            set
+            {
+                chessBoard = value;
+                base.OnPropertyChanged("ChessBoard");
+            }
+        }
+
         public ChessBoardUserControl()
         {
             InitializeComponent();
-
-            ////gris creation (9*9)
-            //Grid grid = new Grid {/* Width = 300, Height = 400 */};
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    grid.RowDefinitions.Add(new RowDefinition());
-            //    grid.ColumnDefinitions.Add(new ColumnDefinition());
-            //}
-            
-            //this.Content = grid;
-
-            //Grid.SetRow(new CaseUserControl(), 0);
-            //grid.SetColumn(someLabel, 0);
+            base.DataContext = this;
         }
     }
 }

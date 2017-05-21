@@ -10,12 +10,33 @@ namespace ChessGame.entities
     public class ChessBoard : BaseDBEntity
     {
         private List<Case> cases;
-
         public List<Case> Cases
         {
             get { return cases; }
             set { cases = value; }
         }
+
+        private List<Piece> pieces;
+        public List<Piece> Pieces
+        {
+            get { return pieces; }
+            set { pieces = value; }
+        }
+
+
+        private Map map;
+        public Map Map
+        {
+            get { return map; }
+            set { map = value; }
+        }
+
+        public ChessBoard()
+        {
+            this.pieces = new List<Piece>();
+            this.cases = new List<Case>();
+        }
+
 
 
         //tells if pieces are on the cases between case of origin and case to reach.

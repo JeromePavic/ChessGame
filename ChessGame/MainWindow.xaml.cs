@@ -1,4 +1,5 @@
-﻿using ChessGame.views.administration;
+﻿using ChessGame.database.entitiesLinks;
+using ChessGame.views.administration;
 using ChessGame.views.game;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace ChessGame
 
         private void btnAdmin_Click(object sender, RoutedEventArgs e)
         {
-            Window window = new Window();
+            NavigationWindow window = new NavigationWindow();
             window.Content = new MainAdmin();
             window.Show();
         }
@@ -39,6 +40,13 @@ namespace ChessGame
             Window window = new Window();
             window.Content = new MainGame();
             window.Show();
+
+            MySQLGameManager msqlGM = new MySQLGameManager();
+        }
+
+        private void btnQuit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

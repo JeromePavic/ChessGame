@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessGame.entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,23 @@ namespace ChessGame.views.usercontrols
     /// <summary>
     /// Logique d'interaction pour CaseOutUserControl.xaml
     /// </summary>
-    public partial class CaseOutUserControl : UserControl
+    public partial class CaseOutUserControl : UserControlBase
     {
+        private Case caseOut;
+        public Case CaseOut
+        {
+            get { return caseOut; }
+            set
+            {
+                caseOut = value;
+                base.OnPropertyChanged("Case");
+            }
+        }
+
         public CaseOutUserControl()
         {
             InitializeComponent();
+            base.DataContext = this;
         }
     }
 }

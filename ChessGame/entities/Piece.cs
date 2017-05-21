@@ -38,11 +38,11 @@ namespace ChessGame.entities
             set { state = value; }
         }
 
-        private Color color;
-        public Color Color
+        private Player player;
+        public Player Player
         {
-            get { return color; }
-            set { color = value; }
+            get { return player; }
+            set { player = value; }
         }
 
         private Int32 mvCount;
@@ -61,7 +61,7 @@ namespace ChessGame.entities
 
         public bool CaseAllowed(Case pCase)
         {
-            if (pCase.Piece == null || pCase.Piece.Color != Color)
+            if (pCase.Piece == null || pCase.Piece.Player != Player)
             {
                 return true;
             }

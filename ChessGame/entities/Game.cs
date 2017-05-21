@@ -10,11 +10,26 @@ namespace ChessGame.entities
 {
     public class Game : BaseDBEntity
     {
-        private Player player;
-        public Player Player
+        private String name;
+        public String Name
         {
-            get { return player; }
-            set { player = value; }
+            get { return name; }
+            set { name = value; }
+        }
+
+
+        private Player player1;
+        public Player Player1
+        {
+            get { return player1; }
+            set { player1 = value; }
+        }
+
+        private Player player2;
+        public Player Player2
+        {
+            get { return player2; }
+            set { player2 = value; }
         }
 
         private Mode mode;
@@ -24,12 +39,14 @@ namespace ChessGame.entities
             set { mode = value; }
         }
 
-        private Style style;
-        public Style Style
+        private ChessBoard chessboard;
+        public ChessBoard ChessBoard
         {
-            get { return style; }
-            set { style = value; }
+            get { return chessboard; }
+            set { chessboard = value; }
         }
+
+
 
 
 

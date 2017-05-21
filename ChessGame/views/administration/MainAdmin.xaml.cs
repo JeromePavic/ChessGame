@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ChessGame.viewmodels;
+using ChessGame.views.game;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,16 +25,8 @@ namespace ChessGame.views.administration
         public MainAdmin()
         {
             InitializeComponent();
+            this.DataContext = new MainAdminVM(this);
         }
 
-        private void btnAdmin_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
-        private void btnGame_Click(object sender, RoutedEventArgs e)
-        {
-          
-        }
     }
 }

@@ -10,6 +10,7 @@ namespace ChessGame.entities.enums
     {
         CLASSICAL,
         WAR,
-        EXTREME,
+        FLYING,
+        MAD
     }
 }

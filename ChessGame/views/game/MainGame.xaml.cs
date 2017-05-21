@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessGame.viewmodels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace ChessGame.views.game
         public MainGame()
         {
             InitializeComponent();
+            this.DataContext = new MainGameVM(this);
         }
+
     }
 }

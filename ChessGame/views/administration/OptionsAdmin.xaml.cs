@@ -1,4 +1,4 @@
-﻿using ChessGame.entities;
+﻿using ChessGame.viewmodels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,28 +14,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ChessGame.views.usercontrols
+namespace ChessGame.views.administration
 {
     /// <summary>
-    /// Logique d'interaction pour RookUserControl.xaml
+    /// Logique d'interaction pour OptionsAdmin.xaml
     /// </summary>
-    public partial class RookUserControl : UserControlBase
+    public partial class OptionsAdmin : Page
     {
-        private Rook rook;
-        public Rook Rook
-        {
-            get { return rook; }
-            set
-            {
-                rook = value;
-                base.OnPropertyChanged("Rook");
-            }
-        }
+        public List<Brush> ColorsList { get; set; }
 
-        public RookUserControl()
+        public Brush SelectedColor { get; set; }
+
+        public OptionsAdmin()
         {
             InitializeComponent();
-            base.DataContext = this;
+            this.DataContext = new OptionsAdminVM(this);
+
         }
+
+        
     }
 }

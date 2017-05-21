@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessGame.entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,23 @@ namespace ChessGame.views.usercontrols
     /// <summary>
     /// Logique d'interaction pour KingUserControl.xaml
     /// </summary>
-    public partial class KingUserControl : UserControl
+    public partial class KingUserControl : UserControlBase
     {
+        private King king;
+        public King King
+        {
+            get { return king; }
+            set
+            {
+                king = value;
+                base.OnPropertyChanged("King");
+            }
+        }
+
         public KingUserControl()
         {
             InitializeComponent();
+            base.DataContext = this;
         }
     }
 }

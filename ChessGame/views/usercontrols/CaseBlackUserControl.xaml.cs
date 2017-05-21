@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessGame.entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,23 @@ namespace ChessGame.views.usercontrols
     /// <summary>
     /// Logique d'interaction pour CaseBlackUserControl.xaml
     /// </summary>
-    public partial class CaseBlackUserControl : UserControl
+    public partial class CaseBlackUserControl : UserControlBase
     {
+        private Case caseBlack;
+        public Case CaseBlack
+        {
+            get { return caseBlack; }
+            set
+            {
+                caseBlack = value;
+                base.OnPropertyChanged("Case");
+            }
+        }
+
         public CaseBlackUserControl()
         {
             InitializeComponent();
+            base.DataContext = this;
         }
     }
 }

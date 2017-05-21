@@ -19,22 +19,44 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button x:Name="btnGame" Click="btnGame_Click" Content="Play"  Grid.Row="1" Grid.Column="1" />
-        <Button x:Name="btnAdmin" Click="btnAdmin_Click" Content="Configuration" Grid.Row="2" Grid.Column="1" />
+        
+        <Label x:Name="lblPlayer1" Content="Player 1" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
+        <TextBox x:Name="txtBPlayer1Name" Text="{Binding Player.Name, Mode=TwoWay}" TextWrapping="Wrap" Grid.Column="0" Grid.Row="1"/>
 
-        <DockPanel x:Name="notificationDock" Visibility="Hidden" Height="140" Width="280" VerticalAlignment="Top" HorizontalAlignment="Right">
-            <Border CornerRadius="6" BorderBrush="Gray" Background="LightGray" BorderThickness="2" DockPanel.Dock="Top">
-                <StackPanel x:Name="notification" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Azure" >
-                    <TextBlock x:Name="title" Text=""/>
-                    <TextBlock x:Name="message" Text="" />
-                    <StackPanel x:Name="buttons" Orientation="Horizontal" Background="Cornsilk">
-                        <Button x:Name="yes" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch"/>
-                        <Button x:Name="no" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch"/>
-                    </StackPanel>
-                </StackPanel>
-            </Border>
-        </DockPanel>
+        <Label x:Name="lblPlayer2" Content="Player 2" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
+        <TextBox x:Name="txtBPlayer2Name" Text="{Binding Player.Name, Mode=TwoWay}" TextWrapping="Wrap" Grid.Column="3" Grid.Row="1"/>
 
+        <Label x:Name="lblMode" Content="Mode" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" />
+
+        <Grid Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <Label x:Name="lblChess" Content="Chess" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
+                <RadioButton  IsChecked="True" GroupName="mode" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" />
+            <Label x:Name="lblFlying" Content="FlyingChess" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
+                <RadioButton GroupName="mode" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" />
+            <Label x:Name="lblWar" Content="War" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
+                <RadioButton GroupName="mode" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" />
+            <Label x:Name="lblMad" Content="Mad" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
+                <RadioButton GroupName="mode" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" />
+        </Grid>
+
+
+        <Button x:Name="btnOptions" Content="Options" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Width="75" Height="21"/>
+        <Button x:Name="btnPlay" Content="Play" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" Width="75" Height="21"/>
     </Grid>
 </Page>

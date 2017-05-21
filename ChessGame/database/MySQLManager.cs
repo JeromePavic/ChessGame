@@ -127,8 +127,8 @@ namespace ChessGame.database
     }
 }
 
-/*public async Task<IEnumerable<TEntity>> CustomQuery(Criteria criteria)
-{
-    return await this.DbSetT.SqlQuery(criteria.MySQLCompute()).ToListAsync();
-}*/
+//public async Task<IEnumerable<T Entity>> CustomQuery(Criteria criteria)
+//{
+//    return await this.dbsett.sqlquery(criteria.mysqlcompute()).tolistasync();
+//}
 

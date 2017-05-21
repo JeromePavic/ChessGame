@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessGame.entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,23 @@ namespace ChessGame.views.usercontrols
     /// <summary>
     /// Logique d'interaction pour BishopUserControl.xaml
     /// </summary>
-    public partial class BishopUserControl : UserControl
+    public partial class BishopUserControl : UserControlBase
     {
+        private Bishop bishop;
+        public Bishop Bishop
+        {
+            get { return bishop; }
+            set
+            {
+                bishop = value;
+                base.OnPropertyChanged("Bishop");
+            }
+        }
+
         public BishopUserControl()
         {
             InitializeComponent();
+            base.DataContext = this;
         }
     }
 }

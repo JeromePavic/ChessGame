@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessGame.entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,23 @@ namespace ChessGame.views.usercontrols
     /// <summary>
     /// Logique d'interaction pour PawnUserControl.xaml
     /// </summary>
-    public partial class PawnUserControl : UserControl
+    public partial class PawnUserControl : UserControlBase
     {
+        private Pawn pawn;
+        public Pawn Pawn
+        {
+            get { return pawn; }
+            set
+            {
+                pawn = value;
+                base.OnPropertyChanged("Pawn");
+            }
+        }
+
         public PawnUserControl()
         {
             InitializeComponent();
+            base.DataContext = this;
         }
     }
 }
