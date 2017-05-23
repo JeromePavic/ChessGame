@@ -47,7 +47,14 @@ namespace ChessGame.entities
         }
 
 
-
+        public Game(String pName, Mode pMode = Mode.CLASSICAL)
+        {
+            this.Name = pName;
+            this.Mode = pMode;
+            this.Player1 = new Player();
+            this.Player2 = new Player();
+            this.ChessBoard = new ChessBoard(pMode);
+        }
 
 
     }

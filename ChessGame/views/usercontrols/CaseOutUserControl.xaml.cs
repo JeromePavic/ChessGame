@@ -35,6 +35,7 @@ namespace ChessGame.views.usercontrols
         public CaseOutUserControl()
         {
             InitializeComponent();
+            this.AllowDrop = true;
             base.DataContext = this;
         }
     }

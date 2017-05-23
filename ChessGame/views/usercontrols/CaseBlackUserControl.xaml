@@ -7,6 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Canvas Background="Black"></Canvas>
+        <StackPanel x:Name="mainPanel" Orientation="Vertical"  Background="BurlyWood">
+            
+        </StackPanel>
     </Grid>
 </local:UserControlBase>

@@ -96,6 +96,7 @@
     <Compile Include="database\entitiesLinks\MySQLChessBoardManager.cs" />
     <Compile Include="entities\Map.cs" />
     <Compile Include="entities\Theme.cs" />
+    <Compile Include="utils\Utils.cs" />
     <Compile Include="viewmodels\MainAdminVM.cs" />
     <Compile Include="viewmodels\MainGameVM.cs" />
     <Compile Include="viewmodels\OptionsAdminVM.cs" />

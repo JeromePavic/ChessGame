@@ -9,7 +9,7 @@
       d:DesignHeight="500" d:DesignWidth="600"
       Title="MainGame">
 
-    <Grid>
+    <Grid x:Name="mainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="8*"/>
@@ -23,7 +23,7 @@
         <UC:PlayerUserControl Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="2" />
         <UC:PlayerUserControl Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="2" />
 
-        <UC:ChessBoardUserControl x:Name="ChessBoardUC" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1"/>
+        <!--<UC:ChessBoardUserControl x:Name="ChessBoardUC" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1"/>-->
 
         <Grid  Grid.Column="1" Grid.Row="1" >
             <Grid.ColumnDefinitions>

@@ -59,6 +59,31 @@ namespace ChessGame.entities
             set { currentCase = value; }
         }
 
+
+        public Piece()
+        {
+        }
+
+        public Piece(Int32 pX, Int32 pY)
+        {
+            this.XPosition = pX;
+            this.YPosition = pY;
+        }
+
+        public Piece(Int32 pX, Int32 pY, String pName, State pState, Int32 pMvCount, Case pCase)
+        {
+            this.XPosition = pX;
+            this.YPosition = pY;
+            this.CurrentCase = pCase;
+            this.Name = "p1Rook1";
+            this.State = State.ALIVE;
+            this.MvCount = 0;
+        }
+
+
+        /*
+         * 
+                */
         public bool CaseAllowed(Case pCase)
         {
             if (pCase.Piece == null || pCase.Piece.Player != Player)

@@ -35,7 +35,13 @@ namespace ChessGame.views.usercontrols
         public CaseBlackUserControl()
         {
             InitializeComponent();
+            this.AllowDrop = true;
             base.DataContext = this;
+        }
+
+        private void OnDesignerDragOver()
+        {
+
         }
     }
 }

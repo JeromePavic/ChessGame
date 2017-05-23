@@ -35,7 +35,10 @@ namespace ChessGame.views.usercontrols
         public CaseWhiteUserControl()
         {
             InitializeComponent();
+            this.AllowDrop = true;
             base.DataContext = this;
         }
+
+
     }
 }

@@ -7,10 +7,8 @@
              xmlns:UC="clr-namespace:ChessGame.views.usercontrols"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+    <Grid x:Name="grid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -33,77 +31,10 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <UC:CaseWhiteUserControl x:Name="x0_y0" Grid.Column="2" Grid.Row="2"  />
-        <UC:CaseWhiteUserControl Grid.Column="2" Grid.Row="4"  />
-        <UC:CaseWhiteUserControl Grid.Column="2" Grid.Row="6"  />
-        <UC:CaseWhiteUserControl Grid.Column="2" Grid.Row="8"  />
-        <UC:CaseWhiteUserControl Grid.Column="4" Grid.Row="2"  />
-        <UC:CaseWhiteUserControl Grid.Column="4" Grid.Row="4"  />
-        <UC:CaseWhiteUserControl Grid.Column="4" Grid.Row="6"  />
-        <UC:CaseWhiteUserControl Grid.Column="4" Grid.Row="8"  />
-        <UC:CaseWhiteUserControl Grid.Column="6" Grid.Row="2"  />
-        <UC:CaseWhiteUserControl Grid.Column="6" Grid.Row="4"  />
-        <UC:CaseWhiteUserControl Grid.Column="6" Grid.Row="6"  />
-        <UC:CaseWhiteUserControl Grid.Column="6" Grid.Row="8"  />
-        <UC:CaseWhiteUserControl Grid.Column="8" Grid.Row="2"  />
-        <UC:CaseWhiteUserControl Grid.Column="8" Grid.Row="4"  />
-        <UC:CaseWhiteUserControl Grid.Column="8" Grid.Row="6"  />
-        <UC:CaseWhiteUserControl Grid.Column="8" Grid.Row="8"  />
-        <UC:CaseWhiteUserControl Grid.Column="3" Grid.Row="3"  />
-        <UC:CaseWhiteUserControl Grid.Column="3" Grid.Row="5"  />
-        <UC:CaseWhiteUserControl Grid.Column="3" Grid.Row="7"  />
-        <UC:CaseWhiteUserControl Grid.Column="3" Grid.Row="9"  />
-        <UC:CaseWhiteUserControl Grid.Column="5" Grid.Row="3"  />
-        <UC:CaseWhiteUserControl Grid.Column="5" Grid.Row="5"  />
-        <UC:CaseWhiteUserControl Grid.Column="5" Grid.Row="7"  />
-        <UC:CaseWhiteUserControl Grid.Column="5" Grid.Row="9"  />
-        <UC:CaseWhiteUserControl Grid.Column="7" Grid.Row="3"  />
-        <UC:CaseWhiteUserControl Grid.Column="7" Grid.Row="5"  />
-        <UC:CaseWhiteUserControl Grid.Column="7" Grid.Row="7"  />
-        <UC:CaseWhiteUserControl Grid.Column="7" Grid.Row="9"  />
-        <UC:CaseWhiteUserControl Grid.Column="9" Grid.Row="3"  />
-        <UC:CaseWhiteUserControl Grid.Column="9" Grid.Row="5"  />
-        <UC:CaseWhiteUserControl Grid.Column="9" Grid.Row="7"  />
-        <UC:CaseWhiteUserControl Grid.Column="9" Grid.Row="9"  />
 
-        <UC:CaseBlackUserControl Grid.Column="2" Grid.Row="3"  />
-        <UC:CaseBlackUserControl Grid.Column="2" Grid.Row="5"  />
-        <UC:CaseBlackUserControl Grid.Column="2" Grid.Row="7"  />
-        <UC:CaseBlackUserControl Grid.Column="2" Grid.Row="9"  />
-        <UC:CaseBlackUserControl Grid.Column="4" Grid.Row="3"  />
-        <UC:CaseBlackUserControl Grid.Column="4" Grid.Row="5"  />
-        <UC:CaseBlackUserControl Grid.Column="4" Grid.Row="7"  />
-        <UC:CaseBlackUserControl Grid.Column="4" Grid.Row="9"  />
-        <UC:CaseBlackUserControl Grid.Column="6" Grid.Row="3"  />
-        <UC:CaseBlackUserControl Grid.Column="6" Grid.Row="5"  />
-        <UC:CaseBlackUserControl Grid.Column="6" Grid.Row="7"  />
-        <UC:CaseBlackUserControl Grid.Column="6" Grid.Row="9"  />
-        <UC:CaseBlackUserControl Grid.Column="8" Grid.Row="3"  />
-        <UC:CaseBlackUserControl Grid.Column="8" Grid.Row="5"  />
-        <UC:CaseBlackUserControl Grid.Column="8" Grid.Row="7"  />
-        <UC:CaseBlackUserControl Grid.Column="8" Grid.Row="9"  />
-        <UC:CaseBlackUserControl Grid.Column="3" Grid.Row="2"  />
-        <UC:CaseBlackUserControl Grid.Column="3" Grid.Row="4"  />
-        <UC:CaseBlackUserControl Grid.Column="3" Grid.Row="6"  />
-        <UC:CaseBlackUserControl Grid.Column="3" Grid.Row="8"  />
-        <UC:CaseBlackUserControl Grid.Column="5" Grid.Row="2"  />
-        <UC:CaseBlackUserControl Grid.Column="5" Grid.Row="4"  />
-        <UC:CaseBlackUserControl Grid.Column="5" Grid.Row="6"  />
-        <UC:CaseBlackUserControl Grid.Column="5" Grid.Row="8"  />
-        <UC:CaseBlackUserControl Grid.Column="7" Grid.Row="2"  />
-        <UC:CaseBlackUserControl Grid.Column="7" Grid.Row="4"  />
-        <UC:CaseBlackUserControl Grid.Column="7" Grid.Row="6"  />
-        <UC:CaseBlackUserControl Grid.Column="7" Grid.Row="8"  />
-        <UC:CaseBlackUserControl Grid.Column="9" Grid.Row="2"  />
-        <UC:CaseBlackUserControl Grid.Column="9" Grid.Row="4"  />
-        <UC:CaseBlackUserControl Grid.Column="9" Grid.Row="6"  />
-        <UC:CaseBlackUserControl Grid.Column="9" Grid.Row="8"  />
-
-        <UC:CaseOutUserControl Grid.Column="0" Grid.Row="0" />
+        <!--<UC:CaseOutUserControl Grid.Column="0" Grid.Row="0" />
         <UC:CaseOutUserControl Grid.Column="0" Grid.Row="1" />
         <UC:CaseOutUserControl Grid.Column="0" Grid.Row="2" />
         <UC:CaseOutUserControl Grid.Column="0" Grid.Row="3" />
@@ -189,8 +120,7 @@
         <UC:CaseOutUserControl Grid.Column="6" Grid.Row="11" />
         <UC:CaseOutUserControl Grid.Column="7" Grid.Row="11" />
         <UC:CaseOutUserControl Grid.Column="8" Grid.Row="11" />
-        <UC:CaseOutUserControl Grid.Column="9" Grid.Row="11" />
-
+        <UC:CaseOutUserControl Grid.Column="9" Grid.Row="11" />-->
 
     </Grid>
 </local:UserControlBase>

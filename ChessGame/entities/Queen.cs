@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessGame.entities.enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,26 @@ namespace ChessGame.entities
 {
     public class Queen : Piece
     {
+        public Queen()
+        {
+        }
+
+        public Queen(Int32 pX, Int32 pY)
+        {
+            this.XPosition = pX;
+            this.YPosition = pY;
+        }
+
+        public Queen(Int32 pX, Int32 pY, String pName, Case pCase)
+        {
+            this.XPosition = pX;
+            this.YPosition = pY;
+            this.CurrentCase = pCase;
+            this.Name = pName;
+            this.State = State.ALIVE;
+            this.MvCount = 0;
+        }
+
 
         public override bool MoveOK(Case pCase)
         {
