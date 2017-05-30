@@ -51,6 +51,8 @@ namespace ChessGame.viewmodels
             this.mainGame.mainGrid.Children.Add(chessBoardUC);
             Grid.SetRow(chessBoardUC, 0);
             Grid.SetColumn(chessBoardUC, 1);
+            chessBoardUC.VerticalAlignment = VerticalAlignment.Stretch;
+            chessBoardUC.HorizontalAlignment = HorizontalAlignment.Stretch;
         }
 
         private void InitCases()
@@ -148,10 +150,12 @@ namespace ChessGame.viewmodels
             StackPanel stackPanel = (StackPanel)test.GetGridElement(test.grid, test.ChessBoard.Pieces[5].XPosition, test.ChessBoard.Pieces[5].YPosition);
             PawnUserControl pp = (PawnUserControl)stackPanel.Children[0];
             stackPanel.Children.Remove(pp);
-            StackPanel stackPane2 = (StackPanel)test.GetGridElement(test.grid, 6, 6);
-            test.grid.Children.Add(pp);
-            Grid.SetRow(pp, 6);
-            Grid.SetColumn(pp, 6);
+            StackPanel stackPane2 = (StackPanel)test.GetGridElement(test.grid, 4, 2);
+            test.grid.Children.Remove(stackPane2);
+            stackPane2.Children.Add(pp);
+            test.grid.Children.Add(stackPane2);
+            Grid.SetRow(stackPane2, 4);
+            Grid.SetColumn(stackPane2, 2);
         }
 
         //public static T GetChildOfType<T>(this DependencyObject depObj) where T : DependencyObject
