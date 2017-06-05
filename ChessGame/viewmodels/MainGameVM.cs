@@ -20,124 +20,93 @@ namespace ChessGame.viewmodels
         private Game game;
         private MainGame mainGame;
 
+        private ChessBoardUserControl chessBoardUC;
 
+        bool moving = false;
+        PawnUserControl pieceMoving;
+        StackPanel originMoving;
 
         public MainGameVM(MainGame mainGame)
         {
             this.mainGame = mainGame;
             game = new Game("game");
             InitUC();
-            InitLUC();
             InitActions();
         }
 
         private void InitActions()
         {
+            this.mainGame.btnCancelSelect.Click += btnCancelSelect_Click;
             this.mainGame.btnSaveGame.Click += btnSaveGame_Click;
             this.mainGame.btnQuitGame.Click += btnQuitGame_Click;
+            foreach (StackPanel stackPanel in chessBoardUC.grid.Children)
+            {
+                stackPanel.MouseLeftButtonDown += mouseLeftButtonDown;
+                //stackPanel.MouseLeftButtonUp += mouseLeftButtonUp;
+                //stackPanel.MouseMove += mouseMove;
+            }
         }
 
+        
 
-        private void InitLUC()
+        public void mouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-           
+            StackPanel stackPanel = (StackPanel)sender;
+            int row = Grid.GetRow(stackPanel);
+            int col = Grid.GetColumn(stackPanel);
+            if (!moving && stackPanel.Children.Count == 0)
+            {
+                return;
+            }
+            else if (!moving && stackPanel.Children.Count > 0)
+            {   
+                stackPanel.Background = Brushes.Green;
+                //Console.WriteLine("Row: " + row + " Column: " + col);
+
+                moving = true;
+                pieceMoving = (PawnUserControl)stackPanel.Children[0];
+                originMoving = stackPanel;
+
+            }
+            else if (pieceMoving != null)
+            {
+                stackPanel.Background = Brushes.Red;
+                originMoving.Children.Remove(pieceMoving);
+                stackPanel.Children.Add(pieceMoving);
+
+                moving = false;
+                pieceMoving = null;
+                originMoving = null;
+            }
+                
+            e.Handled = true;
+            
         }
+
+      
 
         private void InitUC()
         {
 
-            ChessBoardUserControl chessBoardUC = new ChessBoardUserControl(this.game.ChessBoard);
+            chessBoardUC = new ChessBoardUserControl(this.game.ChessBoard);
             chessBoardUC.Name = "chessBoardUC";
             this.mainGame.mainGrid.Children.Add(chessBoardUC);
             Grid.SetRow(chessBoardUC, 0);
             Grid.SetColumn(chessBoardUC, 1);
             chessBoardUC.VerticalAlignment = VerticalAlignment.Stretch;
             chessBoardUC.HorizontalAlignment = HorizontalAlignment.Stretch;
+            chessBoardUC.Load();
         }
 
-        private void InitCases()
+
+        private void btnCancelSelect_Click(object sender, RoutedEventArgs e)
         {
-        }
-
-        private void InitPieces()
-        {
-            this.game.Mode = Mode.CLASSICAL;//debug
-            if (this.game.Mode== Mode.CLASSICAL)
+            if (pieceMoving != null)
             {
-                //StackPanel stackPanel1 = (StackPanel)GetGridElement(CheckersGrid, currentMove.piece1.Row, currentMove.piece1.Column);
-
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new RookUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KnightUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new BishopUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new QueenUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KingUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new BishopUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KnightUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new RookUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new PawnUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new PawnUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new PawnUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new PawnUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new PawnUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new PawnUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new PawnUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new PawnUserControl());
-                                           
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new RookUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KnightUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new BishopUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new QueenUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KingUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new BishopUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KnightUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new RookUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new PawnUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new PawnUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new PawnUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new PawnUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new PawnUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new PawnUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new PawnUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new PawnUserControl());
-            }
-            else if (this.game.Mode == entities.enums.Mode.CLASSICAL)
-            {
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new RookUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new RookUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new BishopUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new QueenUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KingUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new QueenUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new BishopUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new RookUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KnightUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KnightUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KnightUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new BishopUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new BishopUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KnightUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KnightUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KnightUserControl());
-                                           
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new RookUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new RookUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new BishopUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new QueenUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KingUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new QueenUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new BishopUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new RookUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KnightUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KnightUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KnightUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new BishopUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new BishopUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KnightUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KnightUserControl());
-                //this.mainGame.ChessBoardUC.grid.Children.Add(new KnightUserControl());
-            }
-
-
+                moving = false;
+                pieceMoving = null;
+                originMoving = null;
+            }            
         }
 
         private void btnQuitGame_Click(object sender, RoutedEventArgs e)
@@ -157,6 +126,45 @@ namespace ChessGame.viewmodels
             Grid.SetRow(stackPane2, 4);
             Grid.SetColumn(stackPane2, 2);
         }
+
+
+
+        //public void getPosition(UIElement element, out int col, out int row)
+        //{
+        //    Grid control = element.parent as DControl;
+        //    var point = Mouse.GetPosition(element);
+        //    row = 0;
+        //    col = 0;
+        //    double accumulatedHeight = 0.0;
+        //    double accumulatedWidth = 0.0;
+
+        //    // calc row mouse was over
+        //    foreach (var rowDefinition in control.RowDefinitions)
+        //    {
+        //        accumulatedHeight += rowDefinition.ActualHeight;
+        //        if (accumulatedHeight >= point.Y)
+        //            break;
+        //        row++;
+        //    }
+
+        //    // calc col mouse was over
+        //    foreach (var columnDefinition in control.ColumnDefinitions)
+        //    {
+        //        accumulatedWidth += columnDefinition.ActualWidth;
+        //        if (accumulatedWidth >= point.X)
+        //            break;
+        //        col++;
+        //    }
+        //}
+
+        //public void updatePosition()
+        //{
+        //    Grid.SetRow(this, (int)position.Y);
+        //    Grid.SetColumn(this, (int)position.X);
+        //    Margin = new Thickness();
+        //}
+
+
 
         //public static T GetChildOfType<T>(this DependencyObject depObj) where T : DependencyObject
         //{

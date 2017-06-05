@@ -9,7 +9,7 @@
       d:DesignHeight="500" d:DesignWidth="600"
       Title="MainGame">
 
-    <Grid x:Name="mainGrid">
+    <Grid x:Name="mainGrid" AllowDrop="False">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="8*"/>
@@ -34,8 +34,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>
-
-            <Button x:Name="btnSaveGame" Content="Save" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Width="75" Height="22" />
+            <Button x:Name="btnCancelSelect" Content="Cancel" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Width="75" Height="22" />
+            <Button x:Name="btnSaveGame" Content="Save" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Width="75" Height="22" />
             <Button x:Name="btnQuitGame" Content="Quit" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" Width="75" Height="22" />
 
         </Grid>

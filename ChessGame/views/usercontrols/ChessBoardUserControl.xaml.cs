@@ -1,4 +1,6 @@
 ﻿using ChessGame.entities;
+using ChessGame.viewmodels;
+using ChessGame.views.game;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,8 +38,6 @@ namespace ChessGame.views.usercontrols
         {
             this.ChessBoard = pChessBoard;
             InitializeComponent();
-            InitGrid();
-            InitPieces();
             base.DataContext = this;
         }
 
@@ -62,9 +62,12 @@ namespace ChessGame.views.usercontrols
                         else
                             stackPanel.Background = Brushes.White;
                     }
+                    //stackPanel.AllowDrop = true;
+                    stackPanel.Name = "SP" + row + col;
                     Grid.SetRow(stackPanel, row);
                     Grid.SetColumn(stackPanel, col);
                     grid.Children.Add(stackPanel);
+                    
                 }
             }
         }
@@ -74,8 +77,16 @@ namespace ChessGame.views.usercontrols
         {
             foreach (var pieceItem in ChessBoard.Pieces)
             {
+                // get current MainGame VM object
+                Grid mainGrid = (Grid)this.Parent;
+                MainGame mainGame = (MainGame)mainGrid.Parent;
+                MainGameVM mainGameVM = (MainGameVM)mainGame.DataContext;
+
                 StackPanel stackPanel = (StackPanel)GetGridElement(grid, pieceItem.XPosition, pieceItem.YPosition);
                 PawnUserControl pieceUC = new PawnUserControl();
+                //pieceUC.MouseLeftButtonDown += new MouseButtonEventHandler(mainGameVM.mouse_LeftButtonDown);
+                //pieceUC.MouseLeftButtonUp += new MouseButtonEventHandler(mainGameVM.mouse_LeftButtonUp);
+                //pieceUC.MouseMove += new MouseEventHandler(mainGameVM.mouse_Move);
                 pieceUC.HorizontalAlignment = HorizontalAlignment.Center;
                 pieceUC.VerticalAlignment = VerticalAlignment.Center;
                 pieceUC.Name = pieceItem.Name + "UC";
@@ -83,6 +94,11 @@ namespace ChessGame.views.usercontrols
             }
         }
 
+        internal void Load()
+        {
+            InitGrid();
+            InitPieces();
+        }
 
         public UIElement GetGridElement(Grid g, int r, int c)
         {
