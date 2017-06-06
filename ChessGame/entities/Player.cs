@@ -31,6 +31,33 @@ namespace ChessGame.entities
             set { state = value; }
         }
 
+        private bool help;
+        public bool Help
+        {
+            get { return help; }
+            set { help = value; }
+        }
+
+        private bool white;
+        public bool White
+        {
+            get { return white; }
+            set { white = value; }
+        }
+
+        public Player(String pName, Theme pTheme, State pState, bool pHelp, bool pWhite)
+        {
+            this.Name = pName;
+            this.Theme = pTheme;
+            this.State = pState;
+            this.Help = pHelp;
+            this.White = pWhite;
+
+        }
+
+
+
+
 
 
 

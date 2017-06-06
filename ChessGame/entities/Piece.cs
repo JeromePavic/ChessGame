@@ -75,15 +75,12 @@ namespace ChessGame.entities
             this.XPosition = pX;
             this.YPosition = pY;
             this.CurrentCase = pCase;
-            this.Name = "p1Rook1";
+            this.Name = pName;
             this.State = State.ALIVE;
             this.MvCount = 0;
         }
 
 
-        /*
-         * 
-                */
         public bool CaseAllowed(Case pCase)
         {
             if (pCase.Piece == null || pCase.Piece.Player != Player)

@@ -30,7 +30,7 @@
         </Grid.RowDefinitions>
 
 
-        <!--<UC:CaseOutUserControl Grid.Column="0" Grid.Row="0" />
+        <!--<UC:PieceUserControl Grid.Column="0" Grid.Row="0" />
         <UC:CaseOutUserControl Grid.Column="0" Grid.Row="1" />
         <UC:CaseOutUserControl Grid.Column="0" Grid.Row="2" />
         <UC:CaseOutUserControl Grid.Column="0" Grid.Row="3" />

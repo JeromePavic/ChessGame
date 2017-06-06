@@ -17,22 +17,22 @@ using System.Windows.Shapes;
 namespace ChessGame.views.usercontrols
 {
     /// <summary>
-    /// Logique d'interaction pour RookUserControl.xaml
+    /// Logique d'interaction pour PieceUserControl.xaml
     /// </summary>
-    public partial class RookUserControl : UserControlBase
+    public partial class PieceUserControl : UserControlBase
     {
-        private Rook rook;
-        public Rook Rook
+        private Piece piece;
+        public Piece Piece
         {
-            get { return rook; }
+            get { return piece; }
             set
             {
-                rook = value;
-                base.OnPropertyChanged("Rook");
+                piece = value;
+                base.OnPropertyChanged("Piece");
             }
         }
 
-        public RookUserControl()
+        public PieceUserControl()
         {
             InitializeComponent();
             base.DataContext = this;

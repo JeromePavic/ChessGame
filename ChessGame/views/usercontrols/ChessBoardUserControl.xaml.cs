@@ -63,9 +63,9 @@ namespace ChessGame.views.usercontrols
                             stackPanel.Background = Brushes.White;
                     }
                     //stackPanel.AllowDrop = true;
-                    stackPanel.Name = "SP" + row + col;
-                    Grid.SetRow(stackPanel, row);
+                    stackPanel.Name = "SP" + col + (7-row);
                     Grid.SetColumn(stackPanel, col);
+                    Grid.SetRow(stackPanel, row);
                     grid.Children.Add(stackPanel);
                     
                 }
@@ -78,15 +78,13 @@ namespace ChessGame.views.usercontrols
             foreach (var pieceItem in ChessBoard.Pieces)
             {
                 // get current MainGame VM object
-                Grid mainGrid = (Grid)this.Parent;
-                MainGame mainGame = (MainGame)mainGrid.Parent;
-                MainGameVM mainGameVM = (MainGameVM)mainGame.DataContext;
+                //Grid mainGrid = (Grid)this.Parent;
+                //MainGame mainGame = (MainGame)mainGrid.Parent;
+                //MainGameVM mainGameVM = (MainGameVM)mainGame.DataContext;
 
                 StackPanel stackPanel = (StackPanel)GetGridElement(grid, pieceItem.XPosition, pieceItem.YPosition);
-                PawnUserControl pieceUC = new PawnUserControl();
-                //pieceUC.MouseLeftButtonDown += new MouseButtonEventHandler(mainGameVM.mouse_LeftButtonDown);
-                //pieceUC.MouseLeftButtonUp += new MouseButtonEventHandler(mainGameVM.mouse_LeftButtonUp);
-                //pieceUC.MouseMove += new MouseEventHandler(mainGameVM.mouse_Move);
+                PieceUserControl pieceUC = new PieceUserControl();
+                pieceUC.Piece = pieceItem;
                 pieceUC.HorizontalAlignment = HorizontalAlignment.Center;
                 pieceUC.VerticalAlignment = VerticalAlignment.Center;
                 pieceUC.Name = pieceItem.Name + "UC";
@@ -94,18 +92,18 @@ namespace ChessGame.views.usercontrols
             }
         }
 
-        internal void Load()
+        public void Load()
         {
             InitGrid();
             InitPieces();
         }
 
-        public UIElement GetGridElement(Grid g, int r, int c)
+        public UIElement GetGridElement(Grid g, int c, int r)
         {
             for (int i = 0; i < g.Children.Count; i++)
             {
                 UIElement e = g.Children[i];
-                if (Grid.GetRow(e) == r && Grid.GetColumn(e) == c)
+                if (Grid.GetRow(e) == (7-r) && Grid.GetColumn(e) == (c))
                     return e;
             }
             return null;

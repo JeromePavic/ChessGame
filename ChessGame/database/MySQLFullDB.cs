@@ -45,9 +45,9 @@ namespace ChessGame.database
         {
             //handle of zero-or-one to zero-or-one relationship between Case and Piece.
             modelBuilder.Entity<Piece>()
-                .HasOptional(x => x.CurrentCase)
-                .WithOptionalPrincipal()
-                .Map(x => x.MapKey("Piece_Id"));
+                        .HasOptional(x => x.CurrentCase)
+                        .WithOptionalPrincipal()
+                        .Map(x => x.MapKey("Piece_Id"));
 
             modelBuilder.Entity<Case>()
                         .HasOptional(x => x.Piece)

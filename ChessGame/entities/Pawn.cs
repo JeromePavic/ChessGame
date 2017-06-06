@@ -36,17 +36,35 @@ namespace ChessGame.entities
             int xCurrent = this.XPosition;
             int yCurrent = this.YPosition;
 
-            if ((pCase.XPosition == xCurrent && pCase.YPosition == yCurrent + 1 && pCase.Piece == null) ||
-                (pCase.XPosition == xCurrent && pCase.YPosition == yCurrent + 2 && pCase.Piece == null && MvCount==0) ||
+            if (this.Player.White == true)
+            {
+                if ((pCase.XPosition == xCurrent && pCase.YPosition == yCurrent + 1 && pCase.Piece == null) ||
+                (pCase.XPosition == xCurrent && pCase.YPosition == yCurrent + 2 && pCase.Piece == null && MvCount == 0) ||
                 (pCase.XPosition == xCurrent + 1 && pCase.YPosition == yCurrent + 1 && pCase.Piece != null && pCase.Piece.Player != Player) ||
                 (pCase.XPosition == xCurrent - 1 && pCase.YPosition == yCurrent + 1 && pCase.Piece != null && pCase.Piece.Player != Player))
-            {
-                return true;
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
-                return false;
+                if ((pCase.XPosition == xCurrent && pCase.YPosition == yCurrent - 1 && pCase.Piece == null) ||
+                (pCase.XPosition == xCurrent && pCase.YPosition == yCurrent - 2 && pCase.Piece == null && MvCount == 0) ||
+                (pCase.XPosition == xCurrent + 1 && pCase.YPosition == yCurrent - 1 && pCase.Piece != null && pCase.Piece.Player != Player) ||
+                (pCase.XPosition == xCurrent - 1 && pCase.YPosition == yCurrent - 1 && pCase.Piece != null && pCase.Piece.Player != Player))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
+            
 
         }
 

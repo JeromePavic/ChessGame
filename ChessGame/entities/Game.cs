@@ -32,6 +32,13 @@ namespace ChessGame.entities
             set { player2 = value; }
         }
 
+        private Player currentPlayer;
+        public Player CurrentPlayer
+        {
+            get { return currentPlayer; }
+            set { currentPlayer = value; }
+        }
+
         private Mode mode;
         public Mode Mode
         {
@@ -51,9 +58,23 @@ namespace ChessGame.entities
         {
             this.Name = pName;
             this.Mode = pMode;
-            this.Player1 = new Player();
-            this.Player2 = new Player();
+            this.Player1 = new Player("Player1", null, State.ALIVE, true, true);
+            Player1.White = true;
+            this.Player2 = new Player("Player2", null, State.ALIVE, true, false);
+            Player2.White = false;
+            this.CurrentPlayer = Player1;
             this.ChessBoard = new ChessBoard(pMode);
+            // set a player for each piece of the chessboard
+            int mid = ChessBoard.Pieces.Count;
+            for (int i = 0; i < mid; i++)
+            {
+                ChessBoard.Pieces[i].Player = Player1;
+            }
+            for (int i = mid; i < ChessBoard.Pieces.Count; i++)
+            {
+                ChessBoard.Pieces[i].Player = Player2;
+            }
+
         }
 
 

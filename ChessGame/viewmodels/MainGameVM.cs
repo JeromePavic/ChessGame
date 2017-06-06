@@ -1,5 +1,6 @@
 ﻿using ChessGame.entities;
 using ChessGame.entities.enums;
+using ChessGame.logger;
 using ChessGame.utils;
 using ChessGame.views.game;
 using ChessGame.views.usercontrols;
@@ -17,21 +18,27 @@ namespace ChessGame.viewmodels
 {
     public class MainGameVM
     {
+        private Logger logger;
         private Game game;
         private MainGame mainGame;
 
         private ChessBoardUserControl chessBoardUC;
 
         bool moving = false;
-        PawnUserControl pieceMoving;
+        PieceUserControl pieceMoving;
         StackPanel originMoving;
 
         public MainGameVM(MainGame mainGame)
         {
+            logger = new Logger("MainGameVMLogger", LogMode.CURRENT_FOLDER, AlertMode.NONE);
             this.mainGame = mainGame;
             game = new Game("game");
             InitUC();
             InitActions();
+
+            //TO DELETE
+            this.game.Player1.Help = true;
+            this.game.Player2.Help = true;
         }
 
         private void InitActions()
@@ -52,8 +59,9 @@ namespace ChessGame.viewmodels
         public void mouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             StackPanel stackPanel = (StackPanel)sender;
-            int row = Grid.GetRow(stackPanel);
             int col = Grid.GetColumn(stackPanel);
+            int row = Grid.GetRow(stackPanel);
+            logger.Log("clic on col=" + col + ", row=" + row + "; stackPanel=" + stackPanel.Name);
             if (!moving && stackPanel.Children.Count == 0)
             {
                 return;
@@ -64,8 +72,22 @@ namespace ChessGame.viewmodels
                 //Console.WriteLine("Row: " + row + " Column: " + col);
 
                 moving = true;
-                pieceMoving = (PawnUserControl)stackPanel.Children[0];
+                pieceMoving = (PieceUserControl)stackPanel.Children[0];
+                logger.Log("Piece selected=" + pieceMoving.Piece.Name + ", x=" + pieceMoving.Piece.XPosition + ", y=" + pieceMoving.Piece.YPosition);
                 originMoving = stackPanel;
+
+                if (game.CurrentPlayer.Help == true)
+                {
+                    foreach (StackPanel sp in chessBoardUC.grid.Children)
+                    {
+                        //Case spCase2 = new Case(Grid.GetRow(sp), Grid.GetColumn(sp));
+                        Case spCase = chessBoardUC.ChessBoard.GetCase(Grid.GetColumn(sp), (7 - Grid.GetRow(sp)));
+                        if (chessBoardUC.ChessBoard.MovePossible(pieceMoving.Piece, spCase))
+                        {
+                            sp.Background = Brushes.Aquamarine;
+                        }
+                    }
+                }
 
             }
             else if (pieceMoving != null)
@@ -78,7 +100,7 @@ namespace ChessGame.viewmodels
                 pieceMoving = null;
                 originMoving = null;
             }
-                
+            
             e.Handled = true;
             
         }
@@ -117,7 +139,7 @@ namespace ChessGame.viewmodels
         {
             ChessBoardUserControl test = Utils.FindChild<ChessBoardUserControl>(this.mainGame, "chessBoardUC");
             StackPanel stackPanel = (StackPanel)test.GetGridElement(test.grid, test.ChessBoard.Pieces[5].XPosition, test.ChessBoard.Pieces[5].YPosition);
-            PawnUserControl pp = (PawnUserControl)stackPanel.Children[0];
+            PieceUserControl pp = (PieceUserControl)stackPanel.Children[0];
             stackPanel.Children.Remove(pp);
             StackPanel stackPane2 = (StackPanel)test.GetGridElement(test.grid, 4, 2);
             test.grid.Children.Remove(stackPane2);

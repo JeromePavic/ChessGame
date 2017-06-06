@@ -110,26 +110,8 @@
       <DependentUpon>MainGame.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\usercontrols\base\UserControlBase.cs" />
-    <Compile Include="views\usercontrols\BishopUserControl.xaml.cs">
-      <DependentUpon>BishopUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="views\usercontrols\CaseBlackUserControl.xaml.cs">
-      <DependentUpon>CaseBlackUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="views\usercontrols\CaseOutUserControl.xaml.cs">
-      <DependentUpon>CaseOutUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="views\usercontrols\CaseWhiteUserControl.xaml.cs">
-      <DependentUpon>CaseWhiteUserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="views\usercontrols\ChessBoardUserControl.xaml.cs">
       <DependentUpon>ChessBoardUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="views\usercontrols\KingUserControl.xaml.cs">
-      <DependentUpon>KingUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="views\usercontrols\KnightUserControl.xaml.cs">
-      <DependentUpon>KnightUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\usercontrols\ListPieceUserControl.xaml.cs">
       <DependentUpon>ListPieceUserControl.xaml</DependentUpon>
@@ -137,14 +119,11 @@
     <Compile Include="views\usercontrols\PawnUserControl.xaml.cs">
       <DependentUpon>PawnUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="views\usercontrols\PieceUserControl.xaml.cs">
+      <DependentUpon>PieceUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\usercontrols\PlayerUserControl.xaml.cs">
       <DependentUpon>PlayerUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="views\usercontrols\QueenUserControl.xaml.cs">
-      <DependentUpon>QueenUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="views\usercontrols\RookUserControl.xaml.cs">
-      <DependentUpon>RookUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\usercontrols\UserControlBase.cs" />
     <Page Include="MainWindow.xaml">
@@ -203,31 +182,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="views\usercontrols\BishopUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="views\usercontrols\CaseBlackUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="views\usercontrols\CaseOutUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="views\usercontrols\CaseWhiteUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="views\usercontrols\ChessBoardUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="views\usercontrols\KingUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="views\usercontrols\KnightUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -239,15 +194,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="views\usercontrols\PieceUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="views\usercontrols\PlayerUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="views\usercontrols\QueenUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="views\usercontrols\RookUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

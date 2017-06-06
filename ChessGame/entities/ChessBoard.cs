@@ -61,7 +61,10 @@ namespace ChessGame.entities
             this.cases = new List<Case>();
             InitCases();
             InitPieces();
+            PiecesToCases();
         }
+
+        
 
 
         //===============================================================================================================
@@ -97,22 +100,22 @@ namespace ChessGame.entities
                 pieces.Add(new Knight(6, 0, "p1Knight2", this.GetCase(6,0)));
                 pieces.Add(new Rook(7, 0, "p1Rook2", this.GetCase(7,0)));
                 pieces.Add(new Pawn(0, 1, "p1Pawn1", this.GetCase(0,1)));
-                pieces.Add(new Pawn(1, 1, "p1Pawn1", this.GetCase(1,1)));
-                pieces.Add(new Pawn(2, 1, "p1Pawn1", this.GetCase(2,1)));
-                pieces.Add(new Pawn(3, 1, "p1Pawn1", this.GetCase(3,1)));
-                pieces.Add(new Pawn(4, 1, "p1Pawn1", this.GetCase(4,1)));
-                pieces.Add(new Pawn(5, 1, "p1Pawn1", this.GetCase(5,1)));
-                pieces.Add(new Pawn(6, 1, "p1Pawn1", this.GetCase(6,1)));
-                pieces.Add(new Pawn(7, 1, "p1Pawn1", this.GetCase(7,1)));
+                pieces.Add(new Pawn(1, 1, "p1Pawn2", this.GetCase(1,1)));
+                pieces.Add(new Pawn(2, 1, "p1Pawn3", this.GetCase(2,1)));
+                pieces.Add(new Pawn(3, 1, "p1Pawn4", this.GetCase(3,1)));
+                pieces.Add(new Pawn(4, 1, "p1Pawn5", this.GetCase(4,1)));
+                pieces.Add(new Pawn(5, 1, "p1Pawn6", this.GetCase(5,1)));
+                pieces.Add(new Pawn(6, 1, "p1Pawn7", this.GetCase(6,1)));
+                pieces.Add(new Pawn(7, 1, "p1Pawn8", this.GetCase(7,1)));
 
-                pieces.Add(new Pawn(0, 6, "p2Pawn1", this.GetCase(1,6)));
-                pieces.Add(new Pawn(1, 6, "p2Pawn1", this.GetCase(1,6)));
-                pieces.Add(new Pawn(2, 6, "p2Pawn1", this.GetCase(1,6)));
-                pieces.Add(new Pawn(3, 6, "p2Pawn1", this.GetCase(1,6)));
-                pieces.Add(new Pawn(4, 6, "p2Pawn1", this.GetCase(1,6)));
-                pieces.Add(new Pawn(5, 6, "p2Pawn1", this.GetCase(1,6)));
-                pieces.Add(new Pawn(6, 6, "p2Pawn1", this.GetCase(1,6)));
-                pieces.Add(new Pawn(7, 6, "p2Pawn1", this.GetCase(1,6)));
+                pieces.Add(new Pawn(0, 6, "p2Pawn1", this.GetCase(0,6)));
+                pieces.Add(new Pawn(1, 6, "p2Pawn2", this.GetCase(1,6)));
+                pieces.Add(new Pawn(2, 6, "p2Pawn3", this.GetCase(2,6)));
+                pieces.Add(new Pawn(3, 6, "p2Pawn4", this.GetCase(3,6)));
+                pieces.Add(new Pawn(4, 6, "p2Pawn5", this.GetCase(4,6)));
+                pieces.Add(new Pawn(5, 6, "p2Pawn6", this.GetCase(5,6)));
+                pieces.Add(new Pawn(6, 6, "p2Pawn7", this.GetCase(6,6)));
+                pieces.Add(new Pawn(7, 6, "p2Pawn8", this.GetCase(7,6)));
                 pieces.Add(new Rook(0, 7, "p2Rook1", this.GetCase(0,7)));
                 pieces.Add(new Knight(1, 7, "p2Knight1", this.GetCase(1, 7)));
                 pieces.Add(new Bishop(2, 7, "p2Bishop1", this.GetCase(2, 7)));
@@ -160,13 +163,26 @@ namespace ChessGame.entities
             }
         }
 
+        // set a piece to cases
+        private void PiecesToCases()
+        {
+            for (int i = 0; i < Cases.Count; i++)
+            {
+                Int32 x = Cases[i].XPosition;
+                Int32 y = Cases[i].YPosition;
+
+                Cases[i].Piece = GetPiece(x, y);
+            }
+        }
+
+
         //tells if pieces are on the cases between case of origin and case to reach.
         public bool FreePath(Case pCaseNew, Case pCase)
         {
 
             if (pCaseNew.XPosition == pCase.XPosition && pCaseNew.YPosition > pCase.YPosition)
             {
-                for (int i = pCase.YPosition; i < pCaseNew.YPosition; i++)
+                for (int i = pCase.YPosition + 1; i < pCaseNew.YPosition; i++)
                 {
                     if (GetCase(pCase.XPosition, i).Piece != null)
                     {
@@ -177,7 +193,7 @@ namespace ChessGame.entities
             }
             else if (pCaseNew.XPosition == pCase.XPosition && pCaseNew.YPosition < pCase.YPosition)
             {
-                for (int i = pCase.YPosition; i > pCaseNew.YPosition; i--)
+                for (int i = pCase.YPosition - 1; i > pCaseNew.YPosition; i--)
                 {
                     if (GetCase(pCase.XPosition, i).Piece != null)
                     {
@@ -188,7 +204,7 @@ namespace ChessGame.entities
             }
             else if (pCaseNew.YPosition == pCase.YPosition && pCaseNew.XPosition > pCase.XPosition)
             {
-                for (int i = pCase.XPosition; i < pCaseNew.XPosition; i++)
+                for (int i = pCase.XPosition + 1; i < pCaseNew.XPosition; i++)
                 {
                     if (GetCase(i, pCase.YPosition).Piece != null)
                     {
@@ -199,7 +215,7 @@ namespace ChessGame.entities
             }
             else if (pCaseNew.YPosition == pCase.YPosition && pCaseNew.XPosition < pCase.XPosition)
             {
-                for (int i = pCase.YPosition; i > pCaseNew.YPosition; i--)
+                for (int i = pCase.YPosition - 1; i > pCaseNew.YPosition; i--)
                 {
                     if (GetCase(i, pCase.YPosition).Piece != null)
                     {
@@ -208,10 +224,10 @@ namespace ChessGame.entities
                 }
                 return true;
             }
-            else if (pCaseNew.XPosition / pCase.XPosition == pCaseNew.YPosition / pCase.YPosition &&
+            else if ((Math.Abs(pCaseNew.XPosition - pCase.XPosition) == Math.Abs(pCaseNew.YPosition - pCase.YPosition)) &&
                         pCaseNew.XPosition > pCase.XPosition && pCaseNew.YPosition > pCase.YPosition)
             {
-                for (int i = pCase.XPosition, j = pCase.YPosition; i < pCaseNew.XPosition && j < pCaseNew.YPosition; i++, j++)
+                for (int i = pCase.XPosition + 1, j = pCase.YPosition + 1; i < pCaseNew.XPosition && j < pCaseNew.YPosition; i++, j++)
                 {
                     if (GetCase(i, j).Piece != null)
                     {
@@ -220,10 +236,10 @@ namespace ChessGame.entities
                 }
                 return true;
             }
-            else if (pCaseNew.XPosition / pCase.XPosition == pCaseNew.YPosition / pCase.YPosition &&
+            else if ((Math.Abs(pCaseNew.XPosition - pCase.XPosition) == Math.Abs(pCaseNew.YPosition - pCase.YPosition)) &&
                         pCaseNew.XPosition > pCase.XPosition && pCaseNew.YPosition < pCase.YPosition)
             {
-                for (int i = pCase.XPosition, j = pCase.YPosition; i < pCaseNew.XPosition && j > pCaseNew.YPosition; i++, j--)
+                for (int i = pCase.XPosition + 1, j = pCase.YPosition - 1; i < pCaseNew.XPosition && j > pCaseNew.YPosition; i++, j--)
                 {
                     if (GetCase(i, j).Piece != null)
                     {
@@ -232,10 +248,10 @@ namespace ChessGame.entities
                 }
                 return true;
             }
-            else if (pCaseNew.XPosition / pCase.XPosition == pCaseNew.YPosition / pCase.YPosition &&
+            else if ((Math.Abs(pCaseNew.XPosition - pCase.XPosition) == Math.Abs(pCaseNew.YPosition - pCase.YPosition)) &&
                         pCaseNew.XPosition < pCase.XPosition && pCaseNew.YPosition > pCase.YPosition)
             {
-                for (int i = pCase.XPosition, j = pCase.YPosition; i > pCaseNew.XPosition && j < pCaseNew.YPosition; i--, j++)
+                for (int i = pCase.XPosition - 1, j = pCase.YPosition + 1; i > pCaseNew.XPosition && j < pCaseNew.YPosition; i--, j++)
                 {
                     if (GetCase(i, j).Piece != null)
                     {
@@ -244,10 +260,10 @@ namespace ChessGame.entities
                 }
                 return true;
             }
-            else if (pCaseNew.XPosition / pCase.XPosition == pCaseNew.YPosition / pCase.YPosition &&
+            else if ((Math.Abs(pCaseNew.XPosition - pCase.XPosition) == Math.Abs(pCaseNew.YPosition - pCase.YPosition)) &&
                         pCaseNew.XPosition < pCase.XPosition && pCaseNew.YPosition < pCase.YPosition)
             {
-                for (int i = pCase.XPosition, j = pCase.YPosition; i > pCaseNew.XPosition && j > pCaseNew.YPosition; i--, j--)
+                for (int i = pCase.XPosition - 1, j = pCase.YPosition - 1; i > pCaseNew.XPosition && j > pCaseNew.YPosition; i--, j--)
                 {
                     if (GetCase(i, j).Piece != null)
                     {
