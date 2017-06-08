@@ -163,6 +163,7 @@ namespace ChessGame.entities
             }
         }
 
+
         // set a piece to cases
         private void PiecesToCases()
         {
@@ -179,6 +180,11 @@ namespace ChessGame.entities
         //tells if pieces are on the cases between case of origin and case to reach.
         public bool FreePath(Case pCaseNew, Case pCase)
         {
+            // Knight is not concerned by this rule...
+            if (pCase.Piece.GetType().Equals(typeof(Knight)))
+            {
+                return true;
+            }
 
             if (pCaseNew.XPosition == pCase.XPosition && pCaseNew.YPosition > pCase.YPosition)
             {
@@ -322,7 +328,9 @@ namespace ChessGame.entities
 
         //effective movement
         private void MoveTo(Piece pPiece, Case pCase)
-        {
+        {   
+            Case oldCase = pPiece.CurrentCase;
+            oldCase.Piece = null;
             pCase.Piece = pPiece;
             pPiece.CurrentCase = pCase;
             pPiece.XPosition = pCase.XPosition;
@@ -335,6 +343,16 @@ namespace ChessGame.entities
             if (MovePossible(pPiece, pCase))
             {
                 MoveTo(pPiece, pCase);
+                return true;
+            }
+            return false;
+        }
+
+
+        public bool Kill(Piece piece)
+        {
+            if (Pieces.Remove(piece))
+            {
                 return true;
             }
             return false;

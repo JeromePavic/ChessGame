@@ -31,8 +31,8 @@ namespace ChessGame.entities
 
         public override bool MoveOK(Case pCase)
         {
-            int xCurrent = 0;
-            int yCurrent = 0;
+            int xCurrent = this.XPosition;
+            int yCurrent = this.YPosition;
 
             if (((pCase.XPosition - xCurrent) == (pCase.YPosition - yCurrent) ||
                 (pCase.XPosition - xCurrent) == -(pCase.YPosition - yCurrent))

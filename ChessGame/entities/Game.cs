@@ -65,7 +65,7 @@ namespace ChessGame.entities
             this.CurrentPlayer = Player1;
             this.ChessBoard = new ChessBoard(pMode);
             // set a player for each piece of the chessboard
-            int mid = ChessBoard.Pieces.Count;
+            int mid = ChessBoard.Pieces.Count / 2;
             for (int i = 0; i < mid; i++)
             {
                 ChessBoard.Pieces[i].Player = Player1;

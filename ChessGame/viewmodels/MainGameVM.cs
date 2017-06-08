@@ -49,8 +49,6 @@ namespace ChessGame.viewmodels
             foreach (StackPanel stackPanel in chessBoardUC.grid.Children)
             {
                 stackPanel.MouseLeftButtonDown += mouseLeftButtonDown;
-                //stackPanel.MouseLeftButtonUp += mouseLeftButtonUp;
-                //stackPanel.MouseMove += mouseMove;
             }
         }
 
@@ -69,7 +67,6 @@ namespace ChessGame.viewmodels
             else if (!moving && stackPanel.Children.Count > 0)
             {   
                 stackPanel.Background = Brushes.Green;
-                //Console.WriteLine("Row: " + row + " Column: " + col);
 
                 moving = true;
                 pieceMoving = (PieceUserControl)stackPanel.Children[0];
@@ -90,15 +87,30 @@ namespace ChessGame.viewmodels
                 }
 
             }
-            else if (pieceMoving != null)
+            else if (moving)
             {
-                stackPanel.Background = Brushes.Red;
-                originMoving.Children.Remove(pieceMoving);
-                stackPanel.Children.Add(pieceMoving);
+                if (chessBoardUC.ChessBoard.MovePossible(pieceMoving.Piece, chessBoardUC.ChessBoard.GetCase(col, 7 - row)))
+                {
+                    if (stackPanel.Children.Count > 0)
+                    {
+                        PieceUserControl pieceToKill = (PieceUserControl)stackPanel.Children[0];
+                        if (chessBoardUC.ChessBoard.Kill(pieceToKill.Piece))
+                        {
+                            stackPanel.Children.Remove(pieceToKill);
+                        }
+                    }
+                }
+                if (chessBoardUC.ChessBoard.Move(pieceMoving.Piece, chessBoardUC.ChessBoard.GetCase(col,7-row)))
+                {
+                    originMoving.Children.Remove(pieceMoving);
+                    stackPanel.Children.Add(pieceMoving);
+                    moving = false;
+                    pieceMoving = null;
+                    originMoving = null;
 
-                moving = false;
-                pieceMoving = null;
-                originMoving = null;
+                    //TO DO check echec au roi
+                }
+                
             }
             
             e.Handled = true;
