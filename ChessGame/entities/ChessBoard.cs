@@ -11,7 +11,6 @@ namespace ChessGame.entities
     public class ChessBoard : BaseDBEntity
     {
         private const Int32 ChessBoardSize = 8;
-
         private Mode mode;
 
         //===============================================================================================================
@@ -33,12 +32,31 @@ namespace ChessGame.entities
         }
 
 
-        private Map map;
-        public Map Map
+        private Case caseOfKIC;
+        public Case CaseOfKIC
         {
-            get { return map; }
-            set { map = value; }
+            get { return caseOfKIC; }
+            set { caseOfKIC = value; }
         }
+
+        private bool kingInCheck;
+        public bool KingInCheck
+        {
+            get { return kingInCheck; }
+            set { kingInCheck = value; }
+        }
+
+        public Case P1KingCase { get; internal set; }
+        public Case P2KingCase { get; internal set; }
+
+
+
+        //private Map map;
+        //public Map Map
+        //{
+        //    get { return map; }
+        //    set { map = value; }
+        //}
 
 
         //===============================================================================================================
@@ -354,6 +372,20 @@ namespace ChessGame.entities
             if (Pieces.Remove(piece))
             {
                 return true;
+            }
+            return false;
+        }
+
+
+        public bool PutKingInCheck(Case caseOfKing)
+        {
+            foreach (Piece piece in pieces)
+            {
+                if (MovePossible(piece, caseOfKing))
+                {
+                    kingInCheck = true;
+                    return true;
+                }
             }
             return false;
         }

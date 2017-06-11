@@ -104,12 +104,67 @@ namespace ChessGame.viewmodels
                 {
                     originMoving.Children.Remove(pieceMoving);
                     stackPanel.Children.Add(pieceMoving);
+                    if (pieceMoving.GetType().Equals(typeof(King)))
+                    {
+                        if (game.CurrentPlayer == game.Player1)
+                        {
+                            chessBoardUC.ChessBoard.P1KingCase = chessBoardUC.ChessBoard.GetCase(col, 7 - row);
+                        }
+                        else
+                        {
+                            chessBoardUC.ChessBoard.P2KingCase = chessBoardUC.ChessBoard.GetCase(col, 7 - row);
+                        }
+                    }
                     moving = false;
                     pieceMoving = null;
                     originMoving = null;
                     chessBoardUC.clean(false); // TODO gérer ça comme il faut
-
-                    //TO DO check echec au roi
+                    if (game.CurrentPlayer == game.Player1)
+                    {
+                        chessBoardUC.ChessBoard.KingInCheck = chessBoardUC.ChessBoard.PutKingInCheck(chessBoardUC.ChessBoard.P2KingCase);
+                        if (chessBoardUC.ChessBoard.KingInCheck)
+                        {
+                            // in case of KingInCheck, we select the other player KingUC for next move
+                            StackPanel sP = (StackPanel)chessBoardUC.GetGridElement(chessBoardUC.grid, chessBoardUC.ChessBoard.P2KingCase.XPosition, chessBoardUC.ChessBoard.P2KingCase.YPosition);
+                            pieceMoving = (PieceUserControl)sP.Children[0];
+                            bool checkmate = false;
+                            foreach (Case caseItem in chessBoardUC.ChessBoard.Cases)
+                            {
+                                if (chessBoardUC.ChessBoard.MovePossible(pieceMoving.Piece, caseItem))
+                                {
+                                    checkmate = true;
+                                }
+                            }
+                            if (!checkmate)
+                            {
+                                game.Player2.State = State.DEAD;
+                                EndGame(game.Player1);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        chessBoardUC.ChessBoard.KingInCheck = chessBoardUC.ChessBoard.PutKingInCheck(chessBoardUC.ChessBoard.P1KingCase);
+                        if (chessBoardUC.ChessBoard.KingInCheck)
+                        {
+                            // in case of KingInCheck, we select the other player KingUC for next move
+                            StackPanel sP = (StackPanel)chessBoardUC.GetGridElement(chessBoardUC.grid, chessBoardUC.ChessBoard.P1KingCase.XPosition, chessBoardUC.ChessBoard.P1KingCase.YPosition);
+                            pieceMoving = (PieceUserControl)sP.Children[0];
+                            bool checkmate = false;
+                            foreach (Case caseItem in chessBoardUC.ChessBoard.Cases)
+                            {
+                                if (chessBoardUC.ChessBoard.MovePossible(pieceMoving.Piece, caseItem))
+                                {
+                                    checkmate = true;
+                                }
+                            }
+                            if (!checkmate)
+                            {
+                                game.Player1.State = State.DEAD;
+                                EndGame(game.Player2);
+                            }
+                        }
+                    }
                 }
                 
             }
@@ -118,7 +173,10 @@ namespace ChessGame.viewmodels
             
         }
 
-      
+        private void EndGame(Player player1)
+        {
+            throw new NotImplementedException();
+        }
 
         private void InitUC()
         {
