@@ -107,6 +107,7 @@ namespace ChessGame.viewmodels
                     moving = false;
                     pieceMoving = null;
                     originMoving = null;
+                    chessBoardUC.clean(false); // TODO gérer ça comme il faut
 
                     //TO DO check echec au roi
                 }
@@ -129,7 +130,7 @@ namespace ChessGame.viewmodels
             Grid.SetColumn(chessBoardUC, 1);
             chessBoardUC.VerticalAlignment = VerticalAlignment.Stretch;
             chessBoardUC.HorizontalAlignment = HorizontalAlignment.Stretch;
-            chessBoardUC.Load();
+            chessBoardUC.Load(false); //TODO gérer le vrai paramètre
         }
 
 

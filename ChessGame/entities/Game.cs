@@ -53,6 +53,14 @@ namespace ChessGame.entities
             set { chessboard = value; }
         }
 
+        private String background;
+        public String Background
+        {
+            get { return background; }
+            set { background = value; }
+        }
+
+
 
         public Game(String pName, Mode pMode = Mode.CLASSICAL)
         {

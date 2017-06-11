@@ -23,6 +23,14 @@ namespace ChessGame.views.usercontrols
     /// </summary>
     public partial class ChessBoardUserControl : UserControlBase
     {
+        private ImageBrush background;
+        public ImageBrush BackGround
+        {
+            get { return background; }
+            set { background = value; }
+        }
+
+
         private ChessBoard chessBoard;
         public ChessBoard ChessBoard
         {
@@ -41,28 +49,49 @@ namespace ChessGame.views.usercontrols
             base.DataContext = this;
         }
 
-        private void InitGrid()
+        public ChessBoardUserControl(ChessBoard pChessBoard, String ImgUri)
+        {
+            this.ChessBoard = pChessBoard;
+            InitializeComponent();
+            base.DataContext = this;
+            LoadBackground(ImgUri);
+        }
+
+        private void LoadBackground(string imgUri)
+        {
+            background = new ImageBrush();
+            Image image = new Image();
+            image.Source = new BitmapImage(new Uri(imgUri));
+            background.ImageSource = image.Source;
+            grid.Background = background;
+        }
+
+        private void InitGrid(bool background)
         {
             for (int row = 0; row < 8; row++)
             {
                 for (int col = 0; col < 8; col++)
                 {
                     StackPanel stackPanel = new StackPanel();
-                    if (row % 2 == 1)
+                    if (!background)
                     {
-                        if (col % 2 == 1)
-                            stackPanel.Background = Brushes.White;
+                        if (row % 2 == 1)
+                        {
+                            if (col % 2 == 1)
+                                stackPanel.Background = Brushes.White;
+                            else
+                                stackPanel.Background = Brushes.Black;
+                        }
                         else
-                            stackPanel.Background = Brushes.Black;
+                        {
+                            if (col % 2 == 1)
+                                stackPanel.Background = Brushes.Black;
+                            else
+                                stackPanel.Background = Brushes.White;
+                        }
                     }
-                    else
-                    {
-                        if (col % 2 == 1)
-                            stackPanel.Background = Brushes.Black;
-                        else
-                            stackPanel.Background = Brushes.White;
-                    }
-                    //stackPanel.AllowDrop = true;
+
+                    
                     stackPanel.Name = "SP" + col + (7-row);
                     Grid.SetColumn(stackPanel, col);
                     Grid.SetRow(stackPanel, row);
@@ -92,10 +121,43 @@ namespace ChessGame.views.usercontrols
             }
         }
 
-        public void Load()
+        public void Load(bool background)
         {
-            InitGrid();
+            InitGrid(background);
             InitPieces();
+        }
+
+        public void clean(bool background)
+        {
+            for (int row = 0; row < 8; row++)
+            {
+                for (int col = 0; col < 8; col++)
+                {
+                    StackPanel stackPanel = (StackPanel)this.GetGridElement(grid, col, row);
+                    if (!background)
+                    {
+                        if (row % 2 == 1)
+                        {
+                            if (col % 2 == 1)
+                                stackPanel.Background = Brushes.White;
+                            else
+                                stackPanel.Background = Brushes.Black;
+                        }
+                        else
+                        {
+                            if (col % 2 == 1)
+                                stackPanel.Background = Brushes.Black;
+                            else
+                                stackPanel.Background = Brushes.White;
+                        }
+                    }
+                    else
+                    {
+                        stackPanel.Background = Brushes.Transparent;
+                    }
+
+                }
+            }
         }
 
         public UIElement GetGridElement(Grid g, int c, int r)
