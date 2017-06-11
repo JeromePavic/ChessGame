@@ -9,6 +9,14 @@ namespace ChessGame.entities
 {
     public class Map :BaseDBEntity
     {
+
+        private String name;
+        public String Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
         private String fileName;
         public String FileName
         {

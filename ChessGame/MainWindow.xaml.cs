@@ -44,6 +44,11 @@ namespace ChessGame
             MySQLGameManager msqlGM = new MySQLGameManager();
         }
 
+        private void btnLoad_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
         private void btnQuit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();

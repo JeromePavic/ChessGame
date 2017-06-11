@@ -114,6 +114,7 @@ namespace ChessGame.views.usercontrols
                 StackPanel stackPanel = (StackPanel)GetGridElement(grid, pieceItem.XPosition, pieceItem.YPosition);
                 PieceUserControl pieceUC = new PieceUserControl();
                 pieceUC.Piece = pieceItem;
+                pieceUC.LoadImg();
                 pieceUC.HorizontalAlignment = HorizontalAlignment.Center;
                 pieceUC.VerticalAlignment = VerticalAlignment.Center;
                 pieceUC.Name = pieceItem.Name + "UC";

@@ -36,6 +36,18 @@ namespace ChessGame.views.usercontrols
         {
             InitializeComponent();
             base.DataContext = this;
+
+            
+        }
+
+        internal void LoadImg()
+        {
+            var redBrush = new ImageBrush();
+            redBrush.ImageSource = new BitmapImage(new Uri("C:\\Users\\jerome\\Pictures\\photo_gamelle_couv.jpg", UriKind.Absolute));
+            if (this.piece.GetType() == typeof(Pawn))
+            {
+                this.Background = redBrush;
+            }
         }
     }
 }

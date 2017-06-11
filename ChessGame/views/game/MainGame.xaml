@@ -33,6 +33,7 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
             <Button x:Name="btnCancelSelect" Content="Cancel" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Width="75" Height="22" />
             <Button x:Name="btnSaveGame" Content="Save" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Width="75" Height="22" />

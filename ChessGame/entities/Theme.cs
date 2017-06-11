@@ -10,6 +10,13 @@ namespace ChessGame.entities
     public class Theme : BaseDBEntity
     {
 
+        private String name;
+        public String Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
         private Dictionary<Piece,String> images;
         public Dictionary<Piece, String> Images
         {
