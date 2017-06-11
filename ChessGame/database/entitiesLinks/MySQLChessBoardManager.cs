@@ -26,12 +26,12 @@ namespace ChessGame.database.entitiesLinks
             this.Entry(chessBoard).Collection(x => x.Pieces).Load();
         }
 
-        public void GetMap(ChessBoard chessBoard)
-        {
-            bool isDetached = this.Entry(chessBoard).State == EntityState.Detached;
-            if (isDetached)
-                this.DbSetT.Attach(chessBoard);
-            this.Entry(chessBoard).Reference(x => x.Map).Load();
-        }
+        //public void GetMap(ChessBoard chessBoard)
+        //{
+        //    bool isDetached = this.Entry(chessBoard).State == EntityState.Detached;
+        //    if (isDetached)
+        //        this.DbSetT.Attach(chessBoard);
+        //    this.Entry(chessBoard).Reference(x => x.Map).Load();
+        //}
     }
 }

@@ -46,8 +46,19 @@ namespace ChessGame.entities
             set { kingInCheck = value; }
         }
 
-        public Case P1KingCase { get; internal set; }
-        public Case P2KingCase { get; internal set; }
+        private Case p1KingCase;
+        public Case P1KingCase
+        {
+            get { return p1KingCase; }
+            set { p1KingCase = value; }
+        }
+
+        private Case p2KingCase;
+        public Case P2KingCase
+        {
+            get { return p2KingCase; }
+            set { p2KingCase = value; }
+        }
 
 
 
@@ -179,6 +190,9 @@ namespace ChessGame.entities
                 pieces.Add(new Bishop(6, 7, "p2Bishop4", this.GetCase(6, 7)));
                 pieces.Add(new Rook(7, 7, "p2Rook3", this.GetCase(7, 7)));
             }
+
+            p1KingCase = GetCase(4, 0);
+            p2KingCase = GetCase(4, 7);
         }
 
 
@@ -353,6 +367,7 @@ namespace ChessGame.entities
             pPiece.CurrentCase = pCase;
             pPiece.XPosition = pCase.XPosition;
             pPiece.YPosition = pCase.YPosition;
+            pPiece.MvCount++;
         }
 
         //handle move of a piece to a new case
@@ -367,9 +382,9 @@ namespace ChessGame.entities
         }
 
 
-        public bool Kill(Piece piece)
+        public bool Kill(Piece pPiece)
         {
-            if (Pieces.Remove(piece))
+            if (Pieces.Remove(pPiece))
             {
                 return true;
             }
@@ -377,11 +392,11 @@ namespace ChessGame.entities
         }
 
 
-        public bool PutKingInCheck(Case caseOfKing)
+        public bool PutKingInCheck(Case pCaseOfKing, Player pPlayer)
         {
             foreach (Piece piece in pieces)
             {
-                if (MovePossible(piece, caseOfKing))
+                if (piece.Player != pPlayer && MovePossible(piece, pCaseOfKing))
                 {
                     kingInCheck = true;
                     return true;

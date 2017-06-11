@@ -60,6 +60,13 @@ namespace ChessGame.entities
             set { background = value; }
         }
 
+        private Map map;
+        public Map Map
+        {
+            get { return map; }
+            set { map = value; }
+        }
+
 
 
         public Game(String pName, Mode pMode = Mode.CLASSICAL)

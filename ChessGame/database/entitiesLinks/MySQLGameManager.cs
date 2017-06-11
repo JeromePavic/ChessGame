@@ -28,5 +28,13 @@ namespace ChessGame.database.entitiesLinks
             this.Entry(game).Reference(x => x.ChessBoard).Load();
         }
 
+        public void GetMap(Game game)
+        {
+            bool isDetached = this.Entry(game).State == EntityState.Detached;
+            if (isDetached)
+                this.DbSetT.Attach(game);
+            this.Entry(game).Reference(x => x.Map).Load();
+        }
+
     }
 }
