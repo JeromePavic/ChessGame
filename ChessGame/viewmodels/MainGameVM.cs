@@ -108,13 +108,40 @@ namespace ChessGame.viewmodels
                 // if King is moving we check if the case where he's going would not put him in check
                 if (pieceMoving.Piece.GetType().Equals(typeof(King)) )
                 {
+                    //here we have to move the king for real to enable movePossible for a pawn (special case of eating...)
+                    Piece tmp = null;
+                    if (chessBoardUC.ChessBoard.GetCase(col, 7 - row).Piece != null)
+                    {
+                        tmp = chessBoardUC.ChessBoard.GetCase(col, 7 - row).Piece;
+                    }
+                    chessBoardUC.ChessBoard.GetCase(col, 7 - row).Piece = pieceMoving.Piece;
                     if (chessBoardUC.ChessBoard.PutKingInCheck(chessBoardUC.ChessBoard.GetCase(col, 7 - row), game.CurrentPlayer))
                     {
                         System.Windows.Forms.MessageBox.Show("You can't move your king to this case, it would be in check!", "Case not allowed",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        if (tmp != null)
+                        {
+                            // kind of rollback
+                            chessBoardUC.ChessBoard.GetCase(col, 7 - row).Piece = tmp;
+                            tmp = null;
+                        }
+                        else
+                        {
+                            chessBoardUC.ChessBoard.GetCase(col, 7 - row).Piece = null;
+                        }
                         return;
                     }
-                    
+                    if (tmp != null)
+                    {
+                        // kind of rollback
+                        chessBoardUC.ChessBoard.GetCase(col, 7 - row).Piece = tmp;
+                        tmp = null;
+                    }
+                    else
+                    {
+                        chessBoardUC.ChessBoard.GetCase(col, 7 - row).Piece = null;
+                    }
+
                 }
                 if (chessBoardUC.ChessBoard.MovePossible(pieceMoving.Piece, chessBoardUC.ChessBoard.GetCase(col, 7 - row)))
                 {
