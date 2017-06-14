@@ -28,6 +28,7 @@ namespace ChessGame
             InitializeComponent();
         }
 
+
         private void btnAdmin_Click(object sender, RoutedEventArgs e)
         {
             NavigationWindow window = new NavigationWindow();

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using ChessGame.entities;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +22,36 @@ namespace ChessGame.views.usercontrols
     /// </summary>
     public partial class ListMapUserControl : UserControl
     {
+        public ListView ItemsList { get; set; }
+        public ObservableCollection<Map> Obs { get; set; }
+
+
         public ListMapUserControl()
         {
             InitializeComponent();
+            Obs = new ObservableCollection<Map>();
+            this.itemList.ItemsSource = Obs;
+            this.ItemsList = this.itemList;
+            this.ItemsList.SelectionMode = SelectionMode.Single;
+        }
+
+        public void LoadItems(List<Map> items)
+        {
+            Obs.Clear();
+            foreach (var item in items)
+            {
+                Obs.Add(item);
+            }
+        }
+
+        public void AddItem(Map item)
+        {
+            Obs.Add(item);
+        }
+
+        public void RemoveItem(Map item)
+        {
+            Obs.Remove(item);
         }
     }
 }
