@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ChessGame.views.administration"
+      xmlns:UC="clr-namespace:ChessGame.views.usercontrols"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="MainAdmin">
@@ -30,32 +31,12 @@
         <Button x:Name="btnNewMap" Content="Add a map" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Width="75" Height="21"/>
         <Button x:Name="btnNewTheme" Content="Add a theme" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Width="75" Height="21"/>
 
-        <Label x:Name="lblMode" Content="Mode" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" />
+        <UC:ListMapUserControl x:Name="ListMapUC" Grid.Column="0" Grid.Row="2" />
+        <UC:ListMapUserControl x:Name="ListThemeUC" Grid.Column="1" Grid.Row="2" />
 
-        <Grid Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Grid.RowSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            
-            <Label x:Name="lblChess" Content="Chess" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
-                <RadioButton  IsChecked="True" GroupName="mode" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" />
-            <Label x:Name="lblFlying" Content="FlyingChess" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
-                <RadioButton GroupName="mode" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" />
-            <Label x:Name="lblWar" Content="War" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
-                <RadioButton GroupName="mode" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" />
-            <Label x:Name="lblMad" Content="Mad" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
-                <RadioButton GroupName="mode" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" />
-        </Grid>
+        <Button x:Name="btnRemoveMap" Content="Remove map" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Width="75" Height="21"/>
+        <Button x:Name="btnRemoveTheme" Content="Remove theme" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Width="75" Height="21"/>
 
-
-        <Button x:Name="btnOptions" Content="Options" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Width="75" Height="21"/>
-        <Button x:Name="btnPlay" Content="Play" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" Width="75" Height="21"/>
+        <Button x:Name="btnOk" Content="OK" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  VerticalAlignment="Center" Width="75" Height="21"/>
     </Grid>
 </Page>

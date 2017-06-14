@@ -100,6 +100,9 @@
     <Compile Include="viewmodels\MainAdminVM.cs" />
     <Compile Include="viewmodels\MainGameVM.cs" />
     <Compile Include="viewmodels\OptionsAdminVM.cs" />
+    <Compile Include="views\administration\GameAdmin.xaml.cs">
+      <DependentUpon>GameAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\administration\MainAdmin.xaml.cs">
       <DependentUpon>MainAdmin.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,9 @@
     <Compile Include="views\usercontrols\base\UserControlBase.cs" />
     <Compile Include="views\usercontrols\ChessBoardUserControl.xaml.cs">
       <DependentUpon>ChessBoardUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\usercontrols\ListGameUserControl.xaml.cs">
+      <DependentUpon>ListGameUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\usercontrols\ListMapUserControl.xaml.cs">
       <DependentUpon>ListMapUserControl.xaml</DependentUpon>
@@ -176,6 +182,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="views\administration\GameAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="views\administration\MainAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -189,6 +199,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\usercontrols\ChessBoardUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\usercontrols\ListGameUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

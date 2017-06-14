@@ -25,8 +25,6 @@ namespace ChessGame.viewmodels
 
         private void InitActions()
         {
-            this.mainAdmin.btnPlay.Click += btnPlay_Click;
-            this.mainAdmin.btnOptions.Click += btnOptions_Click;
         }
 
         private void InitLUC()

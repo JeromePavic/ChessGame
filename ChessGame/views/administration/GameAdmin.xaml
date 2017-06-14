@@ -1,0 +1,33 @@
+﻿<Page x:Class="ChessGame.views.administration.GameAdmin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChessGame.views.administration"
+      xmlns:UC="clr-namespace:ChessGame.views.usercontrols"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="GameAdmin">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+
+        <Label x:Name="lblGames" Content="Games" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
+
+        <UC:ListGameUserControl x:Name="ListMapUC" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" />
+
+        <Button x:Name="btnLoadGame" Content="Load game" Grid.Column="0" Grid.Row="2"  VerticalAlignment="Center" Width="75" Height="21"/>
+        <Button x:Name="btnRemoveGame" Content="Remove game" Grid.Column="1" Grid.Row="2"  VerticalAlignment="Center" Width="75" Height="21"/>
+        <Button x:Name="btnCancel" Content="Cancel" Grid.Column="3" Grid.Row="2"  VerticalAlignment="Center" Width="75" Height="21"/>
+    </Grid>
+</Page>
