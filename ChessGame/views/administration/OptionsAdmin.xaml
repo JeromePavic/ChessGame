@@ -69,6 +69,9 @@
         <Label x:Name="lblP1Timer" Content="Timer" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" />
         <Label x:Name="lblP2Timer" Content="Timer" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" />
 
+        <TextBox x:Name="txtBP1Timer" Text="{Binding Player.Name, Mode=TwoWay}" TextWrapping="Wrap" Grid.Column="1" Grid.Row="3"/>
+        <TextBox x:Name="txtBP2Timer" Text="{Binding Player.Name, Mode=TwoWay}" TextWrapping="Wrap" Grid.Column="3" Grid.Row="3"/>
+
         <Label x:Name="lblP1Help" Content="Help" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" />
         <Label x:Name="lblP2Help" Content="Help" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" />
 
@@ -86,6 +89,9 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>-->
+
+            <Label x:Name="lblGame" Content="Game" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" />
+
 
             <Label x:Name="lblChess" Content="Chess" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" />
             <RadioButton  IsChecked="True" GroupName="board" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" />

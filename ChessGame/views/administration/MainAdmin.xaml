@@ -12,7 +12,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -20,16 +19,16 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
-        
-        <Label x:Name="lblPlayer1" Content="Player 1" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
-        <TextBox x:Name="txtBPlayer1Name" Text="{Binding Player.Name, Mode=TwoWay}" TextWrapping="Wrap" Grid.Column="0" Grid.Row="1"/>
 
-        <Label x:Name="lblPlayer2" Content="Player 2" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
-        <TextBox x:Name="txtBPlayer2Name" Text="{Binding Player.Name, Mode=TwoWay}" TextWrapping="Wrap" Grid.Column="3" Grid.Row="1"/>
+        <Label x:Name="lblMaps" Content="Maps" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
+        <Label x:Name="lblThemes" Content="Themes" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
+        
+        <!--<TextBox x:Name="txtBPlayer1Name" Text="{Binding Player.Name, Mode=TwoWay}" TextWrapping="Wrap" Grid.Column="0" Grid.Row="1"/>
+        <TextBox x:Name="txtBPlayer2Name" Text="{Binding Player.Name, Mode=TwoWay}" TextWrapping="Wrap" Grid.Column="3" Grid.Row="1"/>-->
+
+        <Button x:Name="btnNewMap" Content="Add a map" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Width="75" Height="21"/>
+        <Button x:Name="btnNewTheme" Content="Add a theme" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Width="75" Height="21"/>
 
         <Label x:Name="lblMode" Content="Mode" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" />
 

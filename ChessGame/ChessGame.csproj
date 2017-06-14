@@ -113,8 +113,14 @@
     <Compile Include="views\usercontrols\ChessBoardUserControl.xaml.cs">
       <DependentUpon>ChessBoardUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="views\usercontrols\ListMapUserControl.xaml.cs">
+      <DependentUpon>ListMapUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\usercontrols\ListPieceUserControl.xaml.cs">
       <DependentUpon>ListPieceUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\usercontrols\ListThemeUserControl.xaml.cs">
+      <DependentUpon>ListThemeUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\usercontrols\PawnUserControl.xaml.cs">
       <DependentUpon>PawnUserControl.xaml</DependentUpon>
@@ -186,7 +192,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="views\usercontrols\ListMapUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="views\usercontrols\ListPieceUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\usercontrols\ListThemeUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
