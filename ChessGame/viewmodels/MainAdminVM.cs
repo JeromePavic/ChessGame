@@ -38,6 +38,20 @@ namespace ChessGame.viewmodels
             this.mainAdmin.btnRemoveMap.Click += BtnRemoveMap_Click;
             this.mainAdmin.btnRemoveTheme.Click += BtnRemoveTheme_Click;
             this.mainAdmin.btnOk.Click += BtnOk_Click;
+            this.mainAdmin.ListMapUC.ItemsList.SelectionChanged += MapItemsList_SelectionChanged;
+            this.mainAdmin.ListThemeUC.ItemsList.SelectionChanged += ThemeItemsList_SelectionChanged;
+        }
+
+        private void ThemeItemsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+                currentTheme = (e.AddedItems[0] as Theme);
+        }
+
+        private void MapItemsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+                currentMap = (e.AddedItems[0] as Map);
         }
 
         private void BtnOk_Click(object sender, RoutedEventArgs e)
@@ -46,19 +60,45 @@ namespace ChessGame.viewmodels
             w.Close();
         }
 
-        private void BtnRemoveTheme_Click(object sender, RoutedEventArgs e)
+        private async void BtnRemoveTheme_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (currentTheme == null)
+            {
+                MessageBox.Show("No theme selected!");
+                return;
+            }
+            MessageBoxResult mbr = MessageBox.Show("Do you really want to delete this item ?", "Confirm", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
+
+            if (mbr == MessageBoxResult.OK)
+            {
+                await themeManager.Delete(currentTheme);
+                this.mainAdmin.ListThemeUC.RemoveItem(currentTheme);
+                currentTheme = null;
+            }
         }
 
-        private void BtnRemoveMap_Click(object sender, RoutedEventArgs e)
+        private async void BtnRemoveMap_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+
+            if (currentMap == null)
+            {
+                MessageBox.Show("No map selected!");
+                return;
+            }
+            MessageBoxResult mbr = MessageBox.Show("Do you really want to delete this item ?", "Confirm", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
+
+            if (mbr == MessageBoxResult.OK)
+            {
+                await mapManager.Delete(currentMap);
+                this.mainAdmin.ListMapUC.RemoveItem(currentMap);
+                currentMap = null;
+            }
         }
 
         private void BtnNewTheme_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Page themeAdmin = new ThemeAdmin();
+            this.mainAdmin.NavigationService.Navigate(themeAdmin);
         }
 
         private async void BtnNewMap_Click(object sender, RoutedEventArgs e)
@@ -124,12 +164,14 @@ namespace ChessGame.viewmodels
         }
 
 
+            
 
 
-//------------------------
 
-        
-    
+        //------------------------
+
+
+
 
         private void btnOptions_Click(object sender, RoutedEventArgs e)
         {

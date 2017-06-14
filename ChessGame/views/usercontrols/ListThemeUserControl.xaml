@@ -24,7 +24,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <Label x:Name="lblThemeName" Grid.Column="0" Grid.Row="0" Content="{Binding Theme.Name, Mode=OneWay}"/>
+                        <Label x:Name="lblThemeName" Grid.Column="0" Grid.Row="0" Content="{Binding Name, Mode=OneWay}"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

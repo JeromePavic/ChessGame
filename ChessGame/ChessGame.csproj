@@ -100,6 +100,7 @@
     <Compile Include="viewmodels\MainAdminVM.cs" />
     <Compile Include="viewmodels\MainGameVM.cs" />
     <Compile Include="viewmodels\OptionsAdminVM.cs" />
+    <Compile Include="viewmodels\ThemeAdminVM.cs" />
     <Compile Include="views\administration\GameAdmin.xaml.cs">
       <DependentUpon>GameAdmin.xaml</DependentUpon>
     </Compile>
@@ -108,6 +109,9 @@
     </Compile>
     <Compile Include="views\administration\OptionsAdmin.xaml.cs">
       <DependentUpon>OptionsAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\administration\ThemeAdmin.xaml.cs">
+      <DependentUpon>ThemeAdmin.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\DialogWindow.xaml.cs">
       <DependentUpon>DialogWindow.xaml</DependentUpon>
@@ -194,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\administration\OptionsAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\administration\ThemeAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
