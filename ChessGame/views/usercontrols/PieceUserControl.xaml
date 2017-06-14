@@ -7,7 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="40" d:DesignWidth="40">
 
-        <!--<Image Width="40" Height="40" Source="C:\Users\jerome\Pictures\photo_gamelle_couv.jpg" />-->
-        <!--<Image Width="40" Height="40" Source="http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg" />-->
+    <!--<Image Width="40" Height="40" Source="C:\Users\jerome\Pictures\photo_gamelle_couv.jpg" />-->
 
+    <Grid Name="testgrid" Background="Yellow">
+        <Canvas  Name="canvas" >
+            <Canvas.Background>
+                <SolidColorBrush Color="DarkBlue" Opacity="1"/>
+            </Canvas.Background>
+        </Canvas>
+    </Grid>
+    
 </local:UserControlBase>

@@ -42,12 +42,63 @@ namespace ChessGame.views.usercontrols
 
         internal void LoadImg()
         {
-            var redBrush = new ImageBrush();
-            redBrush.ImageSource = new BitmapImage(new Uri("C:\\Users\\jerome\\Pictures\\photo_gamelle_couv.jpg", UriKind.Absolute));
+            var imgBrush = new ImageBrush();
             if (this.piece.GetType() == typeof(Pawn))
             {
-                this.Background = redBrush;
+                if (this.piece.Name.Contains("p1"))
+                    imgBrush.ImageSource = (BitmapImage)Application.Current.Resources["WhitePawn"];
+                else
+                    imgBrush.ImageSource = (BitmapImage)Application.Current.Resources["BlackPawn"];
             }
+            else if (this.piece.GetType() == typeof(Rook))
+            {
+                if (this.piece.Name.Contains("p1"))
+                    imgBrush.ImageSource = (BitmapImage)Application.Current.Resources["WhiteRook"];
+                else
+                    imgBrush.ImageSource = (BitmapImage)Application.Current.Resources["BlackRook"];
+            }
+            else if (this.piece.GetType() == typeof(Knight))
+            {
+                if (this.piece.Name.Contains("p1"))
+                    imgBrush.ImageSource = (BitmapImage)Application.Current.Resources["WhiteKnight"];
+                else
+                    imgBrush.ImageSource = (BitmapImage)Application.Current.Resources["BlackKnight"];
+            }
+            else if (this.piece.GetType() == typeof(Bishop))
+            {
+                if (this.piece.Name.Contains("p1"))
+                    imgBrush.ImageSource = (BitmapImage)Application.Current.Resources["WhiteBishop"];
+                else
+                    imgBrush.ImageSource = (BitmapImage)Application.Current.Resources["BlackBishop"];
+            }
+            else if (this.piece.GetType() == typeof(Queen))
+            {
+                if (this.piece.Name.Contains("p1"))
+                    imgBrush.ImageSource = (BitmapImage)Application.Current.Resources["WhiteQueen"];
+                else
+                    imgBrush.ImageSource = (BitmapImage)Application.Current.Resources["BlackQueen"];
+            }
+            else if (this.piece.GetType() == typeof(King))
+            {
+                if (this.piece.Name.Contains("p1"))
+                    imgBrush.ImageSource = (BitmapImage)Application.Current.Resources["WhiteKing"];
+                else
+                    imgBrush.ImageSource = (BitmapImage)Application.Current.Resources["BlackKing"];
+            }
+
+
+
+
+            Rectangle rect = new Rectangle();
+            rect.Height = 40;
+            rect.Width = 40;
+            rect.Fill = imgBrush;
+
+            Canvas.SetLeft(rect,0);
+            Canvas.SetTop(rect, 0);
+
+            canvas.Children.Add(rect);
+
         }
     }
 }

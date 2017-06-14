@@ -4,6 +4,17 @@
              xmlns:local="clr-namespace:ChessGame"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <BitmapImage x:Key="WhitePawn" UriSource="/img/chess_piece_white_pawn.png"/>
+        <BitmapImage x:Key="WhiteRook" UriSource="/img/chess_piece_white_rook.png"/>
+        <BitmapImage x:Key="WhiteBishop" UriSource="/img/chess_piece_white_bishop.png"/>
+        <BitmapImage x:Key="WhiteKnight" UriSource="/img/chess_piece_white_knight.png"/>
+        <BitmapImage x:Key="WhiteQueen" UriSource="/img/chess_piece_white_queen.png"/>
+        <BitmapImage x:Key="WhiteKing" UriSource="/img/chess_piece_white_king.png"/>
+        <BitmapImage x:Key="BlackPawn" UriSource="/img/chess_piece_black_pawn.png"/>
+        <BitmapImage x:Key="BlackRook" UriSource="/img/chess_piece_black_rook.png"/>
+        <BitmapImage x:Key="BlackBishop" UriSource="/img/chess_piece_black_bishop.png"/>
+        <BitmapImage x:Key="BlackKnight" UriSource="/img/chess_piece_black_knight.png"/>
+        <BitmapImage x:Key="BlackQueen" UriSource="/img/chess_piece_black_queen.png"/>
+        <BitmapImage x:Key="BlackKing" UriSource="/img/chess_piece_black_king.png"/>
     </Application.Resources>
 </Application>

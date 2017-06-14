@@ -172,7 +172,7 @@ namespace ChessGame.viewmodels
                     moving = false;
                     pieceMoving = null;
                     originMoving = null;
-                    chessBoardUC.clean(false); // TODO gérer ça comme il faut
+                    chessBoardUC.clean(true); // TODO gérer ça comme il faut
                     if (game.CurrentPlayer == game.Player1)
                     {
                         // check if King in check
@@ -201,6 +201,8 @@ namespace ChessGame.viewmodels
                             }
                             else
                             {
+                                System.Windows.Forms.MessageBox.Show("Player 2, your King is in Check", "Player2 King In Check",
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 if (game.CurrentPlayer.Help == true)
                                 {
                                     foreach (StackPanel sp in chessBoardUC.grid.Children)
@@ -241,6 +243,9 @@ namespace ChessGame.viewmodels
                             }
                             else
                             {
+                                System.Windows.Forms.MessageBox.Show("Player 1, your King is in Check", "Player1 King In Check",
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
                                 if (game.CurrentPlayer.Help == true)
                                 {
                                     foreach (StackPanel sp in chessBoardUC.grid.Children)
@@ -279,14 +284,14 @@ namespace ChessGame.viewmodels
         private void InitUC()
         {
 
-            chessBoardUC = new ChessBoardUserControl(this.game.ChessBoard);
+            chessBoardUC = new ChessBoardUserControl(this.game.ChessBoard, "C:\\Users\\jerome\\Pictures\\photo_gamelle_couv.jpg");
             chessBoardUC.Name = "chessBoardUC";
             this.mainGame.mainGrid.Children.Add(chessBoardUC);
             Grid.SetRow(chessBoardUC, 0);
             Grid.SetColumn(chessBoardUC, 1);
             chessBoardUC.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
             chessBoardUC.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
-            chessBoardUC.Load(false); //TODO gérer le vrai paramètre
+            chessBoardUC.Load(true); //TODO gérer le vrai paramètre
         }
 
 

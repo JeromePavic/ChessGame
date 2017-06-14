@@ -68,30 +68,35 @@ namespace ChessGame.views.usercontrols
 
         private void InitGrid(bool background)
         {
+            var whiteBrush = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            var blackBrush = new SolidColorBrush(Color.FromRgb(50, 50, 50));
+            if (background)
+            {
+                whiteBrush.Opacity = 0.3;
+                blackBrush.Opacity = 0.3;
+            }
+
             for (int row = 0; row < 8; row++)
             {
                 for (int col = 0; col < 8; col++)
                 {
                     StackPanel stackPanel = new StackPanel();
-                    if (!background)
+                    
+                    if (row % 2 == 1)
                     {
-                        if (row % 2 == 1)
-                        {
-                            if (col % 2 == 1)
-                                stackPanel.Background = Brushes.White;
-                            else
-                                stackPanel.Background = Brushes.Black;
-                        }
+                        if (col % 2 == 1)
+                            stackPanel.Background = whiteBrush;
                         else
-                        {
-                            if (col % 2 == 1)
-                                stackPanel.Background = Brushes.Black;
-                            else
-                                stackPanel.Background = Brushes.White;
-                        }
+                            stackPanel.Background = blackBrush;
+                    }
+                    else
+                    {
+                        if (col % 2 == 1)
+                            stackPanel.Background = blackBrush;
+                        else
+                            stackPanel.Background = whiteBrush;
                     }
 
-                    
                     stackPanel.Name = "SP" + col + (7-row);
                     Grid.SetColumn(stackPanel, col);
                     Grid.SetRow(stackPanel, row);
@@ -130,33 +135,33 @@ namespace ChessGame.views.usercontrols
 
         public void clean(bool background)
         {
+            var whiteBrush = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            var blackBrush = new SolidColorBrush(Color.FromRgb(50, 50, 50));
+            if (background)
+            {
+                whiteBrush.Opacity = 0.3;
+                blackBrush.Opacity = 0.3;
+            }
+
             for (int row = 0; row < 8; row++)
             {
                 for (int col = 0; col < 8; col++)
                 {
                     StackPanel stackPanel = (StackPanel)this.GetGridElement(grid, col, row);
-                    if (!background)
+                    if (row % 2 == 1)
                     {
-                        if (row % 2 == 1)
-                        {
-                            if (col % 2 == 1)
-                                stackPanel.Background = Brushes.White;
-                            else
-                                stackPanel.Background = Brushes.Black;
-                        }
+                        if (col % 2 == 1)
+                            stackPanel.Background = whiteBrush;
                         else
-                        {
-                            if (col % 2 == 1)
-                                stackPanel.Background = Brushes.Black;
-                            else
-                                stackPanel.Background = Brushes.White;
-                        }
+                            stackPanel.Background = blackBrush;
                     }
                     else
                     {
-                        stackPanel.Background = Brushes.Transparent;
+                        if (col % 2 == 1)
+                            stackPanel.Background = blackBrush;
+                        else
+                            stackPanel.Background = whiteBrush;
                     }
-
                 }
             }
         }
