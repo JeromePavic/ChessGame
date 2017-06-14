@@ -32,7 +32,7 @@
         <Button x:Name="btnNewTheme" Content="Add a theme" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Width="75" Height="21"/>
 
         <UC:ListMapUserControl x:Name="ListMapUC" Grid.Column="0" Grid.Row="2" />
-        <UC:ListMapUserControl x:Name="ListThemeUC" Grid.Column="1" Grid.Row="2" />
+        <UC:ListThemeUserControl x:Name="ListThemeUC" Grid.Column="1" Grid.Row="2" />
 
         <Button x:Name="btnRemoveMap" Content="Remove map" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Width="75" Height="21"/>
         <Button x:Name="btnRemoveTheme" Content="Remove theme" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Width="75" Height="21"/>

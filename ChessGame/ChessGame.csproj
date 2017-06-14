@@ -109,6 +109,9 @@
     <Compile Include="views\administration\OptionsAdmin.xaml.cs">
       <DependentUpon>OptionsAdmin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="views\DialogWindow.xaml.cs">
+      <DependentUpon>DialogWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\game\MainGame.xaml.cs">
       <DependentUpon>MainGame.xaml</DependentUpon>
     </Compile>
@@ -191,6 +194,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\administration\OptionsAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\DialogWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

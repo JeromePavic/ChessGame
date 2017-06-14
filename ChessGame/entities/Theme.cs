@@ -17,16 +17,50 @@ namespace ChessGame.entities
             set { name = value; }
         }
 
-        private Dictionary<Piece,String> images;
-        public Dictionary<Piece, String> Images
+        private String pawnFileName;
+        public String PawnFileName
         {
-            get { return images; }
-            set { images = value; }
+            get { return pawnFileName; }
+            set { pawnFileName = value; }
+        }
+
+        private String rookFileName;
+        public String RookFileName
+        {
+            get { return rookFileName; }
+            set { rookFileName = value; }
+        }
+
+        private String knightFileName;
+        public String KnightFileName
+        {
+            get { return knightFileName; }
+            set { knightFileName = value; }
+        }
+
+        private String bishopFileName;
+        public String BishopFileName
+        {
+            get { return bishopFileName; }
+            set { bishopFileName = value; }
+        }
+
+        private String queenFileName;
+        public String QueenFileName
+        {
+            get { return queenFileName; }
+            set { queenFileName = value; }
+        }
+
+        private String kingFileName;
+        public String KingFileName
+        {
+            get { return kingFileName; }
+            set { kingFileName = value; }
         }
 
         public Theme()
         {
-            this.images = new Dictionary<Piece, String>();
         }
 
     }

@@ -24,7 +24,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <Label x:Name="lblMapName" Grid.Column="0" Grid.Row="0" Content="{Binding Map.Name, Mode=OneWay}"/>
+                        <Label x:Name="lblMapName" Grid.Column="0" Grid.Row="0" Content="{Binding Name, Mode=TwoWay}"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
