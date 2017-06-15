@@ -47,7 +47,9 @@ namespace ChessGame
 
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            System.Windows.Forms.MessageBox.Show("Loading game will be soon available", "Not available",
+                   System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            return;
         }
 
         private void btnQuit_Click(object sender, RoutedEventArgs e)

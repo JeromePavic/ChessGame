@@ -38,12 +38,13 @@ namespace ChessGame.viewmodels
             else
                 game = new Game("game");
 
+            game.CurrentPlayer = game.Player1;
             InitUC();
             InitActions();
 
             //TO DELETE
-            this.game.Player1.Help = true;
-            this.game.Player2.Help = true;
+            //this.game.Player1.Help = true;
+            //this.game.Player2.Help = true;
         }
 
         private void InitActions()
@@ -315,16 +316,19 @@ namespace ChessGame.viewmodels
 
         private void btnSaveGame_Click(object sender, RoutedEventArgs e)
         {
-            ChessBoardUserControl test = Utils.FindChild<ChessBoardUserControl>(this.mainGame, "chessBoardUC");
-            StackPanel stackPanel = (StackPanel)test.GetGridElement(test.grid, test.ChessBoard.Pieces[5].XPosition, test.ChessBoard.Pieces[5].YPosition);
-            PieceUserControl pp = (PieceUserControl)stackPanel.Children[0];
-            stackPanel.Children.Remove(pp);
-            StackPanel stackPane2 = (StackPanel)test.GetGridElement(test.grid, 4, 2);
-            test.grid.Children.Remove(stackPane2);
-            stackPane2.Children.Add(pp);
-            test.grid.Children.Add(stackPane2);
-            Grid.SetRow(stackPane2, 4);
-            Grid.SetColumn(stackPane2, 2);
+            System.Windows.Forms.MessageBox.Show("Saving will be soon available", "Not available",
+                   MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            return;
+            //ChessBoardUserControl test = Utils.FindChild<ChessBoardUserControl>(this.mainGame, "chessBoardUC");
+            //StackPanel stackPanel = (StackPanel)test.GetGridElement(test.grid, test.ChessBoard.Pieces[5].XPosition, test.ChessBoard.Pieces[5].YPosition);
+            //PieceUserControl pp = (PieceUserControl)stackPanel.Children[0];
+            //stackPanel.Children.Remove(pp);
+            //StackPanel stackPane2 = (StackPanel)test.GetGridElement(test.grid, 4, 2);
+            //test.grid.Children.Remove(stackPane2);
+            //stackPane2.Children.Add(pp);
+            //test.grid.Children.Add(stackPane2);
+            //Grid.SetRow(stackPane2, 4);
+            //Grid.SetColumn(stackPane2, 2);
         }
 
 
