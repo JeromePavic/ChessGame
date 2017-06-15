@@ -33,7 +33,11 @@ namespace ChessGame.viewmodels
         {
             logger = new Logger("MainGameVMLogger", LogMode.CURRENT_FOLDER, AlertMode.NONE);
             this.mainGame = mainGame;
-            game = new Game("game");
+            if (this.mainGame.Game != null)
+                game = this.mainGame.Game;
+            else
+                game = new Game("game");
+
             InitUC();
             InitActions();
 

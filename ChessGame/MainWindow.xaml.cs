@@ -39,10 +39,10 @@ namespace ChessGame
         private void btnGame_Click(object sender, RoutedEventArgs e)
         {
             Window window = new Window();
-            window.Content = new MainGame();
+            window.Content = new OptionsAdmin();
             window.Show();
 
-            MySQLGameManager msqlGM = new MySQLGameManager();
+            //MySQLGameManager msqlGM = new MySQLGameManager();
         }
 
         private void btnLoad_Click(object sender, RoutedEventArgs e)

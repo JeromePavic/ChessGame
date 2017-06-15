@@ -45,14 +45,25 @@ namespace ChessGame.entities
             set { white = value; }
         }
 
-        public Player(String pName, Theme pTheme, State pState, bool pHelp, bool pWhite)
+        private Int32 timerSec;
+        public Int32 TimerSec
+        {
+            get { return timerSec; }
+            set { timerSec = value; }
+        }
+
+        public Player()
+        {
+        }
+
+        public Player(String pName, Theme pTheme, State pState, bool pHelp, bool pWhite, Int32 pTimerSec)
         {
             this.Name = pName;
             this.Theme = pTheme;
             this.State = pState;
             this.Help = pHelp;
             this.White = pWhite;
-
+            this.TimerSec = pTimerSec;
         }
 
 

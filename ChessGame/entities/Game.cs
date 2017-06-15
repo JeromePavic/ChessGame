@@ -53,8 +53,8 @@ namespace ChessGame.entities
             set { chessboard = value; }
         }
 
-        private String background;
-        public String Background
+        private bool background;
+        public bool Background
         {
             get { return background; }
             set { background = value; }
@@ -67,15 +67,17 @@ namespace ChessGame.entities
             set { map = value; }
         }
 
-
+        public Game()
+        {
+        }
 
         public Game(String pName, Mode pMode = Mode.CLASSICAL)
         {
             this.Name = pName;
             this.Mode = pMode;
-            this.Player1 = new Player("Player1", null, State.ALIVE, true, true);
+            this.Player1 = new Player("Player1", null, State.ALIVE, true, true, 0);
             Player1.White = true;
-            this.Player2 = new Player("Player2", null, State.ALIVE, true, false);
+            this.Player2 = new Player("Player2", null, State.ALIVE, true, false, 0);
             Player2.White = false;
             this.CurrentPlayer = Player1;
             this.ChessBoard = new ChessBoard(pMode);

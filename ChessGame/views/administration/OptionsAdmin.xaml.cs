@@ -21,9 +21,6 @@ namespace ChessGame.views.administration
     /// </summary>
     public partial class OptionsAdmin : Page
     {
-        public List<Brush> ColorsList { get; set; }
-
-        public Brush SelectedColor { get; set; }
 
         public OptionsAdmin()
         {

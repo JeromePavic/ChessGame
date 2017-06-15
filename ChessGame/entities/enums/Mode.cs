@@ -9,8 +9,8 @@ namespace ChessGame.entities.enums
     public enum Mode
     {
         CLASSICAL,
-        WAR,
         FLYING,
+        WAR, 
         MAD
     }
 }
