@@ -172,8 +172,7 @@ namespace ChessGame.viewmodels
                 default:
                     break;
             }
-            currentGame.ChessBoard = new ChessBoard(currentGame.Mode);
-            currentGame.SetPiecesPlayer();
+
 
             // Launch game
             Window window = new Window();

@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using ChessGame.entities;
 using ChessGame.json;
 using ChessGame.logger;
-using System.Data.Entity.Infrastructure;
 
 namespace ChessGame.database
 {
@@ -125,12 +124,6 @@ namespace ChessGame.database
             var res = await this.SaveChangesAsync();
             return res;
         }
-
-        public void Detach(TEntity item)
-        {
-            ((IObjectContextAdapter)this).ObjectContext.Detach(item);
-        }
-        
     }
 }
 

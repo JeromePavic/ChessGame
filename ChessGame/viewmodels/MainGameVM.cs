@@ -1,6 +1,4 @@
-﻿using ChessGame.database;
-using ChessGame.database.entitiesLinks;
-using ChessGame.entities;
+﻿using ChessGame.entities;
 using ChessGame.entities.enums;
 using ChessGame.logger;
 using ChessGame.utils;
@@ -9,7 +7,6 @@ using ChessGame.views.usercontrols;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,7 +22,6 @@ namespace ChessGame.viewmodels
         private Logger logger;
         private Game game;
         private MainGame mainGame;
-        private MySQLGameManager gameManager;
 
         private ChessBoardUserControl chessBoardUC;
 
@@ -36,13 +32,9 @@ namespace ChessGame.viewmodels
         public MainGameVM(MainGame mainGame)
         {
             logger = new Logger("MainGameVMLogger", LogMode.CURRENT_FOLDER, AlertMode.NONE);
-            gameManager = new MySQLGameManager();
             this.mainGame = mainGame;
             if (this.mainGame.Game != null)
-            {
                 game = this.mainGame.Game;
-                this.mainGame.Game = null;
-            }
             else
                 game = new Game("game");
 
@@ -321,45 +313,18 @@ namespace ChessGame.viewmodels
         {
         }
 
-        private async void btnSaveGame_Click(object sender, RoutedEventArgs e)
+        private void btnSaveGame_Click(object sender, RoutedEventArgs e)
         {
-            foreach (Piece piece in game.ChessBoard.Pieces)
-            {
-                piece.ChessBoard = game.ChessBoard;
-            }
-            MySQLGameManager manager = new MySQLGameManager();
-            if (this.game.Id != 0)
-                await manager.Update(game);
-            else
-            {
-                //MySQLPlayerManager plManager = new MySQLPlayerManager();
-                //await plManager.Insert(game.Player1);
-                //await plManager.Insert(game.Player2);
-
-                //MySQLPieceManager pManager = new MySQLPieceManager();
-                //await pManager.Insert(game.ChessBoard.Pieces);
-
-                ////MySQLCaseManager cManager = new MySQLCaseManager();
-                ////await cManager.Insert(game.ChessBoard.Cases);
-
-                //MySQLChessBoardManager chManager = new MySQLChessBoardManager();
-                //await chManager.Insert(game.ChessBoard);
-                await manager.Insert(game);
-            }
-              
-
-
-
-            //ChessBoardUserControl test = Utils.FindChild<ChessBoardUserControl>(this.mainGame, "chessBoardUC");
-            //StackPanel stackPanel = (StackPanel)test.GetGridElement(test.grid, test.ChessBoard.Pieces[5].XPosition, test.ChessBoard.Pieces[5].YPosition);
-            //PieceUserControl pp = (PieceUserControl)stackPanel.Children[0];
-            //stackPanel.Children.Remove(pp);
-            //StackPanel stackPane2 = (StackPanel)test.GetGridElement(test.grid, 4, 2);
-            //test.grid.Children.Remove(stackPane2);
-            //stackPane2.Children.Add(pp);
-            //test.grid.Children.Add(stackPane2);
-            //Grid.SetRow(stackPane2, 4);
-            //Grid.SetColumn(stackPane2, 2);
+            ChessBoardUserControl test = Utils.FindChild<ChessBoardUserControl>(this.mainGame, "chessBoardUC");
+            StackPanel stackPanel = (StackPanel)test.GetGridElement(test.grid, test.ChessBoard.Pieces[5].XPosition, test.ChessBoard.Pieces[5].YPosition);
+            PieceUserControl pp = (PieceUserControl)stackPanel.Children[0];
+            stackPanel.Children.Remove(pp);
+            StackPanel stackPane2 = (StackPanel)test.GetGridElement(test.grid, 4, 2);
+            test.grid.Children.Remove(stackPane2);
+            stackPane2.Children.Add(pp);
+            test.grid.Children.Add(stackPane2);
+            Grid.SetRow(stackPane2, 4);
+            Grid.SetColumn(stackPane2, 2);
         }
 
 

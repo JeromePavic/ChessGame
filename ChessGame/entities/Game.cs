@@ -69,7 +69,6 @@ namespace ChessGame.entities
 
         public Game()
         {
-            this.CurrentPlayer = Player1;
         }
 
         public Game(String pName, Mode pMode = Mode.CLASSICAL)
@@ -83,13 +82,6 @@ namespace ChessGame.entities
             this.CurrentPlayer = Player1;
             this.ChessBoard = new ChessBoard(pMode);
             // set a player for each piece of the chessboard
-            this.SetPiecesPlayer();
-            
-
-        }
-
-        public void SetPiecesPlayer()
-        {
             int mid = ChessBoard.Pieces.Count / 2;
             for (int i = 0; i < mid; i++)
             {
@@ -99,6 +91,9 @@ namespace ChessGame.entities
             {
                 ChessBoard.Pieces[i].Player = Player2;
             }
+
         }
+
+
     }
 }

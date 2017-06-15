@@ -52,9 +52,6 @@ namespace ChessGame.entities
             set { mvCount = value; }
         }
 
-        public virtual ChessBoard ChessBoard { get; set; }
-
-        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
         private Case currentCase;
         public Case CurrentCase
         {
