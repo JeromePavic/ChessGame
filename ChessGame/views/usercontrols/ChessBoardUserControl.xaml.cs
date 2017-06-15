@@ -119,7 +119,15 @@ namespace ChessGame.views.usercontrols
                 StackPanel stackPanel = (StackPanel)GetGridElement(grid, pieceItem.XPosition, pieceItem.YPosition);
                 PieceUserControl pieceUC = new PieceUserControl();
                 pieceUC.Piece = pieceItem;
-                pieceUC.LoadImg();
+                if (pieceUC.Piece.Name.Contains("p1"))
+                {
+                    pieceUC.LoadImg();//TODO charger le theme
+                }
+                else
+                {
+                    pieceUC.LoadImg();//TODO charger le theme
+                }
+
                 pieceUC.HorizontalAlignment = HorizontalAlignment.Center;
                 pieceUC.VerticalAlignment = VerticalAlignment.Center;
                 pieceUC.Name = pieceItem.Name + "UC";
@@ -151,16 +159,16 @@ namespace ChessGame.views.usercontrols
                     if (row % 2 == 1)
                     {
                         if (col % 2 == 1)
-                            stackPanel.Background = whiteBrush;
-                        else
                             stackPanel.Background = blackBrush;
+                        else
+                            stackPanel.Background = whiteBrush;
                     }
                     else
                     {
                         if (col % 2 == 1)
-                            stackPanel.Background = blackBrush;
-                        else
                             stackPanel.Background = whiteBrush;
+                        else
+                            stackPanel.Background = blackBrush;
                     }
                 }
             }

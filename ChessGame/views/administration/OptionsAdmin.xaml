@@ -60,16 +60,16 @@
 
 
         <Label x:Name="lblChess" Content="Chess" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" />
-        <RadioButton x:Name="rbChess"  IsChecked="True" GroupName="board" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" />
+        <RadioButton x:Name="rbChess"  Content="0" IsChecked="True" GroupName="board" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" />
             
         <Label x:Name="lblFlying" Content="FlyingChess" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" />
-        <RadioButton x:Name="rbFlying" GroupName="board" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" />
+        <RadioButton x:Name="rbFlying" Content="1" GroupName="board" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" />
             
         <Label x:Name="lblWar" Content="WarChess" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" />
-        <RadioButton x:Name="rbWar" GroupName="board" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" />
+        <RadioButton x:Name="rbWar" Content="2" GroupName="board" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" />
             
         <Label x:Name="lblMad" Content="MadChess" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" />
-        <RadioButton x:Name="rbMad" GroupName="board" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" />
+        <RadioButton x:Name="rbMad" Content="3" GroupName="board" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" />
 
         <Label x:Name="lblMap" Content="Map" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="8" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <CheckBox x:Name="ckbMap" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" />

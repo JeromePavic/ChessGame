@@ -60,6 +60,9 @@ namespace ChessGame.viewmodels
             this.optionsAdmin.ListThemeP1UC.ItemsList.SelectionChanged += ThemeP1ItemsList_SelectionChanged;
             this.optionsAdmin.ListThemeP2UC.ItemsList.SelectionChanged += ThemeP2ItemsList_SelectionChanged;
             this.optionsAdmin.rbChess.Checked += RbChecked;
+            this.optionsAdmin.rbFlying.Checked += RbChecked;
+            this.optionsAdmin.rbWar.Checked += RbChecked;
+            this.optionsAdmin.rbMad.Checked += RbChecked;
             this.optionsAdmin.ckbP1Help.Checked += P1HelpChecked;
             this.optionsAdmin.ckbP1Help.Unchecked += P1HelpUnchecked;
             this.optionsAdmin.ckbP2Help.Checked += P2HelpChecked;

@@ -29,6 +29,10 @@ namespace ChessGame.viewmodels
         PieceUserControl pieceMoving;
         StackPanel originMoving;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="mainGame"></param>
         public MainGameVM(MainGame mainGame)
         {
             logger = new Logger("MainGameVMLogger", LogMode.CURRENT_FOLDER, AlertMode.NONE);
@@ -177,7 +181,7 @@ namespace ChessGame.viewmodels
                     moving = false;
                     pieceMoving = null;
                     originMoving = null;
-                    chessBoardUC.clean(true); // TODO gérer ça comme il faut
+                    chessBoardUC.clean(game.Background); // TODO gérer ça comme il faut
                     if (game.CurrentPlayer == game.Player1)
                     {
                         // check if King in check
@@ -199,7 +203,7 @@ namespace ChessGame.viewmodels
                                     checkmate = true;
                                 }
                             }
-                            if (!checkmate)
+                            if (!checkmate || game.ChessBoard.P2KingCase.Piece == null || game.ChessBoard.P2KingCase.Piece.State ==State.DEAD)
                             {
                                 game.Player2.State = State.DEAD;
                                 EndGame(game.Player1);
@@ -241,7 +245,7 @@ namespace ChessGame.viewmodels
                                     checkmate = true;
                                 }
                             }
-                            if (!checkmate)
+                            if (!checkmate || game.ChessBoard.P1KingCase.Piece == null || game.ChessBoard.P1KingCase.Piece.State == State.DEAD)
                             {
                                 game.Player1.State = State.DEAD;
                                 EndGame(game.Player2);
@@ -283,20 +287,25 @@ namespace ChessGame.viewmodels
 
         private void EndGame(Player player1)
         {
-            throw new NotImplementedException();
+            System.Windows.Forms.MessageBox.Show("Player 1, your King is in Check", "Player1 King In Check",
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            Window w = (Window)this.mainGame.Parent;
+            w.Close();
         }
 
         private void InitUC()
         {
-
-            chessBoardUC = new ChessBoardUserControl(this.game.ChessBoard, "C:\\Users\\jerome\\Pictures\\photo_gamelle_couv.jpg");
+            if (this.game.Map != null)
+                chessBoardUC = new ChessBoardUserControl(this.game.ChessBoard, this.game.Map.FileName);
+            else
+                chessBoardUC = new ChessBoardUserControl(this.game.ChessBoard);
             chessBoardUC.Name = "chessBoardUC";
             this.mainGame.mainGrid.Children.Add(chessBoardUC);
             Grid.SetRow(chessBoardUC, 0);
             Grid.SetColumn(chessBoardUC, 1);
             chessBoardUC.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
             chessBoardUC.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
-            chessBoardUC.Load(true); //TODO gérer le vrai paramètre
+            chessBoardUC.Load(game.Background); 
         }
 
 
@@ -312,6 +321,8 @@ namespace ChessGame.viewmodels
 
         private void btnQuitGame_Click(object sender, RoutedEventArgs e)
         {
+            Window w = (Window)this.mainGame.Parent;
+            w.Close();
         }
 
         private void btnSaveGame_Click(object sender, RoutedEventArgs e)

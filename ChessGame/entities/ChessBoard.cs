@@ -384,6 +384,7 @@ namespace ChessGame.entities
 
         public bool Kill(Piece pPiece)
         {
+            pPiece.State = State.DEAD;
             if (Pieces.Remove(pPiece))
             {
                 return true;
