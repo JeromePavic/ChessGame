@@ -1,14 +1,24 @@
 ﻿using ChessGame.entities.enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ChessGame.entities
 {
+    [System.ComponentModel.DataAnnotations.Schema.NotMapped]
     public class Case : Element
     {
+        //[Key, ForeignKey("Piece")]
+        //public new Int32 Id
+        //{
+        //    get { return base.Id; }
+        //    set { base.Id = value; OnPropertyChanged("Id"); }
+        //}
+
         public Case()
         {
         }

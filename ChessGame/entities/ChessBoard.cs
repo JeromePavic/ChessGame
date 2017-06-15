@@ -17,13 +17,6 @@ namespace ChessGame.entities
         // PROPERTIES
         //===============================================================================================================
 
-        private List<Case> cases;
-        public List<Case> Cases
-        {
-            get { return cases; }
-            set { cases = value; }
-        }
-
         private List<Piece> pieces;
         public List<Piece> Pieces
         {
@@ -31,7 +24,15 @@ namespace ChessGame.entities
             set { pieces = value; }
         }
 
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+        private List<Case> cases;
+        public List<Case> Cases
+        {
+            get { return cases; }
+            set { cases = value; }
+        }
 
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
         private Case caseOfKIC;
         public Case CaseOfKIC
         {
@@ -46,6 +47,7 @@ namespace ChessGame.entities
             set { kingInCheck = value; }
         }
 
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
         private Case p1KingCase;
         public Case P1KingCase
         {
@@ -53,6 +55,7 @@ namespace ChessGame.entities
             set { p1KingCase = value; }
         }
 
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
         private Case p2KingCase;
         public Case P2KingCase
         {

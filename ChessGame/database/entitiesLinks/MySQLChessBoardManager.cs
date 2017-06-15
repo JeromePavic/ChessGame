@@ -10,13 +10,13 @@ namespace ChessGame.database.entitiesLinks
 {
     class MySQLChessBoardManager : MySQLManager<ChessBoard>
     {
-        public void GetCases(ChessBoard chessBoard)
-        {
-            bool isDetached = this.Entry(chessBoard).State == EntityState.Detached;
-            if (isDetached)
-                this.DbSetT.Attach(chessBoard);
-            this.Entry(chessBoard).Collection(x => x.Cases).Load();
-        }
+        //public void GetCases(ChessBoard chessBoard)
+        //{
+        //    bool isDetached = this.Entry(chessBoard).State == EntityState.Detached;
+        //    if (isDetached)
+        //        this.DbSetT.Attach(chessBoard);
+        //    this.Entry(chessBoard).Collection(x => x.Cases).Load();
+        //}
 
         public void GetPieces(ChessBoard chessBoard)
         {
