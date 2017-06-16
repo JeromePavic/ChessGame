@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ChessGame.entities.bases
 {
+    /// <summary>
+    /// BaseEntity : base class for event handle inheritance
+    /// </summary>
     public class BaseEntity : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

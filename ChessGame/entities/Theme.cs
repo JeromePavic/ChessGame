@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ChessGame.entities
 {
+    /// <summary>
+    /// Theme : class used to handle the images used for the pieces representation
+    /// </summary>
     public class Theme : BaseDBEntity
     {
 

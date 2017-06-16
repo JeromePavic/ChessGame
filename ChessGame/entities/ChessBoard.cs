@@ -74,6 +74,10 @@ namespace ChessGame.entities
         // CONSTRUCTORS
         //===============================================================================================================
 
+        
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public ChessBoard()
         {
             this.mode = Mode.CLASSICAL;
@@ -83,6 +87,10 @@ namespace ChessGame.entities
             InitPieces();
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="pMode">Game playing mode</param>
         public ChessBoard(Mode pMode)
         {
             this.mode = pMode;
@@ -93,14 +101,16 @@ namespace ChessGame.entities
             PiecesToCases();
         }
 
-        
+
 
 
         //===============================================================================================================
         // METHODS
         //===============================================================================================================
 
-        //initializes the list of cases
+        /// <summary>
+        /// InitCases : initializes the list of cases
+        /// </summary>
         private void InitCases()
         {
             for (int i = 0; i < ChessBoardSize; i++)
@@ -116,6 +126,9 @@ namespace ChessGame.entities
             }
         }
 
+        /// <summary>
+        /// InitPieces : initializes the list of pieces
+        /// </summary>
         private void InitPieces()
         {
             if (this.mode != Mode.WAR) // global case : classical pieces init
@@ -197,6 +210,9 @@ namespace ChessGame.entities
 
 
         // set a piece to cases
+        /// <summary>
+        /// PiecesToCases : set a piece to a case (for all pieces)
+        /// </summary>
         private void PiecesToCases()
         {
             for (int i = 0; i < Cases.Count; i++)
@@ -209,9 +225,20 @@ namespace ChessGame.entities
         }
 
 
-        //tells if pieces are on the cases between case of origin and case to reach.
+        
+        /// <summary>
+        /// FreePath : tells if pieces are on the cases between case of origin and case to reach.
+        /// </summary>
+        /// <param name="pCaseNew">Case where the piece is being moved</param>
+        /// <param name="pCase">Current piece case</param>
+        /// <returns>boolean that indicates if the path between to cases is free or not</returns>
         public bool FreePath(Case pCaseNew, Case pCase)
         {
+            // If playing mode is flying chess, we don't need this method, we always return true
+            if (this.mode == Mode.FLYING)
+            {
+                return true;
+            }
             // Knight is not concerned by this rule...
             if (pCase.Piece.GetType().Equals(typeof(Knight)))
             {
@@ -313,7 +340,13 @@ namespace ChessGame.entities
             return false;
         }
 
-        //returns the case at the position or null
+        
+        /// <summary>
+        /// GetCase : returns the case at the position or null
+        /// </summary>
+        /// <param name="pX">column value</param>
+        /// <param name="pY">row value</param>
+        /// <returns>Case or null</returns>
         public Case GetCase(Int32 pX, Int32 pY)
         {
             foreach (var caseItem in cases)
@@ -326,7 +359,13 @@ namespace ChessGame.entities
             return null;
         }
 
-        //returns the piece at the position or null
+        
+        /// <summary>
+        /// GetPiece : returns the piece at the position or null
+        /// </summary>
+        /// <param name="pX">column value</param>
+        /// <param name="pY">row value</param>
+        /// <returns></returns>
         public Piece GetPiece(Int32 pX, Int32 pY)
         {
             foreach (var pieceItem in pieces)
@@ -339,6 +378,12 @@ namespace ChessGame.entities
             return null;
         }
 
+        /// <summary>
+        /// MovePossible : tells if a move for a piece to a case is possible
+        /// </summary>
+        /// <param name="pPiece">piece to move</param>
+        /// <param name="pCase">case where to go</param>
+        /// <returns></returns>
         public bool MovePossible(Piece pPiece, Case pCase)
         {
             if (pPiece.MoveOK(pCase) && FreePath(pCase, pPiece.CurrentCase) && OnBoard(pCase))
@@ -348,7 +393,11 @@ namespace ChessGame.entities
             return false;
         }
 
-
+        /// <summary>
+        /// OnBoard : Tells if a case is on the chessboard
+        /// </summary>
+        /// <param name="pCase"></param>
+        /// <returns></returns>
         private bool OnBoard(Case pCase)
         {
             if (pCase.XPosition >= 0 && pCase.XPosition <= 7 && pCase.YPosition >= 0 && pCase.YPosition <= 7)
@@ -358,7 +407,12 @@ namespace ChessGame.entities
             return false;
         }
 
-        //effective movement
+   
+        /// <summary>
+        /// MoveTo : Effective movement of a piece to a case
+        /// </summary>
+        /// <param name="pPiece"></param>
+        /// <param name="pCase"></param>
         private void MoveTo(Piece pPiece, Case pCase)
         {   
             Case oldCase = pPiece.CurrentCase;
@@ -370,7 +424,13 @@ namespace ChessGame.entities
             pPiece.MvCount++;
         }
 
-        //handle move of a piece to a new case
+
+        /// <summary>
+        /// Move : handle move of a piece to a new case
+        /// </summary>
+        /// <param name="pPiece"></param>
+        /// <param name="pCase"></param>
+        /// <returns></returns>
         public bool Move(Piece pPiece, Case pCase)
         {
             if (MovePossible(pPiece, pCase))
@@ -381,7 +441,11 @@ namespace ChessGame.entities
             return false;
         }
 
-
+        /// <summary>
+        /// Kill : kill a piece when another "eat" it
+        /// </summary>
+        /// <param name="pPiece">piece to kill</param>
+        /// <returns>boolean that confirm that the piece is dead</returns>
         public bool Kill(Piece pPiece)
         {
             pPiece.State = State.DEAD;
@@ -392,7 +456,12 @@ namespace ChessGame.entities
             return false;
         }
 
-
+        /// <summary>
+        /// PutKingInCheck : indicates if th pPlayer's king is in check
+        /// </summary>
+        /// <param name="pCaseOfKing"></param>
+        /// <param name="pPlayer"></param>
+        /// <returns>boolean : king in check = true, otherwise false</returns>
         public bool PutKingInCheck(Case pCaseOfKing, Player pPlayer)
         {
             foreach (Piece piece in pieces)
@@ -406,7 +475,10 @@ namespace ChessGame.entities
             return false;
         }
 
-
+        /// <summary>
+        /// ShuffleCases : shuffle the chessboard cases
+        /// </summary>
+        /// <param name="pCases">list of cases</param>
         private static void ShuffleCases(List<Case> pCases)
         {
             Random rng = new Random();

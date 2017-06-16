@@ -56,6 +56,15 @@ namespace ChessGame.entities
         {
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="pName">name of the player</param>
+        /// <param name="pTheme">theme used by the player</param>
+        /// <param name="pState">state of the player (alive or dead)</param>
+        /// <param name="pHelp">boolean, indicates if player has help or not</param>
+        /// <param name="pWhite">boolean, indicates if player has white pieces</param>
+        /// <param name="pTimerSec">number of seconds for the timer</param>
         public Player(String pName, Theme pTheme, State pState, bool pHelp, bool pWhite, Int32 pTimerSec)
         {
             this.Name = pName;

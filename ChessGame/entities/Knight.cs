@@ -9,10 +9,18 @@ namespace ChessGame.entities
 {
     public class Knight : Piece
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public Knight()
         {
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="pX">column value</param>
+        /// <param name="pY">row value</param>
         public Knight(Int32 pX, Int32 pY)
         {
             this.XPosition = pX;

@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ChessGame.entities
 {
+    /// <summary>
+    /// Game : Class that represent the game 
+    /// </summary>
     public class Game : BaseDBEntity
     {
         private String name;
@@ -72,6 +75,11 @@ namespace ChessGame.entities
             this.CurrentPlayer = Player1;
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="pName">game name</param>
+        /// <param name="pMode">game mode</param>
         public Game(String pName, Mode pMode = Mode.CLASSICAL)
         {
             this.Name = pName;
@@ -87,6 +95,9 @@ namespace ChessGame.entities
 
         }
 
+        /// <summary>
+        /// SetPiecesPlayer : distribute the pieces to the two players
+        /// </summary>
         public void SetPiecesPlayer()
         {
             int mid = ChessBoard.Pieces.Count / 2;

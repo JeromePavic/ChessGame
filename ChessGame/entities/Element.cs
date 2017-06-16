@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ChessGame.entities
 {
+    /// <summary>
+    /// Element : Class used for column and row positions inheritance
+    /// </summary>
     public abstract class Element : BaseDBEntity
     {
         private Int32 xPosition;

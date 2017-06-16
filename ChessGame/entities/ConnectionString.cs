@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ChessGame.entities
 {
+    /// <summary>
+    /// ConnectionString : class used to constitute the db connection string
+    /// </summary>
     public class ConnectionString
     {
 

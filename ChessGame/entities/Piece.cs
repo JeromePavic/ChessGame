@@ -64,12 +64,26 @@ namespace ChessGame.entities
         {
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="pX">column value</param>
+        /// <param name="pY">row value</param>
         public Piece(Int32 pX, Int32 pY)
         {
             this.XPosition = pX;
             this.YPosition = pY;
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="pX">column value</param>
+        /// <param name="pY">row value</param>
+        /// <param name="pName">Piece name</param>
+        /// <param name="pState">Piece state</param>
+        /// <param name="pMvCount">Piece movement count</param>
+        /// <param name="pCase">Piece case</param>
         public Piece(Int32 pX, Int32 pY, String pName, State pState, Int32 pMvCount, Case pCase)
         {
             this.XPosition = pX;
@@ -80,7 +94,11 @@ namespace ChessGame.entities
             this.MvCount = 0;
         }
 
-
+        /// <summary>
+        /// CaseAllowed : tells if the case given in parameter is possible for move or not
+        /// </summary>
+        /// <param name="pCase">Case to test</param>
+        /// <returns></returns>
         public bool CaseAllowed(Case pCase)
         {
             if (pCase.Piece == null || pCase.Piece.Player != Player)

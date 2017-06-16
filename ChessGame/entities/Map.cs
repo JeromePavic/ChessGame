@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ChessGame.entities
 {
+    /// <summary>
+    /// Map : class used to handle "chessboard background"
+    /// </summary>
     public class Map :BaseDBEntity
     {
 

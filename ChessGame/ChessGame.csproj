@@ -176,7 +176,6 @@
     <Compile Include="entities\Player.cs" />
     <Compile Include="entities\Element.cs" />
     <Compile Include="entities\enums\Availability.cs" />
-    <Compile Include="entities\enums\Color.cs" />
     <Compile Include="entities\enums\State.cs" />
     <Compile Include="entities\Piece.cs" />
     <Compile Include="entities\Queen.cs" />

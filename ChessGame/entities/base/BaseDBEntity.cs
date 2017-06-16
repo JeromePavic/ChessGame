@@ -4,8 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ChessGame.entities.bases
 {
+    /// <summary>
+    /// BaseDBEntity : Base class for Id inheritance 
+    /// </summary>
     public class BaseDBEntity : BaseEntity
     {
         private Int32 id;
