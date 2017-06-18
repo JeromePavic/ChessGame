@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ChessGame.entities
 {
+    /// <summary>
+    /// Represent the chess element : King
+    /// </summary>
     public class King : Piece
     {
         /// <summary>

@@ -14,6 +14,9 @@ using System.Windows.Controls;
 
 namespace ChessGame.viewmodels
 {
+    /// <summary>
+    /// Configuration controller
+    /// </summary>
     public class MainAdminVM
     {
         private MainAdmin mainAdmin;

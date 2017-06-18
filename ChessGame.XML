@@ -1,0 +1,860 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ChessGame</name>
+    </assembly>
+    <members>
+        <member name="T:ChessGame.entities.Map">
+            <summary>
+            Map : class used to handle "chessboard background"
+            </summary>
+        </member>
+        <member name="T:ChessGame.entities.Theme">
+            <summary>
+            Theme : class used to handle the images used for the pieces representation
+            </summary>
+        </member>
+        <member name="T:ChessGame.entities.bases.BaseDBEntity">
+            <summary>
+            BaseDBEntity : Base class for Id inheritance 
+            </summary>
+        </member>
+        <member name="T:ChessGame.entities.bases.BaseEntity">
+            <summary>
+            BaseEntity : base class for event handle inheritance
+            </summary>
+        </member>
+        <member name="T:ChessGame.entities.Bishop">
+            <summary>
+            Represent the chess element : Bishop
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.Bishop.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.Bishop.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pX">column value</param>
+            <param name="pY">row value</param>
+        </member>
+        <member name="M:ChessGame.entities.Bishop.#ctor(System.Int32,System.Int32,System.String,ChessGame.entities.Case)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pX">column value</param>
+            <param name="pY">row value</param>
+            <param name="pName">Piece name</param>
+            <param name="pCase">Piece case on chessboard</param>
+        </member>
+        <member name="M:ChessGame.entities.Bishop.MoveOK(ChessGame.entities.Case)">
+            <summary>
+            MoveOK : tells is the current piece can move to the case pCase
+            </summary>
+            <param name="pCase">case to test</param>
+            <returns>true if possible, otherwise false</returns>
+        </member>
+        <member name="M:ChessGame.entities.ChessBoard.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.ChessBoard.#ctor(ChessGame.entities.enums.Mode)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pMode">Game playing mode</param>
+        </member>
+        <member name="M:ChessGame.entities.ChessBoard.InitCases">
+            <summary>
+            InitCases : initializes the list of cases
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.ChessBoard.InitPieces">
+            <summary>
+            InitPieces : initializes the list of pieces
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.ChessBoard.PiecesToCases">
+            <summary>
+            PiecesToCases : set a piece to a case (for all pieces)
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.ChessBoard.FreePath(ChessGame.entities.Case,ChessGame.entities.Case)">
+            <summary>
+            FreePath : tells if pieces are on the cases between case of origin and case to reach.
+            </summary>
+            <param name="pCaseNew">Case where the piece is being moved</param>
+            <param name="pCase">Current piece case</param>
+            <returns>boolean that indicates if the path between to cases is free or not</returns>
+        </member>
+        <member name="M:ChessGame.entities.ChessBoard.GetCase(System.Int32,System.Int32)">
+            <summary>
+            GetCase : returns the case at the position or null
+            </summary>
+            <param name="pX">column value</param>
+            <param name="pY">row value</param>
+            <returns>Case or null</returns>
+        </member>
+        <member name="M:ChessGame.entities.ChessBoard.GetPiece(System.Int32,System.Int32)">
+            <summary>
+            GetPiece : returns the piece at the position or null
+            </summary>
+            <param name="pX">column value</param>
+            <param name="pY">row value</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChessGame.entities.ChessBoard.MovePossible(ChessGame.entities.Piece,ChessGame.entities.Case)">
+            <summary>
+            MovePossible : tells if a move for a piece to a case is possible
+            </summary>
+            <param name="pPiece">piece to move</param>
+            <param name="pCase">case where to go</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChessGame.entities.ChessBoard.OnBoard(ChessGame.entities.Case)">
+            <summary>
+            OnBoard : Tells if a case is on the chessboard
+            </summary>
+            <param name="pCase"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChessGame.entities.ChessBoard.MoveTo(ChessGame.entities.Piece,ChessGame.entities.Case)">
+            <summary>
+            MoveTo : Effective movement of a piece to a case
+            </summary>
+            <param name="pPiece"></param>
+            <param name="pCase"></param>
+        </member>
+        <member name="M:ChessGame.entities.ChessBoard.Move(ChessGame.entities.Piece,ChessGame.entities.Case)">
+            <summary>
+            Move : handle move of a piece to a new case
+            </summary>
+            <param name="pPiece"></param>
+            <param name="pCase"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChessGame.entities.ChessBoard.Kill(ChessGame.entities.Piece)">
+            <summary>
+            Kill : kill a piece when another "eat" it
+            </summary>
+            <param name="pPiece">piece to kill</param>
+            <returns>boolean that confirm that the piece is dead</returns>
+        </member>
+        <member name="M:ChessGame.entities.ChessBoard.PutKingInCheck(ChessGame.entities.Case,ChessGame.entities.Player)">
+            <summary>
+            PutKingInCheck : indicates if th pPlayer's king is in check
+            </summary>
+            <param name="pCaseOfKing"></param>
+            <param name="pPlayer"></param>
+            <returns>boolean : king in check = true, otherwise false</returns>
+        </member>
+        <member name="M:ChessGame.entities.ChessBoard.ShuffleCases(System.Collections.Generic.List{ChessGame.entities.Case})">
+            <summary>
+            ShuffleCases : shuffle the chessboard cases
+            </summary>
+            <param name="pCases">list of cases</param>
+        </member>
+        <member name="T:ChessGame.entities.ConnectionString">
+            <summary>
+            ConnectionString : class used to constitute the db connection string
+            </summary>
+        </member>
+        <member name="T:ChessGame.entities.Game">
+            <summary>
+            Game : Class that represent the game 
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.Game.#ctor(System.String,ChessGame.entities.enums.Mode)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pName">game name</param>
+            <param name="pMode">game mode</param>
+        </member>
+        <member name="M:ChessGame.entities.Game.SetPiecesPlayer">
+            <summary>
+            SetPiecesPlayer : distribute the pieces to the two players
+            </summary>
+        </member>
+        <member name="T:ChessGame.entities.King">
+            <summary>
+            Represent the chess element : King
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.King.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.King.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pX">column value</param>
+            <param name="pY">row value</param>
+        </member>
+        <member name="M:ChessGame.entities.King.#ctor(System.Int32,System.Int32,System.String,ChessGame.entities.Case)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pX">column value</param>
+            <param name="pY">row value</param>
+            <param name="pName">Piece name</param>
+            <param name="pCase">Piece case on chessboard</param>
+        </member>
+        <member name="M:ChessGame.entities.King.MoveOK(ChessGame.entities.Case)">
+            <summary>
+            MoveOK : tells is the current piece can move to the case pCase
+            </summary>
+            <param name="pCase">case to test</param>
+            <returns>true if possible, otherwise false</returns>
+        </member>
+        <member name="T:ChessGame.entities.Knight">
+            <summary>
+            Represent the chess element : Knight
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.Knight.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.Knight.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pX">column value</param>
+            <param name="pY">row value</param>
+        </member>
+        <member name="M:ChessGame.entities.Knight.#ctor(System.Int32,System.Int32,System.String,ChessGame.entities.Case)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pX">column value</param>
+            <param name="pY">row value</param>
+            <param name="pName">Piece name</param>
+            <param name="pCase">Piece case on chessboard</param>
+        </member>
+        <member name="M:ChessGame.entities.Knight.MoveOK(ChessGame.entities.Case)">
+            <summary>
+            MoveOK : tells is the current piece can move to the case pCase
+            </summary>
+            <param name="pCase">case to test</param>
+            <returns>true if possible, otherwise false</returns>
+        </member>
+        <member name="T:ChessGame.entities.Pawn">
+            <summary>
+            Represent the chess element : Pawn
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.Pawn.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.Pawn.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pX">column value</param>
+            <param name="pY">row value</param>
+        </member>
+        <member name="M:ChessGame.entities.Pawn.#ctor(System.Int32,System.Int32,System.String,ChessGame.entities.Case)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pX">column value</param>
+            <param name="pY">row value</param>
+            <param name="pName">Piece name</param>
+            <param name="pCase">Piece case on chessboard</param>
+        </member>
+        <member name="M:ChessGame.entities.Pawn.MoveOK(ChessGame.entities.Case)">
+            <summary>
+            MoveOK : tells is the current piece can move to the case pCase
+            </summary>
+            <param name="pCase">case to test</param>
+            <returns>true if possible, otherwise false</returns>
+        </member>
+        <member name="M:ChessGame.entities.Player.#ctor(System.String,ChessGame.entities.Theme,ChessGame.entities.enums.State,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pName">name of the player</param>
+            <param name="pTheme">theme used by the player</param>
+            <param name="pState">state of the player (alive or dead)</param>
+            <param name="pHelp">boolean, indicates if player has help or not</param>
+            <param name="pWhite">boolean, indicates if player has white pieces</param>
+            <param name="pTimerSec">number of seconds for the timer</param>
+        </member>
+        <member name="T:ChessGame.entities.Element">
+            <summary>
+            Element : Class used for column and row positions inheritance
+            </summary>
+        </member>
+        <member name="T:ChessGame.entities.Piece">
+            <summary>
+            Represent the chess element : Bishop
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.Piece.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pX">column value</param>
+            <param name="pY">row value</param>
+        </member>
+        <member name="M:ChessGame.entities.Piece.#ctor(System.Int32,System.Int32,System.String,ChessGame.entities.enums.State,System.Int32,ChessGame.entities.Case)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pX">column value</param>
+            <param name="pY">row value</param>
+            <param name="pName">Piece name</param>
+            <param name="pState">Piece state</param>
+            <param name="pMvCount">Piece movement count</param>
+            <param name="pCase">Piece case</param>
+        </member>
+        <member name="M:ChessGame.entities.Piece.CaseAllowed(ChessGame.entities.Case)">
+            <summary>
+            CaseAllowed : tells if the case given in parameter is possible for move or not
+            </summary>
+            <param name="pCase">Case to test</param>
+            <returns></returns>
+        </member>
+        <member name="T:ChessGame.entities.Queen">
+            <summary>
+            Represent the chess element : Queen
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.Queen.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.Queen.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pX">column value</param>
+            <param name="pY">row value</param>
+        </member>
+        <member name="M:ChessGame.entities.Queen.#ctor(System.Int32,System.Int32,System.String,ChessGame.entities.Case)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pX">column value</param>
+            <param name="pY">row value</param>
+            <param name="pName">Piece name</param>
+            <param name="pCase">Piece case on chessboard</param>
+        </member>
+        <member name="M:ChessGame.entities.Queen.MoveOK(ChessGame.entities.Case)">
+            <summary>
+            MoveOK : tells is the current piece can move to the case pCase
+            </summary>
+            <param name="pCase">case to test</param>
+            <returns>true if possible, otherwise false</returns>
+        </member>
+        <member name="T:ChessGame.entities.Rook">
+            <summary>
+            Represent the chess element : Rook
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.Rook.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:ChessGame.entities.Rook.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pX">column value</param>
+            <param name="pY">row value</param>
+        </member>
+        <member name="M:ChessGame.entities.Rook.#ctor(System.Int32,System.Int32,System.String,ChessGame.entities.Case)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pX">column value</param>
+            <param name="pY">row value</param>
+            <param name="pName">Piece name</param>
+            <param name="pCase">Piece case on chessboard</param>
+        </member>
+        <member name="M:ChessGame.entities.Rook.MoveOK(ChessGame.entities.Case)">
+            <summary>
+            MoveOK : tells is the current piece can move to the case pCase
+            </summary>
+            <param name="pCase">case to test</param>
+            <returns>true if possible, otherwise false</returns>
+        </member>
+        <member name="M:ChessGame.utils.Utils.FindChild``1(System.Windows.DependencyObject,System.String)">
+            <summary>
+            Finds a Child of a given item in the visual tree. 
+            </summary>
+            <param name="parent">A direct parent of the queried item.</param>
+            <typeparam name="T">The type of the queried item.</typeparam>
+            <param name="childName">x:Name or Name of child. </param>
+            <returns>The first parent item that matches the submitted type parameter. 
+            If not matching item can be found, 
+            a null parent is being returned.</returns>
+        </member>
+        <member name="T:ChessGame.viewmodels.MainAdminVM">
+            <summary>
+            Configuration controller
+            </summary>
+        </member>
+        <member name="M:ChessGame.viewmodels.MainAdminVM.#ctor(ChessGame.views.administration.MainAdmin)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="mainAdmin">view</param>
+        </member>
+        <member name="M:ChessGame.viewmodels.MainAdminVM.InitActions">
+            <summary>
+            Initialize actions
+            </summary>
+        </member>
+        <member name="T:ChessGame.viewmodels.MainGameVM">
+            <summary>
+            Game controller
+            </summary>
+        </member>
+        <member name="M:ChessGame.viewmodels.MainGameVM.#ctor(ChessGame.views.game.MainGame)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="mainGame"></param>
+        </member>
+        <member name="M:ChessGame.viewmodels.MainGameVM.mouseLeftButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            mouseLeftButtonDown : Actions when player clic on the chessboard in the game window
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ChessGame.viewmodels.MainGameVM.EndGame(ChessGame.entities.Player)">
+            <summary>
+            End of the game
+            </summary>
+            <param name="player1"></param>
+        </member>
+        <member name="M:ChessGame.viewmodels.MainGameVM.InitUC">
+            <summary>
+            Initialize user controls
+            </summary>
+        </member>
+        <member name="M:ChessGame.viewmodels.MainGameVM.btnCancelSelect_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Cancel a piece selection
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ChessGame.viewmodels.MainGameVM.btnQuitGame_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Quit the game
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ChessGame.viewmodels.MainGameVM.btnSaveGame_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Save the game
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:ChessGame.viewmodels.OptionsAdminVM">
+            <summary>
+            Options controller
+            </summary>
+        </member>
+        <member name="M:ChessGame.viewmodels.OptionsAdminVM.#ctor(ChessGame.views.administration.OptionsAdmin)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="optionsAdmin">view</param>
+        </member>
+        <member name="T:ChessGame.viewmodels.ThemeAdminVM">
+            <summary>
+            Theme add part controller
+            </summary>
+        </member>
+        <member name="M:ChessGame.viewmodels.ThemeAdminVM.#ctor(ChessGame.views.administration.ThemeAdmin)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="themeAdmin">view</param>
+        </member>
+        <member name="T:ChessGame.views.administration.GameAdmin">
+            <summary>
+            Logique d'interaction pour GameAdmin.xaml
+            </summary>
+            <summary>
+            GameAdmin
+            </summary>
+        </member>
+        <member name="M:ChessGame.views.administration.GameAdmin.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ChessGame.views.administration.MainAdmin">
+            <summary>
+            Logique d'interaction pour MainAdmin.xaml
+            </summary>
+            <summary>
+            MainAdmin
+            </summary>
+        </member>
+        <member name="M:ChessGame.views.administration.MainAdmin.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ChessGame.views.administration.OptionsAdmin">
+            <summary>
+            Logique d'interaction pour OptionsAdmin.xaml
+            </summary>
+            <summary>
+            OptionsAdmin
+            </summary>
+        </member>
+        <member name="M:ChessGame.views.administration.OptionsAdmin.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ChessGame.views.administration.ThemeAdmin">
+            <summary>
+            Logique d'interaction pour ThemeAdmin.xaml
+            </summary>
+            <summary>
+            ThemeAdmin
+            </summary>
+        </member>
+        <member name="M:ChessGame.views.administration.ThemeAdmin.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ChessGame.views.DialogWindow">
+            <summary>
+            Logique d'interaction pour DialogWindow.xaml
+            </summary>
+            <summary>
+            DialogWindow
+            </summary>
+        </member>
+        <member name="M:ChessGame.views.DialogWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ChessGame.views.game.MainGame">
+            <summary>
+            Logique d'interaction pour MainGame.xaml
+            </summary>
+            <summary>
+            MainGame
+            </summary>
+        </member>
+        <member name="M:ChessGame.views.game.MainGame.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ChessGame.views.usercontrols.ChessBoardUserControl">
+            <summary>
+            Logique d'interaction pour ChessBoardUserControl.xaml
+            </summary>
+            <summary>
+            ChessBoardUserControl
+            </summary>
+        </member>
+        <member name="M:ChessGame.views.usercontrols.ChessBoardUserControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ChessGame.views.usercontrols.ListGameUserControl">
+            <summary>
+            Logique d'interaction pour ListGameUserControl.xaml
+            </summary>
+            <summary>
+            ListGameUserControl
+            </summary>
+        </member>
+        <member name="M:ChessGame.views.usercontrols.ListGameUserControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ChessGame.views.usercontrols.ListMapUserControl">
+            <summary>
+            Logique d'interaction pour ListMapUserControl.xaml
+            </summary>
+            <summary>
+            ListMapUserControl
+            </summary>
+        </member>
+        <member name="M:ChessGame.views.usercontrols.ListMapUserControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ChessGame.views.usercontrols.ListPieceUserControl">
+            <summary>
+            Logique d'interaction pour ListPieceUserControl.xaml
+            </summary>
+            <summary>
+            ListPieceUserControl
+            </summary>
+        </member>
+        <member name="M:ChessGame.views.usercontrols.ListPieceUserControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ChessGame.views.usercontrols.ListThemeUserControl">
+            <summary>
+            Logique d'interaction pour ListThemeUserControl.xaml
+            </summary>
+            <summary>
+            ListThemeUserControl
+            </summary>
+        </member>
+        <member name="M:ChessGame.views.usercontrols.ListThemeUserControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ChessGame.views.usercontrols.PawnUserControl">
+            <summary>
+            Logique d'interaction pour PawnUserControl.xaml
+            </summary>
+            <summary>
+            PawnUserControl
+            </summary>
+        </member>
+        <member name="M:ChessGame.views.usercontrols.PawnUserControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ChessGame.views.usercontrols.PieceUserControl">
+            <summary>
+            Logique d'interaction pour PieceUserControl.xaml
+            </summary>
+            <summary>
+            PieceUserControl
+            </summary>
+        </member>
+        <member name="M:ChessGame.views.usercontrols.PieceUserControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ChessGame.views.usercontrols.PlayerUserControl">
+            <summary>
+            Logique d'interaction pour PlayerUserControl.xaml
+            </summary>
+            <summary>
+            PlayerUserControl
+            </summary>
+        </member>
+        <member name="M:ChessGame.views.usercontrols.PlayerUserControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ChessGame.App">
+            <summary>
+            Logique d'interaction pour App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:ChessGame.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:ChessGame.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:ChessGame.commandworker.CommandWorker">
+            <summary>
+            This class manages a Worker task wich goal is to execute each task from a command queue.
+            It is a producer / consumer pattern, just enqueue task then the worker will execute one by one in FIFO order.
+            </summary>
+        </member>
+        <member name="F:ChessGame.commandworker.CommandWorker.mCommandQueue">
+            <summary>
+            A list that stores all the commands that has been called before the service instanciation.
+            When the service is ready, we replay these commands.
+            </summary>
+        </member>
+        <member name="F:ChessGame.commandworker.CommandWorker.mListLock">
+            <summary>
+            Global lock on the action list.
+            </summary>
+        </member>
+        <member name="F:ChessGame.commandworker.CommandWorker.mWorkerLock">
+            <summary>
+            Global lock on the worker start/stop methods.
+            </summary>
+        </member>
+        <member name="F:ChessGame.commandworker.CommandWorker.mTaskHandler">
+            <summary>
+            Monitor for multi-thread management.
+            </summary>
+        </member>
+        <member name="F:ChessGame.commandworker.CommandWorker.HeadCommand">
+            <summary>
+            The unique high priority command. 
+            </summary>
+        </member>
+        <member name="F:ChessGame.commandworker.CommandWorker.mProducer">
+            <summary>
+            The componenent's name that produces commands.
+            </summary>
+        </member>
+        <member name="M:ChessGame.commandworker.CommandWorker.#ctor(System.String)">
+            <summary>
+            The CancellationTokenSource and ManualResetEvent from the caller class or from this class references the same storage in memory.
+            Even if them referenced values change they will point out the same object.
+            </summary>
+            <param name="producer">The componenent's name that produces commands.</param>
+        </member>
+        <member name="M:ChessGame.commandworker.CommandWorker.Enqueue(System.Action,System.Threading.ManualResetEvent)">
+            <summary>
+            Add a command to the spool. Then, signal the consumer task to execute it.
+            </summary>
+            <remarks>
+            Any action enqueued in the command worker must not be time consuming and must not wait actions from UI thread. 
+            This could block the deactivated/suspended App life cycle event as it is waiting for the last running command to finish.
+            Also beware of the <see cref="M:System.Net.HttpWebRequest.BeginGetResponse(System.AsyncCallback,System.Object)"/> method in silverlight, 
+            it will hang the command worker as it is performing some work in the UI thread, it must be executed in a dedicated thread.
+            </remarks>
+            <param name="command">The new command</param>
+        </member>
+        <member name="M:ChessGame.commandworker.CommandWorker.GetNextAction">
+            <summary>
+            Remove a command from the spool. Signal the consumer to wait if there is no more commands available in the spool.
+            </summary>
+        </member>
+        <member name="M:ChessGame.commandworker.CommandWorker.AddHeadAction(System.Action)">
+            <summary>
+            Set the current head command or replace it if it was already set.
+            The head command is of the highest priority.
+            </summary>
+            <param name="command">The new command</param>
+        </member>
+        <member name="M:ChessGame.commandworker.CommandWorker.Clear">
+            <summary>
+            Remove all commands from the spool.
+            </summary>
+        </member>
+        <member name="M:ChessGame.commandworker.CommandWorker.AsyncWorker(System.Threading.CancellationToken,System.Threading.ManualResetEvent)">
+            <summary>
+            The command consumer task.
+            </summary>
+        </member>
+        <member name="M:ChessGame.commandworker.CommandWorker.Start">
+            <summary>
+            Start or restart the worker thread.
+            </summary>
+        </member>
+        <member name="M:ChessGame.commandworker.CommandWorker.Stop">
+            <summary>
+            Stop the worker.
+            </summary>
+        </member>
+        <member name="M:ChessGame.commandworker.CommandWorker.Execute(System.Action)">
+            <summary>
+            Execute a command and catch exceptions.
+            </summary>
+            <param name="command">Command</param>
+        </member>
+        <member name="P:ChessGame.commandworker.CommandWorker.AsyncWorkerTask">
+            <summary>
+            Get the command worker task.
+            </summary>
+            <value>
+            The worker task.
+            </value>
+        </member>
+        <member name="P:ChessGame.commandworker.CommandWorker.CancellationTokenSource">
+            <summary>
+            Task cancellation token.
+            </summary>
+        </member>
+        <member name="T:ChessGame.MainWindow">
+            <summary>
+            Logique d'interaction pour MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:ChessGame.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ChessGame.Properties.Resources">
+            <summary>
+              Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+            </summary>
+        </member>
+        <member name="P:ChessGame.Properties.Resources.ResourceManager">
+            <summary>
+              Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+            </summary>
+        </member>
+        <member name="P:ChessGame.Properties.Resources.Culture">
+            <summary>
+              Remplace la propriété CurrentUICulture du thread actuel pour toutes
+              les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>
