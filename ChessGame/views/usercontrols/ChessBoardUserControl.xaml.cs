@@ -72,8 +72,8 @@ namespace ChessGame.views.usercontrols
             var blackBrush = new SolidColorBrush(Color.FromRgb(50, 50, 50));
             if (background)
             {
-                whiteBrush.Opacity = 0.3;
-                blackBrush.Opacity = 0.3;
+                whiteBrush.Opacity = 0.1;
+                blackBrush.Opacity = 0.1;
             }
 
             for (int row = 0; row < 8; row++)
@@ -107,7 +107,7 @@ namespace ChessGame.views.usercontrols
         }
 
 
-        private void InitPieces()
+        private void InitPieces(Theme p1Theme, Theme p2Theme)
         {
             foreach (var pieceItem in ChessBoard.Pieces)
             {
@@ -121,11 +121,17 @@ namespace ChessGame.views.usercontrols
                 pieceUC.Piece = pieceItem;
                 if (pieceUC.Piece.Name.Contains("p1"))
                 {
-                    pieceUC.LoadImg();//TODO charger le theme
+                    if (p1Theme != null)
+                        pieceUC.LoadImg(p1Theme);
+                    else
+                        pieceUC.LoadImg();
                 }
                 else
                 {
-                    pieceUC.LoadImg();//TODO charger le theme
+                    if (p2Theme != null)
+                        pieceUC.LoadImg(p2Theme);
+                    else
+                        pieceUC.LoadImg();
                 }
 
                 pieceUC.HorizontalAlignment = HorizontalAlignment.Center;
@@ -135,10 +141,10 @@ namespace ChessGame.views.usercontrols
             }
         }
 
-        public void Load(bool background)
+        public void Load(bool background, Theme p1Theme, Theme p2Theme)
         {
             InitGrid(background);
-            InitPieces();
+            InitPieces(p1Theme, p2Theme);
         }
 
         public void clean(bool background)
@@ -147,8 +153,8 @@ namespace ChessGame.views.usercontrols
             var blackBrush = new SolidColorBrush(Color.FromRgb(50, 50, 50));
             if (background)
             {
-                whiteBrush.Opacity = 0.3;
-                blackBrush.Opacity = 0.3;
+                whiteBrush.Opacity = 0.1;
+                blackBrush.Opacity = 0.1;
             }
 
             for (int row = 0; row < 8; row++)

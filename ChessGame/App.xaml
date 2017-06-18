@@ -16,5 +16,6 @@
         <BitmapImage x:Key="BlackKnight" UriSource="/img/chess_piece_black_knight.png"/>
         <BitmapImage x:Key="BlackQueen" UriSource="/img/chess_piece_black_queen.png"/>
         <BitmapImage x:Key="BlackKing" UriSource="/img/chess_piece_black_king.png"/>
+        <BitmapImage x:Key="Chess" UriSource="/img/chess.jpg"/>
     </Application.Resources>
 </Application>

@@ -13,12 +13,19 @@ using System.Windows.Forms;
 
 namespace ChessGame.viewmodels
 {
+    /// <summary>
+    /// Theme add part controller
+    /// </summary>
     class ThemeAdminVM
     {
         private ThemeAdmin themeAdmin;
         private Theme currentTheme;
         private MySQLManager<Theme> themeManager = new MySQLManager<Theme>();
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="themeAdmin">view</param>
         public ThemeAdminVM(ThemeAdmin themeAdmin)
         {
             this.themeAdmin = themeAdmin;
@@ -50,6 +57,8 @@ namespace ChessGame.viewmodels
                 currentTheme.QueenFileName != null && currentTheme.KingFileName != null)
             {
                 currentTheme.Name = this.themeAdmin.txtBName.Text;
+                if (currentTheme.Name.Length == 0)
+                    currentTheme.Name = "new_theme_" + DateTime.Now.ToString();
                 themeManager = new MySQLManager<Theme>();
                 await themeManager.Insert(currentTheme);
                 this.themeAdmin.NavigationService.GoBack();

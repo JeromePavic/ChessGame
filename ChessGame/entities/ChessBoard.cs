@@ -99,6 +99,10 @@ namespace ChessGame.entities
             InitCases();
             InitPieces();
             PiecesToCases();
+            if (pMode == Mode.MAD)
+            {
+                ShuffleCases(Cases);
+            }
         }
 
 
@@ -466,7 +470,7 @@ namespace ChessGame.entities
         {
             foreach (Piece piece in pieces)
             {
-                if (piece.Player != pPlayer && MovePossible(piece, pCaseOfKing))
+                if (piece.State == State.ALIVE && piece.Player != pPlayer && MovePossible(piece, pCaseOfKing))
                 {
                     kingInCheck = true;
                     return true;

@@ -7,25 +7,35 @@
       xmlns:UC="clr-namespace:ChessGame.views.usercontrols"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="600"
-      Title="MainGame">
+      Title="MainGame" >
 
     <Grid x:Name="mainGrid" AllowDrop="False">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="8*"/>
-            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="9*"/>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <UC:PlayerUserControl Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="2" />
-        <UC:PlayerUserControl Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="2" />
+        <!--<UC:PlayerUserControl Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="2" />
+        <UC:PlayerUserControl Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="2" />-->
 
-        <!--<UC:ChessBoardUserControl x:Name="ChessBoardUC" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1"/>-->
+        <Grid   Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-        <Grid  Grid.Column="1" Grid.Row="1" >
+            <Label x:Name="lblPlaying" Content="Playing : " Grid.Column="0" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"/>
+            <Label x:Name="lblCurrentPlayer" Content="{Binding Game.CurrentPlayer, Mode=OneWay}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"/>
+        </Grid>
+            
+        <Grid  Grid.Column="1" Grid.Row="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />

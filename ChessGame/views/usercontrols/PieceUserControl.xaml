@@ -7,8 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="40" d:DesignWidth="40">
 
-    <!--<Image Width="40" Height="40" Source="C:\Users\jerome\Pictures\photo_gamelle_couv.jpg" />-->
-
     <Grid Name="testgrid" Background="Yellow">
         <Canvas  Name="canvas" >
             <Canvas.Background>

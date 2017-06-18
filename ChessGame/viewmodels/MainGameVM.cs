@@ -17,6 +17,9 @@ using System.Windows.Media;
 
 namespace ChessGame.viewmodels
 {
+    /// <summary>
+    /// Game controller
+    /// </summary>
     public class MainGameVM
     {
         private Logger logger;
@@ -62,8 +65,12 @@ namespace ChessGame.viewmodels
             }
         }
 
-        
 
+        /// <summary>
+        /// mouseLeftButtonDown : Actions when player clic on the chessboard in the game window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void mouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             StackPanel stackPanel = (StackPanel)sender;
@@ -84,6 +91,7 @@ namespace ChessGame.viewmodels
             {
                 return;
             }
+            // clic to select a piece...
             else if (!moving && stackPanel.Children.Count > 0)
             {
                 pieceMoving = (PieceUserControl)stackPanel.Children[0];
@@ -112,6 +120,7 @@ namespace ChessGame.viewmodels
                 }
 
             }
+            //clic to move to a case
             else if (moving)
             {
                 // if King is moving we check if the case where he's going would not put him in check
@@ -122,8 +131,13 @@ namespace ChessGame.viewmodels
                     if (chessBoardUC.ChessBoard.GetCase(col, 7 - row).Piece != null)
                     {
                         tmp = chessBoardUC.ChessBoard.GetCase(col, 7 - row).Piece;
+                        Piece piece = chessBoardUC.ChessBoard.GetPiece(col, (7 - row));
+                        piece.State = State.DEAD;
                     }
                     chessBoardUC.ChessBoard.GetCase(col, 7 - row).Piece = pieceMoving.Piece;
+                    Case spCase = chessBoardUC.ChessBoard.GetCase(Grid.GetColumn(originMoving), (7 - Grid.GetRow(originMoving)));
+                    spCase.Piece = null;
+
                     if (chessBoardUC.ChessBoard.PutKingInCheck(chessBoardUC.ChessBoard.GetCase(col, 7 - row), game.CurrentPlayer))
                     {
                         System.Windows.Forms.MessageBox.Show("You can't move your king to this case, it would be in check!", "Case not allowed",
@@ -132,7 +146,10 @@ namespace ChessGame.viewmodels
                         {
                             // kind of rollback
                             chessBoardUC.ChessBoard.GetCase(col, 7 - row).Piece = tmp;
+                            Piece piece = chessBoardUC.ChessBoard.GetPiece(col, (7 - row));
+                            piece.State = State.ALIVE;
                             tmp = null;
+                            spCase.Piece = pieceMoving.Piece;
                         }
                         else
                         {
@@ -144,7 +161,10 @@ namespace ChessGame.viewmodels
                     {
                         // kind of rollback
                         chessBoardUC.ChessBoard.GetCase(col, 7 - row).Piece = tmp;
+                        Piece piece = chessBoardUC.ChessBoard.GetPiece(col, (7 - row));
+                        piece.State = State.ALIVE;
                         tmp = null;
+                        spCase.Piece = pieceMoving.Piece;
                     }
                     else
                     {
@@ -285,6 +305,10 @@ namespace ChessGame.viewmodels
             
         }
 
+        /// <summary>
+        /// End of the game
+        /// </summary>
+        /// <param name="player1"></param>
         private void EndGame(Player player1)
         {
             System.Windows.Forms.MessageBox.Show("Player 1, your King is in Check", "Player1 King In Check",
@@ -293,6 +317,10 @@ namespace ChessGame.viewmodels
             w.Close();
         }
 
+
+        /// <summary>
+        /// Initialize user controls
+        /// </summary>
         private void InitUC()
         {
             if (this.game.Map != null)
@@ -302,13 +330,19 @@ namespace ChessGame.viewmodels
             chessBoardUC.Name = "chessBoardUC";
             this.mainGame.mainGrid.Children.Add(chessBoardUC);
             Grid.SetRow(chessBoardUC, 0);
-            Grid.SetColumn(chessBoardUC, 1);
+            Grid.SetColumn(chessBoardUC, 0);
             chessBoardUC.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
             chessBoardUC.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
-            chessBoardUC.Load(game.Background); 
+            chessBoardUC.Load(game.Background, game.Player1.Theme, game.Player2.Theme);
+
+            this.mainGame.lblCurrentPlayer.Content = this.game.CurrentPlayer.Name;
         }
 
-
+        /// <summary>
+        /// Cancel a piece selection
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancelSelect_Click(object sender, RoutedEventArgs e)
         {
             if (pieceMoving != null)
@@ -316,15 +350,27 @@ namespace ChessGame.viewmodels
                 moving = false;
                 pieceMoving = null;
                 originMoving = null;
+                this.chessBoardUC.clean(game.Background);
             }            
         }
 
+
+        /// <summary>
+        /// Quit the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnQuitGame_Click(object sender, RoutedEventArgs e)
         {
             Window w = (Window)this.mainGame.Parent;
             w.Close();
         }
 
+        /// <summary>
+        /// Save the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSaveGame_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.MessageBox.Show("Saving will be soon available", "Not available",
@@ -344,55 +390,5 @@ namespace ChessGame.viewmodels
 
 
 
-        //public void getPosition(UIElement element, out int col, out int row)
-        //{
-        //    Grid control = element.parent as DControl;
-        //    var point = Mouse.GetPosition(element);
-        //    row = 0;
-        //    col = 0;
-        //    double accumulatedHeight = 0.0;
-        //    double accumulatedWidth = 0.0;
-
-        //    // calc row mouse was over
-        //    foreach (var rowDefinition in control.RowDefinitions)
-        //    {
-        //        accumulatedHeight += rowDefinition.ActualHeight;
-        //        if (accumulatedHeight >= point.Y)
-        //            break;
-        //        row++;
-        //    }
-
-        //    // calc col mouse was over
-        //    foreach (var columnDefinition in control.ColumnDefinitions)
-        //    {
-        //        accumulatedWidth += columnDefinition.ActualWidth;
-        //        if (accumulatedWidth >= point.X)
-        //            break;
-        //        col++;
-        //    }
-        //}
-
-        //public void updatePosition()
-        //{
-        //    Grid.SetRow(this, (int)position.Y);
-        //    Grid.SetColumn(this, (int)position.X);
-        //    Margin = new Thickness();
-        //}
-
-
-
-        //public static T GetChildOfType<T>(this DependencyObject depObj) where T : DependencyObject
-        //{
-        //    if (depObj == null) return null;
-
-        //    for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
-        //    {
-        //        var child = VisualTreeHelper.GetChild(depObj, i);
-
-        //        var result = (child as T) ?? GetChildOfType<T>(child);
-        //        if (result != null) return result;
-        //    }
-        //    return null;
-        //}
     }
 }

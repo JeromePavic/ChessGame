@@ -33,6 +33,9 @@ namespace ChessGame
         {
             NavigationWindow window = new NavigationWindow();
             window.Content = new MainAdmin();
+            window.Height = 400;
+            window.Width = 400;
+            window.ResizeMode = ResizeMode.NoResize;
             window.Show();
         }
 
@@ -40,6 +43,9 @@ namespace ChessGame
         {
             Window window = new Window();
             window.Content = new OptionsAdmin();
+            window.Height = 400;
+            window.Width = 600;
+            window.ResizeMode = ResizeMode.NoResize;
             window.Show();
 
             //MySQLGameManager msqlGM = new MySQLGameManager();

@@ -22,6 +22,10 @@ namespace ChessGame.viewmodels
         private Theme currentTheme;
         private MySQLManager<Theme> themeManager = new MySQLManager<Theme>();
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="mainAdmin">view</param>
         public MainAdminVM(MainAdmin mainAdmin)
         {
             this.mainAdmin = mainAdmin;
@@ -31,6 +35,9 @@ namespace ChessGame.viewmodels
             InitActions();
         }
 
+        /// <summary>
+        /// Initialize actions
+        /// </summary>
         private void InitActions()
         {
             this.mainAdmin.btnNewMap.Click += BtnNewMap_Click;
@@ -163,20 +170,5 @@ namespace ChessGame.viewmodels
             
         }
 
-
-            
-
-
-
-        //------------------------
-
-
-
-
-        private void btnOptions_Click(object sender, RoutedEventArgs e)
-        {
-            Page optionPage = new OptionsAdmin();
-            this.mainAdmin.NavigationService.Navigate(optionPage);
-        }
     }
 }

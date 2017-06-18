@@ -6,10 +6,13 @@
       xmlns:local="clr-namespace:ChessGame.views.administration"
       xmlns:UC="clr-namespace:ChessGame.views.usercontrols"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="550" d:DesignWidth="400"
       Title="OptionsAdmin">
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="{StaticResource Chess}" Stretch="UniformToFill" Opacity="1"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -17,61 +20,61 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="2*"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Label x:Name="lblPlayer1" Content="Player 1" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
-        <Label x:Name="lblPlayer2" Content="Player 2" Grid.Column="2" Grid.ColumnSpan="2"  HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" />
+        <Label x:Name="lblPlayer1" Content="Player 1" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="lblPlayer2" Content="Player 2" Grid.Column="2" Grid.ColumnSpan="2"  HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"/>
 
-        <Label x:Name="lblP1Name" Content="Name" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Label x:Name="lblP2Name" Content="Name" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Label x:Name="lblP1Name" Content="Name" Grid.Column="0" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="White"/>
+        <Label x:Name="lblP2Name" Content="Name" Grid.Column="2" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="White"/>
 
-        <TextBox x:Name="txtBP1Name" Text="{Binding Game.Player1.Name, Mode=OneWay}" TextWrapping="Wrap" Grid.Column="1" Grid.Row="1"/>
+        <TextBox x:Name="txtBP1Name" Text="{Binding Game.Player1.Name, Mode=OneWay}" TextWrapping="Wrap" Grid.Column="1" Grid.Row="1" />
         <TextBox x:Name="txtBP2Name" Text="{Binding Game.Player2.Name, Mode=OneWay}" TextWrapping="Wrap" Grid.Column="3" Grid.Row="1"/>
 
-        <Label x:Name="lblP1Theme" Content="Theme" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" />
-        <Label x:Name="lblP2Theme" Content="Theme" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" />
+        <Label x:Name="lblP1Theme" Content="Theme" Grid.Column="0" HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Stretch" Background="White"/>
+        <Label x:Name="lblP2Theme" Content="Theme" Grid.Column="2" HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Stretch" Background="White"/>
 
         <UC:ListThemeUserControl x:Name="ListThemeP1UC" Grid.Column="1" Grid.Row="2" />
         <UC:ListThemeUserControl x:Name="ListThemeP2UC" Grid.Column="3" Grid.Row="2" />
 
-        <Label x:Name="lblP1Timer" Content="Timer" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" />
-        <Label x:Name="lblP2Timer" Content="Timer" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" />
+        <Label x:Name="lblP1Timer" Content="Timer" Grid.Column="0" HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Stretch" Background="White"/>
+        <Label x:Name="lblP2Timer" Content="Timer" Grid.Column="2" HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Stretch" Background="White"/>
 
         <TextBox x:Name="txtBP1Timer" Text="{Binding Game.Player1.TimerSec, Mode=TwoWay}" TextWrapping="Wrap" Grid.Column="1" Grid.Row="3"/>
         <TextBox x:Name="txtBP2Timer" Text="{Binding Game.Player2.TimerSec, Mode=TwoWay}" TextWrapping="Wrap" Grid.Column="3" Grid.Row="3"/>
 
-        <Label x:Name="lblP1Help" Content="Help" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" />
-        <Label x:Name="lblP2Help" Content="Help" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" />
+        <Label x:Name="lblP1Help" Content="Help" Grid.Column="0" HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Stretch" Background="White"/>
+        <Label x:Name="lblP2Help" Content="Help" Grid.Column="2" HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Stretch" Background="White"/>
 
         <CheckBox x:Name="ckbP1Help" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" />
         <CheckBox x:Name="ckbP2Help" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" />
 
-        <Label x:Name="lblGame" Content="Game" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" />
+        <Label x:Name="lblGame" Content="Game" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Background="White"/>
 
 
-        <Label x:Name="lblChess" Content="Chess" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" />
+        <Label x:Name="lblChess" Content="Chess" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Background="White"/>
         <RadioButton x:Name="rbChess"  Content="0" IsChecked="True" GroupName="board" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" />
-            
-        <Label x:Name="lblFlying" Content="FlyingChess" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" />
-        <RadioButton x:Name="rbFlying" Content="1" GroupName="board" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" />
-            
-        <Label x:Name="lblWar" Content="WarChess" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" />
-        <RadioButton x:Name="rbWar" Content="2" GroupName="board" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" />
-            
-        <Label x:Name="lblMad" Content="MadChess" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" />
-        <RadioButton x:Name="rbMad" Content="3" GroupName="board" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" />
 
-        <Label x:Name="lblMap" Content="Map" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="8" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Label x:Name="lblFlying" Content="FlyingChess" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Background="White"/>
+        <RadioButton x:Name="rbFlying" Content="1" GroupName="board" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" />
+
+        <Label x:Name="lblWar" Content="WarChess" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Background="White"/>
+        <RadioButton x:Name="rbWar" Content="2" GroupName="board" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" />
+
+        <!--<Label x:Name="lblMad" Content="MadChess" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Background="White"/>
+        <RadioButton x:Name="rbMad" Content="3" GroupName="board" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" />-->
+
+        <Label x:Name="lblMap" Content="Map" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="8" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="White"/>
         <CheckBox x:Name="ckbMap" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" />
         <UC:ListMapUserControl x:Name="ListMapUC" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="8" />
 

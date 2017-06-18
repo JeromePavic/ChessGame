@@ -100,5 +100,61 @@ namespace ChessGame.views.usercontrols
             canvas.Children.Add(rect);
 
         }
+
+
+        internal void LoadImg(Theme pTheme)
+        {
+            var imgBrush = new ImageBrush();
+            if (this.piece.GetType() == typeof(Pawn))
+            {
+                Uri uri = new Uri(pTheme.PawnFileName);
+                BitmapImage img = new BitmapImage(uri);
+                imgBrush.ImageSource = img;
+            }
+            else if (this.piece.GetType() == typeof(Rook))
+            {
+                Uri uri = new Uri(pTheme.RookFileName);
+                BitmapImage img = new BitmapImage(uri);
+                imgBrush.ImageSource = img;
+            }
+            else if (this.piece.GetType() == typeof(Knight))
+            {
+                Uri uri = new Uri(pTheme.KnightFileName);
+                BitmapImage img = new BitmapImage(uri);
+                imgBrush.ImageSource = img;
+            }
+            else if (this.piece.GetType() == typeof(Bishop))
+            {
+                Uri uri = new Uri(pTheme.BishopFileName);
+                BitmapImage img = new BitmapImage(uri);
+                imgBrush.ImageSource = img;
+            }
+            else if (this.piece.GetType() == typeof(Queen))
+            {
+                Uri uri = new Uri(pTheme.QueenFileName);
+                BitmapImage img = new BitmapImage(uri);
+                imgBrush.ImageSource = img;
+            }
+            else if (this.piece.GetType() == typeof(King))
+            {
+                Uri uri = new Uri(pTheme.KingFileName);
+                BitmapImage img = new BitmapImage(uri);
+                imgBrush.ImageSource = img;
+            }
+
+
+
+
+            Rectangle rect = new Rectangle();
+            rect.Height = 40;
+            rect.Width = 40;
+            rect.Fill = imgBrush;
+
+            Canvas.SetLeft(rect, 0);
+            Canvas.SetTop(rect, 0);
+
+            canvas.Children.Add(rect);
+
+        }
     }
 }

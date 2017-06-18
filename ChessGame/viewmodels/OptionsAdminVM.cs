@@ -14,6 +14,9 @@ using ChessGame.entities.enums;
 
 namespace ChessGame.viewmodels
 {
+    /// <summary>
+    /// Options controller
+    /// </summary>
     public class OptionsAdminVM
     {
         private OptionsAdmin optionsAdmin;
@@ -25,6 +28,10 @@ namespace ChessGame.viewmodels
         private MySQLManager<Theme> themeManager = new MySQLManager<Theme>();
         private Int32 currentMode;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="optionsAdmin">view</param>
         public OptionsAdminVM(OptionsAdmin optionsAdmin)
         {
             this.optionsAdmin = optionsAdmin;
@@ -62,7 +69,7 @@ namespace ChessGame.viewmodels
             this.optionsAdmin.rbChess.Checked += RbChecked;
             this.optionsAdmin.rbFlying.Checked += RbChecked;
             this.optionsAdmin.rbWar.Checked += RbChecked;
-            this.optionsAdmin.rbMad.Checked += RbChecked;
+            //this.optionsAdmin.rbMad.Checked += RbChecked;
             this.optionsAdmin.ckbP1Help.Checked += P1HelpChecked;
             this.optionsAdmin.ckbP1Help.Unchecked += P1HelpUnchecked;
             this.optionsAdmin.ckbP2Help.Checked += P2HelpChecked;
@@ -154,9 +161,21 @@ namespace ChessGame.viewmodels
                 this.currentGame.Player2.TimerSec = 0;
             }
 
+            if (this.optionsAdmin.ckbMap.IsChecked == true)
+                currentGame.Background = true;
+            else
+                currentGame.Background = false;
+
+
             // Set values to game
             if (!currentGame.Background)
                 currentGame.Map = null;
+            else if (currentGame.Map == null)
+            {
+                System.Windows.Forms.MessageBox.Show("No map selected", "Map",
+                   System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                return;
+            }
 
             switch (currentMode)
             {
@@ -169,10 +188,11 @@ namespace ChessGame.viewmodels
                 case 2:
                     currentGame.Mode = Mode.WAR;
                     break;
-                case 3:
-                    currentGame.Mode = Mode.MAD;
-                    break;
+                //case 3:
+                //    currentGame.Mode = Mode.MAD;
+                //    break;
                 default:
+                    currentGame.Mode = Mode.CLASSICAL;
                     break;
             }
             currentGame.ChessBoard = new ChessBoard(currentGame.Mode);
@@ -181,7 +201,12 @@ namespace ChessGame.viewmodels
             // Launch game
             Window window = new Window();
             window.Content = new MainGame(currentGame);
+            window.Height = 700;
+            window.Width = 670;
+            window.ResizeMode = ResizeMode.NoResize;
             window.Show();
+            Window w = (Window)this.optionsAdmin.Parent;
+            w.Close();
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
